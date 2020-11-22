@@ -6,26 +6,33 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateAdressesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('adresses', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('adresses', function (Blueprint $table) {
+			$table->id();
+			$table->string('city');
+			$table->string('postcode');
+			$table->string('street');
+			$table->string('building');
+			$table->string('appartment');
+			$table->boolean('isDefault');
+			$table->integer('clients_id');
+			$table->timestamps();
+		});
+	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('adresses');
-    }
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::dropIfExists('adresses');
+	}
 }
