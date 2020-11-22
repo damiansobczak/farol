@@ -19,7 +19,8 @@ class CreateOrdersTable extends Migration
 			$table->boolean('status');
 			$table->double('total');
 			$table->string('paymentMethod');
-			$table->integer('clientId');
+			$table->unsignedBigInteger('clientId');
+			$table->foreignId('clientId')->references('id')->on('clients');
 			$table->timestamps();
 		});
 	}

@@ -21,7 +21,8 @@ class CreateAdressesTable extends Migration
 			$table->string('building');
 			$table->string('appartment');
 			$table->boolean('isDefault');
-			$table->integer('clients_id');
+			$table->unsignedBigInteger('clientId');
+			$table->foreignId('clientId')->references('id')->on('clients');
 			$table->timestamps();
 		});
 	}

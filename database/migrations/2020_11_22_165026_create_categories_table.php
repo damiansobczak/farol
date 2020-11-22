@@ -18,7 +18,6 @@ class CreateCategoriesTable extends Migration
 			$table->string('image');
 			$table->string('imageAlt');
 			$table->string('name');
-			$table->integer('productId');
 			$table->timestamps();
 		});
 	}

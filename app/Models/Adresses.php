@@ -15,6 +15,6 @@ class Adresses extends Model
 		'building',
 		'appartment',
 		'isDefault',
-		'clients_id',
+		'clientsId',
     ];
 }
