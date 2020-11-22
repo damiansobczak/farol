@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class RealisationGallery extends Model
 {
-    use HasFactory;
+	use HasFactory;
+	protected $fillable = [
+		'image',
+		'imageAlt',
+		'video',
+		'realisationId',
+	];
 }
