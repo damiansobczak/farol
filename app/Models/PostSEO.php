@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class PostSEO extends Model
 {
-    use HasFactory;
+	use HasFactory;
+	protected $fillable = [
+		'title',
+		'description',
+		'ogTitle',
+		'ogDesc',
+		'ogImage',
+		'postId',
+	];
 }
