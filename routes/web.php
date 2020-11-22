@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\SettingsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/*
+* Front Office routes
+*/
+
+Route::view('/', 'welcome');
+
+/*
+* Admin routes
+*/
+
+Route::prefix('admin')->group(function() {
+    Route::get('/settings', [SettingsController::class, 'index']);
 });
