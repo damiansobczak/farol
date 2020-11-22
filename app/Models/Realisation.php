@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Realisation extends Model
 {
-    use HasFactory;
+	use HasFactory;
+	protected $fillable = [
+		'title',
+		'description',
+		'date',
+	];
 }
