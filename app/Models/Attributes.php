@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attributes extends Model
 {
-    use HasFactory;
+	use HasFactory;
+	protected $fillable = [
+		'attributeType',
+		'name',
+		'image',
+		'imageAlt',
+		'minValue',
+		'maxValue',
+	];
 }

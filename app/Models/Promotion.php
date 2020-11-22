@@ -7,5 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Promotion extends Model
 {
-    use HasFactory;
+	use HasFactory;
+	protected $fillable = [
+		'name',
+		'priceNet',
+		'priceGross',
+		'active',
+		'startDate',
+		'endDate',
+		'productId',
+	];
 }
