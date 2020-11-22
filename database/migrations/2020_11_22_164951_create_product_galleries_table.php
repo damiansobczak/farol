@@ -17,7 +17,7 @@ class CreateProductGalleriesTable extends Migration
 			$table->id();
 			$table->string('image');
 			$table->string('imageAlt');
-			$table->unsignedBigInteger('productId');
+			//$table->unsignedBigInteger('productId');
 			$table->foreignId('productId')->references('id')->on('products');
 			$table->timestamps();
 		});

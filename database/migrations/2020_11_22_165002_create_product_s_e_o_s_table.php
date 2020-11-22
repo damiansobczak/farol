@@ -20,7 +20,7 @@ class CreateProductSEOSTable extends Migration
 			$table->string('ogTitle');
 			$table->string('ogDesc');
 			$table->string('ogImage');
-			$table->unsignedBigInteger('productId');
+			//$table->unsignedBigInteger('productId');
 			$table->foreignId('productId')->references('id')->on('products');
 			$table->timestamps();
 		});

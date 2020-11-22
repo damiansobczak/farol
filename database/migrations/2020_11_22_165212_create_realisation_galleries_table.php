@@ -18,7 +18,7 @@ class CreateRealisationGalleriesTable extends Migration
 			$table->string('image');
 			$table->string('imageAlt');
 			$table->string('video');
-			$table->unsignedBigInteger('realisationId');
+			//$table->unsignedBigInteger('realisationId');
 			$table->foreignId('realisationId')->references('id')->on('realisations');
 			$table->timestamps();
 		});

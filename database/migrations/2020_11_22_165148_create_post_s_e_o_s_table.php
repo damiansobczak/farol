@@ -20,7 +20,7 @@ class CreatePostSEOSTable extends Migration
 			$table->string('ogTitle');
 			$table->string('ogDesc');
 			$table->string('ogImage');
-			$table->unsignedBigInteger('postId');
+			//$table->unsignedBigInteger('postId');
 			$table->foreignId('postId')->references('id')->on('posts');
 			$table->timestamps();
 		});
