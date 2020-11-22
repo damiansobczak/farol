@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class RealisationSEO extends Model
 {
-    use HasFactory;
+	use HasFactory;
+	protected $fillable = [
+		'title',
+		'description',
+		'ogTitle',
+		'ogDesc',
+		'ogImage',
+		'realisationId',
+	];
 }
