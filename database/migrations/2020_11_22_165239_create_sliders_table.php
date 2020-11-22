@@ -6,26 +6,34 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateSlidersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('sliders', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('sliders', function (Blueprint $table) {
+			$table->id();
+			$table->string('title');
+			$table->string('description');
+			$table->string('actionName');
+			$table->string('actionLink');
+			$table->string('image');
+			$table->string('imageAlt');
+			$table->string('onlyImage');
+			$table->string('onlyImageLink');
+			$table->timestamps();
+		});
+	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('sliders');
-    }
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::dropIfExists('sliders');
+	}
 }

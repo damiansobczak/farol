@@ -7,5 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Slider extends Model
 {
-    use HasFactory;
+	use HasFactory;
+	protected $fillable = [
+		'title',
+		'description',
+		'actionName',
+		'actionLink',
+		'image',
+		'imageAlt',
+		'onlyImage',
+		'onlyImageLink',
+	];
 }
