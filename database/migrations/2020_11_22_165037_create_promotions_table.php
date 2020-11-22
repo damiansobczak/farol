@@ -21,7 +21,6 @@ class CreatePromotionsTable extends Migration
 			$table->boolean('active');
 			$table->timestamp('startDate');
 			$table->timestamp('endDate');
-			//$table->unsignedBigInteger('productId');
 			$table->foreignId('productId')->references('id')->on('products');
 			$table->timestamps();
 		});

@@ -15,7 +15,6 @@ class CreateAttributesTable extends Migration
 	{
 		Schema::create('attributes', function (Blueprint $table) {
 			$table->id();
-			//$table->unsignedBigInteger('attributeType');
 			$table->foreignId('attributeType')->references('id')->on('attribute_types');
 			$table->string('name');
 			$table->string('image');

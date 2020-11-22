@@ -15,9 +15,7 @@ class CreateOrdersLinesTable extends Migration
 	{
 		Schema::create('orders_lines', function (Blueprint $table) {
 			$table->id();
-			//$table->unsignedBigInteger('productId');
 			$table->foreignId('productId')->references('id')->on('products');
-			//$table->unsignedBigInteger('orderId');
 			$table->foreignId('orderId')->references('id')->on('orders');
 			$table->integer('quantity');
 			$table->integer('singlePrice');

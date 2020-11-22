@@ -20,7 +20,6 @@ class CreateRealisationSEOSTable extends Migration
 			$table->string('ogTitle');
 			$table->string('ogDesc');
 			$table->string('ogImage');
-			//$table->unsignedBigInteger('realisationId');
 			$table->foreignId('realisationId')->references('id')->on('realisations');
 			$table->timestamps();
 		});

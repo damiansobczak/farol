@@ -17,7 +17,6 @@ class CreateProductsTable extends Migration
 			$table->id();
 			$table->string('slug');
 			$table->string('name');
-			//$table->unsignedBigInteger('categoryId');
 			$table->foreignId('categoryId')->references('id')->on('categories');
 			$table->string('imageAlt');
 			$table->string('image');
