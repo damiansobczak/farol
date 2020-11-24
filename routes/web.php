@@ -27,6 +27,7 @@ Route::view('/', 'welcome');
 
 Route::prefix('admin')->group(function() {
     Route::view('/', 'admin.auth.login');
+    Route::view('/dashboard', 'admin.pages.dashboard');
     Route::view('/przypomnienie', 'admin.auth.forgot');
     Route::get('/ustawienia', [SettingsController::class, 'index']);
 });

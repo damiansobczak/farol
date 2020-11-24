@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Panel - @yield('title')</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="bg-gray-100 mx-auto w-screen h-screen flex">
+    @include('admin/partials/sidebar')
+    <div class="flex flex-1 h-full flex-col">
+        @include('admin/partials/topbar')
+        <div class="px-10 py-7">
+            @include('admin/partials/breadcrumbs')
+            @yield('content')
+        </div>
+    </div>
+</div>
+</body>
+</html>
