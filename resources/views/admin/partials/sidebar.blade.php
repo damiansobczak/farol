@@ -13,7 +13,7 @@
         <nav class="text-gray-200">
             <ul>
                 <li>
-                    <a href="#" class="text-sm w-full block px-5 py-2 hover:bg-gray-700 bg-indigo-500 font-medium text-white flex items-center">
+                    <a href="{{ route('admin.dashboard') }}" class="text-sm w-full block px-5 py-2 hover:bg-gray-700 flex items-center {!! request()->routeIs('admin.dashboard') ? 'bg-indigo-500 font-medium text-white' : '' !!}">
                         <svg class="mr-2" height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                         </svg>
@@ -43,7 +43,7 @@
                         Atrybuty</a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.promocje') }}" class="text-sm w-full block px-5 py-2 hover:bg-gray-700 flex items-center">
+                    <a href="#" class="text-sm w-full block px-5 py-2 hover:bg-gray-700 flex items-center">
                         <svg class="mr-2" height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
                         </svg>
@@ -127,7 +127,7 @@
         <nav class="text-gray-200" aria-labelledby="settings-nav">
             <ul>
                 <li>
-                    <a href="#" class="text-sm w-full block px-5 py-2 hover:bg-gray-700 flex items-center">
+                    <a href="{{ route('admin.settings') }}" class="text-sm w-full block px-5 py-2 hover:bg-gray-700 flex items-center {!! request()->routeIs('admin.settings') ? 'bg-indigo-500 font-medium text-white' : '' !!}}">
                         <svg class="mr-2" height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z" />
                         </svg>

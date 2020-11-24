@@ -13,7 +13,7 @@
     <div class="flex flex-1 h-full flex-col">
         @include('admin/partials/topbar')
         <div class="px-10 py-7">
-            @include('admin/partials/breadcrumbs')
+            @yield('breadcrumbs')
             @yield('content')
         </div>
     </div>
