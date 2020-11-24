@@ -30,7 +30,7 @@ Route::view('/', 'welcome');
 */
 
 Route::prefix('admin')->group(function() {
-    Route::view('/', 'admin.dashboard')->middleware('auth');
+    Route::view('/', 'admin.pages.dashboard')->middleware('auth')->name('admin.dashboard');
 
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
@@ -41,5 +41,5 @@ Route::prefix('admin')->group(function() {
     Route::get('/resetowanie/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
     Route::post('/resetowanie/', [ResetPasswordController::class, 'reset'])->name('password.update');
 
-    Route::get('/ustawienia', [SettingsController::class, 'index'])->middleware('auth');
+    Route::get('/ustawienia', [SettingsController::class, 'index'])->middleware('auth')->name('admin.settings');
 });
