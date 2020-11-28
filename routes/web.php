@@ -45,7 +45,9 @@ Route::prefix('admin')->group(function() {
 
 	Route::get('/kategorie', [CategoryController::class, 'index'])->middleware('auth')->name('admin.categories');
 	Route::get('/kategorie/formularz', [CategoryController::class, 'form'])->middleware('auth')->name('admin.categories.form');
+	Route::get('/kategorie/formularz/{categoryId}', [CategoryController::class, 'form'])->middleware('auth')->name('admin.categories.form.edit');
 	Route::post('/kategorie/formularz', [CategoryController::class, 'store'])->middleware('auth')->name('admin.categories.form.save');
+	Route::post('/kategorie/formularz/{categoryId}', [CategoryController::class, 'store'])->middleware('auth')->name('admin.categories.form.editSave');
 	
 	Route::get('/ustawienia', [SettingsController::class, 'index'])->middleware('auth')->name('admin.settings');
 });

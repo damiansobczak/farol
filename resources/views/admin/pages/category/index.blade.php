@@ -17,8 +17,13 @@
 @endsection
 @section('content')
 	<div class="rounded shadow-sm bg-white p-8">
-		<form action="#" method="POST">
-			
-		</form>
+		@foreach($categories as $category)
+		@php $counter = 1; @endphp
+			<div class="flex flex-column">
+				<div>{{ $counter++ }}</div>
+				<div>{{ $category->name }}</div>
+				<a href="{{ route('admin.categories.form.edit', $category->id) }}">Edytuj</a>
+			</div>
+		@endforeach
 	</div>
 @endsection

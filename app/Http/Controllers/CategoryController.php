@@ -9,24 +9,40 @@ class CategoryController extends Controller
 {
 	public function index()
 	{
-		return view('admin.pages.category.index');
+		$categories = Category::select('id', 'name')->get();
+		return view('admin.pages.category.index', ['categories' => $categories]);
 	}
-	public function form()
+	public function form($categoryId = NULL)
 	{
-		return view('admin.pages.category.form');
+		$categoryData = [];
+		if(isset($categoryId))
+			$categoryData = Category::find($categoryId)->first();
+		return view('admin.pages.category.form', ['categoryData' => $categoryData, 'categoryId' => $categoryId]);
 	}
-	public function store(Request $req)
+	public function store(Request $req, $categoryId = NULL)
 	{
-		$req->validate([
-			"name" => "required|alpha|unique:categories,name",
-			"image" => "nullable|image",
-			"imageAlt" => "nullable|string"
-		]);
-		$newCategory = new Category();
-		$newCategory->name = $req->name;
-		$newCategory->image = $req->image;
-		$newCategory->imageAlt = $req->imageAlt;
-		$newCategory->save();
+		if(isset($categoryId))
+		{
+			$req->validate([
+				"name" => "required|string",
+				"image" => "nullable|image",
+				"imageAlt" => "nullable|string"
+			]);
+			$category = Category::find($categoryId);
+		}
+		else
+		{
+			$req->validate([
+				"name" => "required|string|unique:categories,name",
+				"image" => "nullable|image",
+				"imageAlt" => "nullable|string"
+			]);
+			$category = new Category();
+		}
+		$category->name = $req->name;
+		$category->image = $req->image;
+		$category->imageAlt = $req->imageAlt;
+		$category->save();
 		return redirect()->route('admin.categories');
 	}
 }
