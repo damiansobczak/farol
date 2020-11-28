@@ -11,14 +11,26 @@
 				</svg>
 			</li>
 			<li class="text-gray-400 text-xs">Kategorie</li>
+			<li class="text-gray-400 text-xs">Formularz kategorii</li>
 		</ol>
 	</div>
-	<a href="{{ route('admin.categories.form') }}">Dodaj +</a>
+
 @endsection
 @section('content')
+	@if($errors->any())
+		<div>
+			@foreach($errors->all() as $error)
+				<p>{{ $error }}</p>
+			@endforeach
+		</div>
+	@endif
 	<div class="rounded shadow-sm bg-white p-8">
-		<form action="#" method="POST">
-			
+		<form action="{{ route('admin.categories.form.save') }}" method="POST">
+			@csrf
+			<input type="text" name="name">
+			<input type="file" name="image">
+			<input type="text" name="imageAlt">
+			<button type="submit">Zapisz</button>
 		</form>
 	</div>
 @endsection

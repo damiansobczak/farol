@@ -44,6 +44,8 @@ Route::prefix('admin')->group(function() {
 	Route::post('/resetowanie/', [ResetPasswordController::class, 'reset'])->name('password.update');
 
 	Route::get('/kategorie', [CategoryController::class, 'index'])->middleware('auth')->name('admin.categories');
+	Route::get('/kategorie/formularz', [CategoryController::class, 'form'])->middleware('auth')->name('admin.categories.form');
+	Route::post('/kategorie/formularz', [CategoryController::class, 'store'])->middleware('auth')->name('admin.categories.form.save');
 	
 	Route::get('/ustawienia', [SettingsController::class, 'index'])->middleware('auth')->name('admin.settings');
 });
