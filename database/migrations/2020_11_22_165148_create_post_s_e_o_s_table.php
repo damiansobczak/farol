@@ -15,12 +15,11 @@ class CreatePostSEOSTable extends Migration
 	{
 		Schema::create('post_s_e_o_s', function (Blueprint $table) {
 			$table->id();
-			$table->string('title');
-			$table->string('description');
-			$table->string('ogTitle');
-			$table->string('ogDesc');
-			$table->string('ogImage');
-			$table->foreignId('postId')->references('id')->on('posts');
+			$table->string('seoTitle')->nullable();
+			$table->string('seoDescription')->nullable();
+			$table->string('ogTitle')->nullable();
+			$table->string('ogDescription')->nullable();
+			$table->foreignId('postId')->references('id')->on('posts')->onDelete('cascade')->onUpdate('cascade');
 			$table->timestamps();
 		});
 	}

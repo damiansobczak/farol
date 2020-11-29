@@ -10,7 +10,7 @@
 <body>
 <div class="bg-gray-100 mx-auto w-screen h-screen flex">
     @include('admin/partials/sidebar')
-    <div class="flex flex-1 h-full flex-col">
+    <div class="flex flex-1 h-full flex-col overflow-y-auto">
         @include('admin/partials/topbar')
         <div class="px-10 py-7">
             @yield('breadcrumbs')
