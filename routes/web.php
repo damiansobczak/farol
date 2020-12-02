@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Auth\Middleware\Authenticate;
 use App\Http\Controllers\Auth\LoginController;
@@ -31,7 +32,10 @@ Route::view('/', 'welcome');
 */
 
 Route::prefix('admin')->group(function() {
-	Route::view('/', 'admin.pages.dashboard')->middleware('auth')->name('admin.dashboard');
+    /*
+    * Auth
+    */
+    Route::view('/', 'admin.pages.dashboard')->middleware('auth')->name('admin.dashboard');
 
 	Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 	Route::post('/login', [LoginController::class, 'login']);
@@ -48,6 +52,22 @@ Route::prefix('admin')->group(function() {
 	Route::get('/kategorie/formularz/{categoryId}', [CategoryController::class, 'form'])->middleware('auth')->name('admin.categories.form.edit');
 	Route::post('/kategorie/formularz', [CategoryController::class, 'store'])->middleware('auth')->name('admin.categories.form.save');
 	Route::post('/kategorie/formularz/{categoryId}', [CategoryController::class, 'store'])->middleware('auth')->name('admin.categories.form.editSave');
-	
+
 	Route::get('/ustawienia', [SettingsController::class, 'index'])->middleware('auth')->name('admin.settings');
+    /*
+    * News
+    */
+    Route::get('/aktualnosci', [PostController::class, 'index'])->middleware('auth')->name('admin.posts');
+
+    Route::get('/aktualnosci/utworz', [PostController::class, 'create'])->name('admin.posts.create');
+    Route::post('/aktualnosci/utworz', [PostController::class, 'store']);
+
+    Route::get('/aktualnosci/{id}', [PostController::class, 'edit'])->name('admin.posts.edit');
+    Route::put('/aktualnosci/{id}', [PostController::class, 'update']);
+    Route::delete('/aktualnosci/{id}', [PostController::class, 'destroy'])->name('admin.posts.delete');
+
+    /*
+    * Settings
+    */
+    Route::get('/ustawienia', [SettingsController::class, 'index'])->middleware('auth')->name('admin.settings');
 });

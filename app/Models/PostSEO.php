@@ -9,11 +9,15 @@ class PostSEO extends Model
 {
 	use HasFactory;
 	protected $fillable = [
-		'title',
-		'description',
+		'seoTitle',
+		'seoDescription',
 		'ogTitle',
-		'ogDesc',
-		'ogImage',
+		'ogDescription',
 		'postId',
 	];
+
+    public function post()
+    {
+        return $this->belongsTo('App\Models\Post', 'postId');
+    }
 }
