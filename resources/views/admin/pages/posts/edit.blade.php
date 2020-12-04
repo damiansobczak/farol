@@ -42,7 +42,7 @@
                 <img class="object-cover w-full bg-gray-100 h-64 rounded" src="{{ $post->photo ? $post->photo : '' }}">
                 <label for="image" class="text-sm text-gray-400 mt-4 block">
                     <p class="mb-2 text-gray-500">Obrazek:</p>
-                    <input class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="file" name="image" id="image" value="{{ $post->photo ? $post->photo : '' }}" >
+                    <input class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="file" name="image" id="image" >
                     @error('image')
                         <div class="p-2 bg-red-200 text-red-700 rounded my-3">To pole jest wymagane. Obrazek nie powinien być większy niż 1MB.</div>
                     @enderror
