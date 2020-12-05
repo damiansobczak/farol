@@ -9,6 +9,7 @@ use Illuminate\Auth\Middleware\Authenticate;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\SliderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,8 @@ Route::prefix('admin')->group(function () {
     Route::post('/kategorie/formularz', [CategoryController::class, 'store'])->middleware('auth')->name('admin.categories.form.save');
     Route::post('/kategorie/formularz/{categoryId}', [CategoryController::class, 'store'])->middleware('auth')->name('admin.categories.form.editSave');
 
+    Route::get('/ustawienia', [SettingsController::class, 'index'])->middleware('auth')->name('admin.settings');
+
     /*
     * News
     */
@@ -64,6 +67,16 @@ Route::prefix('admin')->group(function () {
     Route::get('/aktualnosci/{id}', [PostController::class, 'edit'])->middleware('auth')->name('admin.posts.edit');
     Route::put('/aktualnosci/{id}', [PostController::class, 'update'])->middleware('auth');
     Route::delete('/aktualnosci/{id}', [PostController::class, 'destroy'])->middleware('auth')->name('admin.posts.delete');
+
+    /*
+    * Slider
+    */
+    Route::get('/banery', [SliderController::class, 'index'])->middleware('auth')->name('admin.sliders');
+    Route::get('/banery/formularz', [SliderController::class, 'create'])->middleware('auth')->name('admin.sliders.create');
+    Route::post('/banery/formularz', [SliderController::class, 'store']);
+    Route::get('/banery/{id}', [SliderController::class, 'edit'])->name('admin.sliders.edit');
+    Route::put('/banery/{id}', [SliderController::class, 'update']);
+    Route::delete('/banery/{id}', [SliderController::class, 'destroy'])->name('admin.sliders.delete');
 
     /*
     * Settings

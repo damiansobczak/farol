@@ -89,7 +89,7 @@
         <nav class="text-gray-200" aria-labelledby="cms-nav">
             <ul>
                 <li>
-                    <a href="#" class="text-sm w-full block px-5 py-2 hover:bg-gray-700 flex items-center">
+                    <a href="{{ route('admin.sliders') }}" class="text-sm w-full block px-5 py-2 hover:bg-gray-700 flex items-center {!! request()->routeIs('admin.sliders') ? 'bg-indigo-500 font-medium text-white' : '' !!}">
                         <svg class="mr-2" height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8zM12 15a1 1 0 100-2H6.414l1.293-1.293a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L6.414 15H12z" />
                         </svg>
