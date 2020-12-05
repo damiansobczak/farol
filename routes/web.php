@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\AttributesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +78,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/banery/{id}', [SliderController::class, 'edit'])->name('admin.sliders.edit');
     Route::put('/banery/{id}', [SliderController::class, 'update']);
     Route::delete('/banery/{id}', [SliderController::class, 'destroy'])->name('admin.sliders.delete');
+
+    Route::get('/atrybuty', [AttributesController::class , 'index'])->middleware('auth')->name('admin.attributes');
+    Route::get('/atrybuty/formularz', [AttributesController::class , 'create'])->middleware('auth')->name('admin.attributes.create');
 
     /*
     * Settings
