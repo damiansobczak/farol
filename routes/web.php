@@ -60,11 +60,13 @@ Route::prefix('admin')->group(function () {
     * News
     */
     Route::get('/aktualnosci', [PostController::class, 'index'])->middleware('auth')->name('admin.posts');
-    Route::get('/aktualnosci/utworz', [PostController::class, 'create'])->name('admin.posts.create');
-    Route::post('/aktualnosci/utworz', [PostController::class, 'store']);
-    Route::get('/aktualnosci/{id}', [PostController::class, 'edit'])->name('admin.posts.edit');
-    Route::put('/aktualnosci/{id}', [PostController::class, 'update']);
-    Route::delete('/aktualnosci/{id}', [PostController::class, 'destroy'])->name('admin.posts.delete');
+
+    Route::get('/aktualnosci/utworz', [PostController::class, 'create'])->middleware('auth')->name('admin.posts.create');
+    Route::post('/aktualnosci/utworz', [PostController::class, 'store'])->middleware('auth');
+
+    Route::get('/aktualnosci/{id}', [PostController::class, 'edit'])->middleware('auth')->name('admin.posts.edit');
+    Route::put('/aktualnosci/{id}', [PostController::class, 'update'])->middleware('auth');
+    Route::delete('/aktualnosci/{id}', [PostController::class, 'destroy'])->middleware('auth')->name('admin.posts.delete');
 
     /*
     * Slider

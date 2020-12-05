@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\PostSEO;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -16,7 +17,7 @@ class PostController extends Controller
         return Validator::make($data, [
             'title' => 'required|max:255',
             'description' => 'required|max:1000',
-            'image' => 'string|max:255',
+            'image' => 'nullable|image|max:512',
             'imageAlt' => 'nullable|string|max:255',
             'show' => 'nullable|boolean',
             'seoTitle' => 'nullable|max:255',
@@ -55,6 +56,11 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $postValidated = $this->validator($request->all())->validate();
+
+        if (isset($postValidated['image'])) {
+            $file = $request->file('image')->store('posts');
+            $postValidated['image'] = $file;
+        }
 
         $post = Post::create($postValidated);
 
@@ -100,14 +106,21 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::findOrFail($id);
+        $oldImage = $post->image;
 
         $postValidated = $this->validator($request->all())->validate();
+
+        if (isset($postValidated['image'])) {
+            $file = $request->file('image')->store('posts');
+            $postValidated['image'] = $file;
+            Storage::delete($oldImage);
+        }
 
         $post->update($postValidated);
 
         $postSeo = PostSEO::where('postId', $id)->first();
 
-        if($postSeo){
+        if ($postSeo) {
             $postSeo->update($postValidated);
         } else {
             $postValidated = Arr::add($postValidated, 'postId', $post->id);
@@ -129,7 +142,10 @@ class PostController extends Controller
 
         $post->delete();
 
+        if ($post->image) {
+            Storage::delete($post->image);
+        }
+
         return redirect(route('admin.posts'))->with('success', 'Post został pomyślnie usunięty!');
     }
 }
-

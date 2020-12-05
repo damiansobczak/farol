@@ -21,21 +21,20 @@
     </div>
 @endsection
 @section('content')
-    {{ $errors }}
-    <form action="{{ route('admin.posts.create') }}" method="POST" class="flex flex-col">
+    <form action="{{ route('admin.posts.create') }}" method="POST" class="flex flex-col" enctype="multipart/form-data">
+        @csrf
         <div class="flex">
             <button type="submit" class="rounded px-4 py-2 bg-red-500 text-white ml-auto mb-4 mr-3">Usuń</button>
             <button type="submit" class="rounded px-4 py-2 bg-indigo-500 text-white mb-4">Zapisz</button>
         </div>
         <div class="rounded shadow-sm bg-white p-8 flex">
-                @csrf
                 <div class="flex-1 border-r border-gray-200 pr-6">
                     <div class="object-cover w-full bg-gray-100 h-64 rounded"></div>
                     <label for="image" class="text-sm text-gray-400 mt-4 block">
                         <p class="mb-2 text-gray-500">Obrazek:</p>
                         <input class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="file" name="image" id="image" >
                         @error('image')
-                        <div class="p-2 bg-red-200 text-red-700 rounded my-3">To pole jest wymagane</div>
+                            <div class="p-2 bg-red-200 text-red-700 rounded my-3">To pole jest wymagane. Obrazek nie powinien być większy niż 1MB.</div>
                         @enderror
                     </label>
                     <label for="imageAlt" class="text-sm text-gray-400 mt-4 block">
@@ -46,14 +45,14 @@
                 <div class="flex-1 pl-6">
                     <label for="title" class="text-sm text-gray-400 mt-4 block">
                         <p class="mb-2 text-gray-500">Tytuł:</p>
-                        <input class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="title" id="title" placeholder="Tytuł strony" >
+                        <input required class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="title" id="title" placeholder="Tytuł strony" >
                         @error('title')
                             <div class="p-2 bg-red-200 text-red-700 rounded my-3">To pole jest wymagane</div>
                         @enderror
                     </label>
                     <label for="description" class="text-sm text-gray-400 my-4 block">
                         <p class="mb-2 text-gray-500">Opis:</p>
-                        <textarea class="h-64 font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="description" id="description" placeholder="Wpis" ></textarea>
+                        <textarea required class="h-64 font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="description" id="description" placeholder="Wpis" ></textarea>
                         @error('description')
                             <div class="p-2 bg-red-200 text-red-700 rounded my-3">To pole jest wymagane</div>
                         @enderror
