@@ -22,7 +22,6 @@ class AttributesController extends Controller
 	}
 	public function index()
 	{
-		//$attributes = Attributes::all(); //due below query doesn't work. To be investigated
 		$attributes = Attributes::select('id', 'name', 'image', 'imageAlt', 'attributeType')->with('attrType')->get();
 		return view('admin.pages.attributes.index', compact('attributes'));
 	}
