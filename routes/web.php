@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\AttributesController;
+use App\Http\Controllers\AttributeTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,6 +80,9 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/atrybuty', [AttributesController::class , 'index'])->middleware('auth')->name('admin.attributes');
     Route::get('/atrybuty/formularz', [AttributesController::class , 'create'])->middleware('auth')->name('admin.attributes.create');
+    Route::post('/atrybuty/formularz', [AttributesController::class , 'store'])->middleware('auth')->name('admin.attributes.save');
+    Route::get('/typAtrybutu/formularz', [AttributeTypeController::class , 'create'])->middleware('auth')->name('admin.attributeType.create');
+    Route::post('/typAtrybutu/formularz', [AttributeTypeController::class , 'store'])->middleware('auth')->name('admin.attributeType.save');
 
     /*
     * Settings
