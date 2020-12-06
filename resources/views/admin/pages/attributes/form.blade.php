@@ -26,7 +26,7 @@
 			{{ session('success') }}
 		</div>
 	@endif
-	<form action="@if(isset($attribute)) {{ route('admin.sliders.edit', $attribute->id) }} @else {{ route('admin.attributes.save') }} @endif" method="POST" enctype="multipart/form-data">
+	<form action="@if(isset($attribute)) {{ route('admin.attributes.editSave', $attribute->id) }} @else {{ route('admin.attributes.save') }} @endif" method="POST" enctype="multipart/form-data">
 		@csrf
 		@if(isset($attribute->id))
 			{{ method_field('PUT') }} 
@@ -37,8 +37,8 @@
 
 		<div class="flex rounded shadow-sm bg-white p-8">
 			<div class="flex flex-col flex-1 border-gray-200 pr-6">
-				@if(isset($attribute) && $attribute->photo)
-					<img src="{{ $attribute->photo }}" class="object-cover bg-gray-100 h-64 rounded">
+				@if(isset($attribute) && $attribute->image)
+					<img src="{{ $attribute->image }}" class="object-cover bg-gray-100 h-64 rounded">
 				@else
 					<div class="object-cover bg-gray-100 h-64 rounded"></div>
 				@endif
@@ -64,7 +64,7 @@
 					<select name="attributeType" id="attributeType">
 						<option></option>
 						@foreach($attributeTypes as $attrType)
-							<option value="{{ $attrType->id }}">{{ $attrType->name }}</option>
+							<option value="{{ $attrType->id }}" @if($attrType->id === $attribute->attributeType) selected @endif>{{ $attrType->name }}</option>
 						@endforeach
 					</select>
 				</label>

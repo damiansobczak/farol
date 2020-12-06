@@ -81,6 +81,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/atrybuty', [AttributesController::class , 'index'])->middleware('auth')->name('admin.attributes');
     Route::get('/atrybuty/formularz', [AttributesController::class , 'create'])->middleware('auth')->name('admin.attributes.create');
     Route::post('/atrybuty/formularz', [AttributesController::class , 'store'])->middleware('auth')->name('admin.attributes.save');
+    Route::get('/atrybuty/{attrId}', [AttributesController::class , 'edit'])->middleware('auth')->name('admin.attributes.edit');
+    Route::put('/atrybuty/{attrId}', [AttributesController::class , 'update'])->middleware('auth')->name('admin.attributes.editSave');
     Route::get('/typAtrybutu/formularz', [AttributeTypeController::class , 'create'])->middleware('auth')->name('admin.attributeType.create');
     Route::post('/typAtrybutu/formularz', [AttributeTypeController::class , 'store'])->middleware('auth')->name('admin.attributeType.save');
 

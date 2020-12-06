@@ -59,11 +59,11 @@
 									</td>
 									<td class="px-6 py-4 whitespace-nowrap">
 										<span class="px-3 py-1 inline-flex text-xs bg-indigo-500 text-white leading-5 font-semibold rounded-full">
-											{{ $attribute->attributeType }}
+											{{ $attribute->attrType->name }}
 										</span>
 									</td>
 									<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-										<a href="#" class="text-indigo-600 hover:text-indigo-800">Edytuj</a>
+										<a href="{{ route('admin.attributes.edit', $attribute->id) }}" class="text-indigo-600 hover:text-indigo-800">Edytuj</a>
 									</td>
 								</tr>
 							@endforeach

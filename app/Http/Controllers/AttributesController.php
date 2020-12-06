@@ -22,18 +22,32 @@ class AttributesController extends Controller
 	}
 	public function index()
 	{
-		$attributes = Attributes::select('name', 'image', 'imageAlt', 'attributeType')->get();
+		$attributes = Attributes::all(); //due below query doesn't work. To be investigated
+		//$attributes = Attributes::select('name', 'image', 'imageAlt')->with('attrType.name')->get();
 		return view('admin.pages.attributes.index', compact('attributes'));
 	}
 	public function create()
 	{
-		$attributeTypes = AttributeType::latest()->get();
+		$attributeTypes = AttributeType::all();
 		return view('admin.pages.attributes.form', compact('attributeTypes'));
 	}
 	public function store(Request $req)
 	{
 		$validated = $this->validator($req->all())->validate();
 		$attributeType = Attributes::create($validated);
+		return redirect()->route('admin.attributes');
+	}
+	public function edit($attrId)
+	{
+		$attribute = Attributes::findOrFail($attrId);
+		$attributeTypes = AttributeType::all();
+		return view('admin.pages.attributes.form', compact(['attribute', 'attributeTypes']));
+	}
+	public function update(Request $req, $attrId)
+	{
+		$attribute = Attributes::findOrFail($attrId);
+		$validated = $this->validator($req->all())->validate();
+		$attribute->update($validated);
 		return redirect()->route('admin.attributes');
 	}
 }

@@ -16,4 +16,8 @@ class Attributes extends Model
 		'minValue',
 		'maxValue',
 	];
+	public function attrType()
+	{
+		return $this->hasOne('App\Models\AttributeType', 'id');
+	}
 }
