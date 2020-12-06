@@ -18,6 +18,6 @@ class Attributes extends Model
 	];
 	public function attrType()
 	{
-		return $this->hasOne('App\Models\AttributeType', 'id');
+		return $this->belongsTo('App\Models\AttributeType', 'attributeType');
 	}
 }

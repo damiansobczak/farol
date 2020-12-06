@@ -64,7 +64,7 @@
 					<select name="attributeType" id="attributeType">
 						<option></option>
 						@foreach($attributeTypes as $attrType)
-							<option value="{{ $attrType->id }}" @if($attrType->id === $attribute->attributeType) selected @endif>{{ $attrType->name }}</option>
+							<option value="{{ $attrType->id }}" @if(isset($attribute) && $attrType->id === $attribute->attributeType) selected @endif>{{ $attrType->name }}</option>
 						@endforeach
 					</select>
 				</label>
