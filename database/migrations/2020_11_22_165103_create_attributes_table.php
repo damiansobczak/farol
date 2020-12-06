@@ -17,10 +17,10 @@ class CreateAttributesTable extends Migration
 			$table->id();
 			$table->foreignId('attributeType')->references('id')->on('attribute_types');
 			$table->string('name');
-			$table->string('image');
-			$table->string('imageAlt');
-			$table->integer('minValue');
-			$table->integer('maxValue');
+			$table->string('image')->nullable();
+			$table->string('imageAlt')->nullable();
+			$table->integer('minValue')->nullable();
+			$table->integer('maxValue')->nullable();
 			$table->timestamps();
 		});
 	}

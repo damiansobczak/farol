@@ -16,7 +16,7 @@ class CreateAttributeTypesTable extends Migration
 		Schema::create('attribute_types', function (Blueprint $table) {
 			$table->id();
 			$table->string('name');
-			$table->boolean('isDimension');
+			$table->boolean('isDimension')->default(false);
 			$table->timestamps();
 		});
 	}
