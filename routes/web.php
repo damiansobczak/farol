@@ -10,6 +10,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\AttributesController;
+use App\Http\Controllers\AttributeTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,8 +56,6 @@ Route::prefix('admin')->group(function () {
     Route::post('/kategorie/formularz', [CategoryController::class, 'store'])->middleware('auth')->name('admin.categories.form.save');
     Route::post('/kategorie/formularz/{categoryId}', [CategoryController::class, 'store'])->middleware('auth')->name('admin.categories.form.editSave');
 
-    Route::get('/ustawienia', [SettingsController::class, 'index'])->middleware('auth')->name('admin.settings');
-
     /*
     * News
     */
@@ -77,6 +77,14 @@ Route::prefix('admin')->group(function () {
     Route::get('/banery/{id}', [SliderController::class, 'edit'])->name('admin.sliders.edit');
     Route::put('/banery/{id}', [SliderController::class, 'update']);
     Route::delete('/banery/{id}', [SliderController::class, 'destroy'])->name('admin.sliders.delete');
+
+    Route::get('/atrybuty', [AttributesController::class , 'index'])->middleware('auth')->name('admin.attributes');
+    Route::get('/atrybuty/formularz', [AttributesController::class , 'create'])->middleware('auth')->name('admin.attributes.create');
+    Route::post('/atrybuty/formularz', [AttributesController::class , 'store'])->middleware('auth')->name('admin.attributes.save');
+    Route::get('/atrybuty/{attrId}', [AttributesController::class , 'edit'])->middleware('auth')->name('admin.attributes.edit');
+    Route::put('/atrybuty/{attrId}', [AttributesController::class , 'update'])->middleware('auth')->name('admin.attributes.editSave');
+    Route::get('/typAtrybutu/formularz', [AttributeTypeController::class , 'create'])->middleware('auth')->name('admin.attributeType.create');
+    Route::post('/typAtrybutu/formularz', [AttributeTypeController::class , 'store'])->middleware('auth')->name('admin.attributeType.save');
 
     /*
     * Settings

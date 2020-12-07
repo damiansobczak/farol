@@ -16,4 +16,8 @@ class Attributes extends Model
 		'minValue',
 		'maxValue',
 	];
+	public function attrType()
+	{
+		return $this->belongsTo('App\Models\AttributeType', 'attributeType');
+	}
 }
