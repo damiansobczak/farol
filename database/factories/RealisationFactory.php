@@ -22,7 +22,10 @@ class RealisationFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->sentence(3),
+            'description' => $this->faker->sentence(20),
+            'image' => $this->faker->imageUrl(),
+            'imageAlt' => $this->faker->sentence(3),
         ];
     }
 }

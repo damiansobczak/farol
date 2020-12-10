@@ -53,7 +53,7 @@
                 @endif
                 <label for="image" class="text-sm text-gray-400 mt-4 block">
                     Obrazek
-                    <input type="file" name="image" id="image" value="@if($errors->any()) {{ old('image') }} @else {{ $slider->image ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+                    <input type="file" name="image" id="image" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
                     @error('image')
                             <div class="p-2 bg-red-200 text-red-700 rounded my-3">Obrazek nie powinien być większy niż 512kB.</div>
                     @enderror
@@ -99,7 +99,7 @@
                     @endif
                     <label for="onlyImage" class="flex-1 pr-5 text-sm text-gray-400 mt-4 block">
                         Obrazek
-                        <input type="file" type="text" name="onlyImage" id="onlyImage" value="@if($errors->any()) {{ old('onlyImage') }} @else {{ $slider->onlyImage ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+                        <input type="file" type="text" name="onlyImage" id="onlyImage" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
                         @error('onlyImage')
                                 <div class="p-2 bg-red-200 text-red-700 rounded my-3">Obrazek nie powinien być większy niż 512kB.</div>
                         @enderror

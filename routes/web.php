@@ -9,6 +9,7 @@ use Illuminate\Auth\Middleware\Authenticate;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\RealisationController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\AttributesController;
 use App\Http\Controllers\AttributeTypeController;
@@ -85,6 +86,16 @@ Route::prefix('admin')->group(function () {
     Route::put('/atrybuty/{attrId}', [AttributesController::class , 'update'])->middleware('auth')->name('admin.attributes.editSave');
     Route::get('/typAtrybutu/formularz', [AttributeTypeController::class , 'create'])->middleware('auth')->name('admin.attributeType.create');
     Route::post('/typAtrybutu/formularz', [AttributeTypeController::class , 'store'])->middleware('auth')->name('admin.attributeType.save');
+
+    /*
+    * Realisation
+    */
+    Route::get('/realizacje', [RealisationController::class, 'index'])->middleware('auth')->name('admin.realisations');
+    Route::get('/realizacje/formularz', [RealisationController::class, 'create'])->middleware('auth')->name('admin.realisations.create');
+    Route::post('/realizacje/formularz', [RealisationController::class, 'store'])->middleware('auth');
+    Route::get('/realizacje/{id}', [RealisationController::class, 'edit'])->middleware('auth')->name('admin.realisations.edit');
+    Route::put('/realizacje/{id}', [RealisationController::class, 'update'])->middleware('auth');
+    Route::delete('/realizacje/{id}', [RealisationController::class, 'destroy'])->middleware('auth')->name('admin.realisations.delete');
 
     /*
     * Settings

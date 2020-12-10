@@ -24,7 +24,7 @@ class Slider extends Model
 	/**
 	 * Accessor for storage images
 	 *
-	 * @return void
+	 * @return Storage instance
 	 */
 	public function getPhotoAttribute()
 	{
@@ -34,7 +34,7 @@ class Slider extends Model
 	/**
 	 * Accessor for storage onlyImages
 	 *
-	 * @return void
+	 * @return Storage instance
 	 */
 	public function getOnlyPhotoAttribute()
 	{
