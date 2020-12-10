@@ -17,7 +17,14 @@ class CreateRealisationsTable extends Migration
 			$table->id();
 			$table->string('title');
 			$table->text('description');
-			$table->timestamp('date');
+			$table->string('image');
+			$table->string('imageAlt')->nullable();
+			$table->string('video')->nullable();
+			$table->string('gallery')->nullable();
+			$table->string('seoTitle')->nullable();
+			$table->string('seoDescription')->nullable();
+			$table->string('ogTitle')->nullable();
+			$table->string('ogDescription')->nullable();
 			$table->timestamps();
 		});
 	}

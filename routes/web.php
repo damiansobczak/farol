@@ -9,6 +9,7 @@ use Illuminate\Auth\Middleware\Authenticate;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\RealisationController;
 use App\Http\Controllers\SliderController;
 
 /*
@@ -77,6 +78,16 @@ Route::prefix('admin')->group(function () {
     Route::get('/banery/{id}', [SliderController::class, 'edit'])->name('admin.sliders.edit');
     Route::put('/banery/{id}', [SliderController::class, 'update']);
     Route::delete('/banery/{id}', [SliderController::class, 'destroy'])->name('admin.sliders.delete');
+
+    /*
+    * Realisation
+    */
+    Route::get('/realizacje', [RealisationController::class, 'index'])->middleware('auth')->name('admin.realisations');
+    Route::get('/realizacje/formularz', [RealisationController::class, 'create'])->middleware('auth')->name('admin.realisations.create');
+    Route::post('/realizacje/formularz', [RealisationController::class, 'store'])->middleware('auth');
+    Route::get('/realizacje/{id}', [RealisationController::class, 'edit'])->middleware('auth')->name('admin.realisations.edit');
+    Route::put('/realizacje/{id}', [RealisationController::class, 'update'])->middleware('auth');
+    Route::delete('/realizacje/{id}', [RealisationController::class, 'destroy'])->middleware('auth')->name('admin.realisations.delete');
 
     /*
     * Settings

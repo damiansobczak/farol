@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Realisation;
 
 class RealisationSeeder extends Seeder
 {
@@ -13,6 +14,8 @@ class RealisationSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Realisation::factory()
+            ->times(5)
+            ->create();
     }
 }

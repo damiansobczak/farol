@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             PostSeeder::class,
             SliderSeeder::class,
+            RealisationSeeder::class,
         ]);
     }
 }
