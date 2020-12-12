@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             PostSeeder::class,
             SliderSeeder::class,
             RealisationSeeder::class,
+            ConditionSeeder::class,
         ]);
     }
 }
