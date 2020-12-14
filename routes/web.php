@@ -13,6 +13,7 @@ use App\Http\Controllers\RealisationController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\AttributesController;
 use App\Http\Controllers\AttributeTypeController;
+use App\Http\Controllers\ConditionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,13 +80,13 @@ Route::prefix('admin')->group(function () {
     Route::put('/banery/{id}', [SliderController::class, 'update']);
     Route::delete('/banery/{id}', [SliderController::class, 'destroy'])->name('admin.sliders.delete');
 
-    Route::get('/atrybuty', [AttributesController::class , 'index'])->middleware('auth')->name('admin.attributes');
-    Route::get('/atrybuty/formularz', [AttributesController::class , 'create'])->middleware('auth')->name('admin.attributes.create');
-    Route::post('/atrybuty/formularz', [AttributesController::class , 'store'])->middleware('auth')->name('admin.attributes.save');
-    Route::get('/atrybuty/{attrId}', [AttributesController::class , 'edit'])->middleware('auth')->name('admin.attributes.edit');
-    Route::put('/atrybuty/{attrId}', [AttributesController::class , 'update'])->middleware('auth')->name('admin.attributes.editSave');
-    Route::get('/typAtrybutu/formularz', [AttributeTypeController::class , 'create'])->middleware('auth')->name('admin.attributeType.create');
-    Route::post('/typAtrybutu/formularz', [AttributeTypeController::class , 'store'])->middleware('auth')->name('admin.attributeType.save');
+    Route::get('/atrybuty', [AttributesController::class, 'index'])->middleware('auth')->name('admin.attributes');
+    Route::get('/atrybuty/formularz', [AttributesController::class, 'create'])->middleware('auth')->name('admin.attributes.create');
+    Route::post('/atrybuty/formularz', [AttributesController::class, 'store'])->middleware('auth')->name('admin.attributes.save');
+    Route::get('/atrybuty/{attrId}', [AttributesController::class, 'edit'])->middleware('auth')->name('admin.attributes.edit');
+    Route::put('/atrybuty/{attrId}', [AttributesController::class, 'update'])->middleware('auth')->name('admin.attributes.editSave');
+    Route::get('/typAtrybutu/formularz', [AttributeTypeController::class, 'create'])->middleware('auth')->name('admin.attributeType.create');
+    Route::post('/typAtrybutu/formularz', [AttributeTypeController::class, 'store'])->middleware('auth')->name('admin.attributeType.save');
 
     /*
     * Realisation
@@ -96,6 +97,16 @@ Route::prefix('admin')->group(function () {
     Route::get('/realizacje/{id}', [RealisationController::class, 'edit'])->middleware('auth')->name('admin.realisations.edit');
     Route::put('/realizacje/{id}', [RealisationController::class, 'update'])->middleware('auth');
     Route::delete('/realizacje/{id}', [RealisationController::class, 'destroy'])->middleware('auth')->name('admin.realisations.delete');
+
+    /*
+    * Conditions
+    */
+    Route::get('/warunki', [ConditionController::class, 'index'])->middleware('auth')->name('admin.conditions');
+    Route::get('/warunki/formularz', [ConditionController::class, 'create'])->middleware('auth')->name('admin.conditions.create');
+    Route::post('/warunki/formularz', [ConditionController::class, 'store'])->middleware('auth');
+    Route::get('/warunki/{id}', [ConditionController::class, 'edit'])->middleware('auth')->name('admin.conditions.edit');
+    Route::put('/warunki/{id}', [ConditionController::class, 'update'])->middleware('auth');
+    Route::delete('/warunki/{id}', [ConditionController::class, 'destroy'])->middleware('auth')->name('admin.conditions.delete');
 
     /*
     * Settings
