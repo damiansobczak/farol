@@ -1,25 +1,5 @@
 @extends('layouts/admin-general')
 @section('title', 'Typy atrybutów')
-@section('breadcrumbs')
-	<div class="mb-5">
-		<p class="mb-2 font-medium text-lg">Typy atrybutów</p>
-		<ol class="flex flex-row">
-			<li class="flex items-center text-indigo-500 hover:underline">
-				<a class="text-xs" href="{{ route('admin.dashboard') }}">Dashbaord</a>
-				<svg class="mx-1" xmlns="http://www.w3.org/2000/svg" fill="none" height="12" width="12" viewBox="0 0 24 24" stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-				</svg>
-			</li>
-			<li class="flex items-center text-indigo-500 hover:underline">
-				<a class="text-xs" href="{{ route('admin.attributes') }}">Atrybuty</a>
-				<svg class="mx-1" xmlns="http://www.w3.org/2000/svg" fill="none" height="12" width="12" viewBox="0 0 24 24" stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-				</svg>
-			</li>
-			<li class="text-gray-400 text-xs">Formularz typu atrybutu</li>
-		</ol>
-	</div>
-@endsection
 @section('content')
 	<x-breadcrumbs :crumbs="[['name' => 'Atrybuty', 'url' => route('admin.attributes')], ['name' => 'Formularz typu atrybutu', 'url' => '']]" />
 	@if(session('success'))

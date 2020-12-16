@@ -1,7 +1,7 @@
 @extends('layouts/admin-general')
 @section('title', 'Atrybuty')
 @section('content')
-	<x-breadcrumbs :crumbs="[['name' => 'Atrybuty', 'url' => route('admin.attributes')], ['name' => 'Formularz', 'url' => '']]" />
+	<x-breadcrumbs :crumbs="[['name' => 'Atrybuty', 'url' => '']]" />
 	@if(session('success'))
 		<div class="p-5 bg-green-200 text-green-700 rounded my-3">
 			{{ session('success') }}
