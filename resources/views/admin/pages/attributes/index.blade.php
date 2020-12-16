@@ -1,20 +1,7 @@
 @extends('layouts/admin-general')
 @section('title', 'Atrybuty')
-@section('breadcrumbs')
-	<div class="mb-5">
-		<p class="mb-2 font-medium text-lg">Atrybuty</p>
-		<ol class="flex flex-row">
-			<li class="flex items-center text-indigo-500 hover:underline">
-				<a class="text-xs" href="{{ route('admin.dashboard') }}">Dashbaord</a>
-				<svg class="mx-1" xmlns="http://www.w3.org/2000/svg" fill="none" height="12" width="12" viewBox="0 0 24 24" stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-				</svg>
-			</li>
-			<li class="text-gray-400 text-xs">Atrybuty</li>
-		</ol>
-	</div>
-@endsection
 @section('content')
+	<x-breadcrumbs :crumbs="[['name' => 'Atrybuty', 'url' => route('admin.attributes')], ['name' => 'Formularz', 'url' => '']]" />
 	@if(session('success'))
 		<div class="p-5 bg-green-200 text-green-700 rounded my-3">
 			{{ session('success') }}

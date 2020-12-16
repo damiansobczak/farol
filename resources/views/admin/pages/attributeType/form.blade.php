@@ -21,6 +21,7 @@
 	</div>
 @endsection
 @section('content')
+	<x-breadcrumbs :crumbs="[['name' => 'Atrybuty', 'url' => route('admin.attributes')], ['name' => 'Formularz typu atrybutu', 'url' => '']]" />
 	@if(session('success'))
 		<div class="p-5 bg-green-200 text-green-700 rounded my-3">
 			{{ session('success') }}
