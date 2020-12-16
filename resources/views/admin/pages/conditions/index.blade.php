@@ -1,11 +1,6 @@
 @extends('layouts/admin-general')
 @section('title', 'Warunki')
 @section('content')
-	@if(session('success'))
-		<div class="p-5 bg-green-200 text-green-700 rounded my-3">
-			{{ session('success') }}
-		</div>
-	@endif
 	<x-breadcrumbs :crumbs="[['name' => 'Warunki', 'url' => '']]" />
 	<div class="flex flex-col">
 		<a href="{{ route('admin.conditions.create') }}" class="mb-5 ml-auto rounded px-4 py-2 bg-indigo-500 text-white">Dodaj dokument</a>

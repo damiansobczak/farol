@@ -1,12 +1,7 @@
 @extends('layouts/admin-general')
 @section('title', 'Ustawienia')
 @section('content')
-	<x-breadcrumbs :crumbs="[['name' => 'Aktualności', 'url' => route('admin.posts')], ['name' => $posts->title, 'url' => '']]" />
-	@if(session('success'))
-		<div class="p-5 bg-green-200 text-green-700 rounded my-3">
-			{{ session('success') }}
-		</div>
-	@endif
+	<x-breadcrumbs :crumbs="[['name' => 'Aktualności', 'url' => route('admin.posts')], ['name' => $post->title, 'url' => '']]" />
 	<form action="{{ route('admin.posts.edit', $post->id) }}" method="POST" class="flex flex-col">
 		@csrf
 		{{ method_field('DELETE') }}
@@ -24,9 +19,6 @@
 				<label for="image" class="text-sm text-gray-400 mt-4 block">
 					<p class="mb-2 text-gray-500">Obrazek:</p>
 					<input class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="file" name="image" id="image" >
-					@error('image')
-						<div class="p-2 bg-red-200 text-red-700 rounded my-3">To pole jest wymagane. Obrazek nie powinien być większy niż 1MB.</div>
-					@enderror
 				</label>
 				<label for="imageAlt" class="text-sm text-gray-400 mt-4 block">
 					<p class="mb-2 text-gray-500">Alt:</p>
@@ -37,16 +29,10 @@
 				<label for="title" class="text-sm text-gray-400 mt-4 block">
 					<p class="mb-2 text-gray-500">Tytuł:</p>
 					<input required class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="title" id="title" placeholder="Tytuł strony" value="{{ $post->title ? $post->title : '' }}" >
-					@error('title')
-					<div class="p-2 bg-red-200 text-red-700 rounded my-3">To pole jest wymagane</div>
-					@enderror
 				</label>
 				<label for="description" class="text-sm text-gray-400 my-4 block">
 					<p class="mb-2 text-gray-500">Opis:</p>
 					<textarea required class="h-64 font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="description" value="{{ $post->description ? $post->description : 'Treść' }}" id="description">{{ $post->description ? $post->description : 'Treść' }}</textarea>
-					@error('description')
-						<div class="p-2 bg-red-200 text-red-700 rounded my-3">To pole jest wymagane</div>
-					@enderror
 				</label>
 				<input type="hidden" name="show" class="hidden" value="0">
 				<label for="show" class="flex items-center block cursor-pointer mb-3">

@@ -2,11 +2,6 @@
 @section('title', 'Banery')
 @section('content')
 	<x-breadcrumbs :crumbs="[['name' => 'Banery', 'url' => route('admin.sliders')], ['name' => 'Nowy baner', 'url' => '']]" />
-	@if(session('success'))
-		<div class="p-5 bg-green-200 text-green-700 rounded my-3">
-			{{ session('success') }}
-		</div>
-	@endif
 	@if(isset($slider))
 		<form action="{{ route('admin.sliders.delete', $slider->id) }}" method="POST" class="flex flex-col" >
 			@csrf

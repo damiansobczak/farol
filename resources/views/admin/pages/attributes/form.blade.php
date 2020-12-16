@@ -2,11 +2,6 @@
 @section('title', 'Atrybuty')
 @section('content')
 	<x-breadcrumbs :crumbs="[['name' => 'Atrybuty', 'url' => route('admin.attributes')], ['name' => 'Formularz atrybutu', 'url' => '']]" />
-	@if(session('success'))
-		<div class="p-5 bg-green-200 text-green-700 rounded my-3">
-			{{ session('success') }}
-		</div>
-	@endif
 	<form action="@if(isset($attribute)) {{ route('admin.attributes.editSave', $attribute->id) }} @else {{ route('admin.attributes.save') }} @endif" method="POST" enctype="multipart/form-data">
 		@csrf
 		@if(isset($attribute->id))
@@ -26,9 +21,6 @@
 				<label for="image" class="text-sm text-gray-400 mt-4 block">
 					Obrazek
 					<input type="file" name="image" id="image" value="@if($errors->any()) {{ old('image') }} @else {{ $attribute->image ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
-					@error('image')
-							<div class="p-2 bg-red-200 text-red-700 rounded my-3">Obrazek nie powinien być większy niż 512kB.</div>
-					@enderror
 				</label>
 				<label for="imageAlt" class="text-sm text-gray-400 mt-4 block">
 					Opis obrazka

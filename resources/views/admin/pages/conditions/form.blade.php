@@ -2,11 +2,6 @@
 @section('title', 'Warunki')
 @section('content')
 	<x-breadcrumbs :crumbs="[['name' => 'Warunki', 'url' => route('admin.conditions')], ['name' => 'Nowy dokument', 'url' => '']]" />
-	@if(session('success'))
-		<div class="p-5 bg-green-200 text-green-700 rounded my-3">
-			{{ session('success') }}
-		</div>
-	@endif
 	@if(isset($condition))
 		<form action="{{ route('admin.conditions.delete', $condition->id) }}" method="POST" class="flex flex-col" >
 			@csrf
@@ -28,16 +23,10 @@
 		<label for="title" class="text-sm text-gray-400 mt-4 block">
 			Tytuł
 			<input type="text" name="title" id="title" value="@if($errors->any()) {{ old('title') }} @else {{ $condition->title ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
-			@error('title')
-				<div class="p-2 bg-red-200 text-red-700 rounded my-3">To pole jest wymagane.</div>
-			@enderror
 		</label>
 		<label for="content" class="text-sm text-gray-400 mt-4 block">
 			Opis
 			<input type="text" name="content" id="content" value="@if($errors->any()) {{ old('content') }} @else {{ $condition->content ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
-			@error('content')
-				<div class="p-2 bg-red-200 text-red-700 rounded my-3">To pole jest wymagane.</div>
-			@enderror
 		</label>
 	</form>
 @endsection

@@ -14,9 +14,6 @@
 					<label for="image" class="text-sm text-gray-400 mt-4 block">
 						<p class="mb-2 text-gray-500">Obrazek:</p>
 						<input class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="file" name="image" id="image" >
-						@error('image')
-							<div class="p-2 bg-red-200 text-red-700 rounded my-3">To pole jest wymagane. Obrazek nie powinien być większy niż 1MB.</div>
-						@enderror
 					</label>
 					<label for="imageAlt" class="text-sm text-gray-400 mt-4 block">
 						<p class="mb-2 text-gray-500">Alt:</p>
@@ -27,16 +24,10 @@
 					<label for="title" class="text-sm text-gray-400 mt-4 block">
 						<p class="mb-2 text-gray-500">Tytuł:</p>
 						<input required class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="title" id="title" placeholder="Tytuł strony" >
-						@error('title')
-							<div class="p-2 bg-red-200 text-red-700 rounded my-3">To pole jest wymagane</div>
-						@enderror
 					</label>
 					<label for="description" class="text-sm text-gray-400 my-4 block">
 						<p class="mb-2 text-gray-500">Opis:</p>
 						<textarea required class="h-64 font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="description" id="description" placeholder="Wpis" ></textarea>
-						@error('description')
-							<div class="p-2 bg-red-200 text-red-700 rounded my-3">To pole jest wymagane</div>
-						@enderror
 					</label>
 					<input type="hidden" name="show" class="hidden" value="0">
 					<label for="show" class="flex items-center block cursor-pointer mb-3">

@@ -2,12 +2,6 @@
 @section('title', 'Realizacje')
 @section('content')
 	<x-breadcrumbs :crumbs="[['name' => 'Realizacje', 'url' => route('admin.realisations')], ['name' => 'Nowa realizacja', 'url' => '']]" />
-	{{ $errors }}
-	@if(session('success'))
-		<div class="p-5 bg-green-200 text-green-700 rounded my-3">
-			{{ session('success') }}
-		</div>
-	@endif
 	@if(isset($realisation))
 		<form action="{{ route('admin.realisations.delete', $realisation->id) }}" method="POST" class="flex flex-col" >
 			@csrf

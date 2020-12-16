@@ -2,11 +2,6 @@
 @section('title', 'Typy atrybutów')
 @section('content')
 	<x-breadcrumbs :crumbs="[['name' => 'Atrybuty', 'url' => route('admin.attributes')], ['name' => 'Formularz typu atrybutu', 'url' => '']]" />
-	@if(session('success'))
-		<div class="p-5 bg-green-200 text-green-700 rounded my-3">
-			{{ session('success') }}
-		</div>
-	@endif
 	<form action="@if(isset($attribute)) {{ route('admin.sliders.edit', $attribute->id) }} @else {{ route('admin.attributeType.save') }} @endif" method="POST">
 		@csrf
 		@if(isset($attribute->id))

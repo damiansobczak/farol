@@ -2,13 +2,6 @@
 @section('title', 'Kategorie')
 @section('content')
 	<x-breadcrumbs :crumbs="[['name' => 'Kategorie', 'url' => route('admin.categories')], ['name' => 'Formularz kategorii', 'url' => '']]" />
-	@if($errors->any())
-		<div>
-			@foreach($errors->all() as $error)
-				<p>{{ $error }}</p>
-			@endforeach
-		</div>
-	@endif
 	<div class="rounded shadow-sm bg-white p-8">
 		<form action="@if(isset($categoryId)) {{ route('admin.categories.form.editSave', $categoryId) }} @else {{ route('admin.categories.form.save') }} @endif" method="POST">
 			@csrf
