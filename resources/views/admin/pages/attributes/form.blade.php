@@ -1,31 +1,7 @@
 @extends('layouts/admin-general')
 @section('title', 'Atrybuty')
-@section('breadcrumbs')
-	<div class="mb-5">
-		<p class="mb-2 font-medium text-lg">Atrybuty</p>
-		<ol class="flex flex-row">
-			<li class="flex items-center text-indigo-500 hover:underline">
-				<a class="text-xs" href="{{ route('admin.dashboard') }}">Dashbaord</a>
-				<svg class="mx-1" xmlns="http://www.w3.org/2000/svg" fill="none" height="12" width="12" viewBox="0 0 24 24" stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-				</svg>
-			</li>
-			<li class="flex items-center text-indigo-500 hover:underline">
-				<a class="text-xs" href="{{ route('admin.attributes') }}">Atrybuty</a>
-				<svg class="mx-1" xmlns="http://www.w3.org/2000/svg" fill="none" height="12" width="12" viewBox="0 0 24 24" stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-				</svg>
-			</li>
-			<li class="text-gray-400 text-xs">Formularz atrybutu</li>
-		</ol>
-	</div>
-@endsection
 @section('content')
-	@if(session('success'))
-		<div class="p-5 bg-green-200 text-green-700 rounded my-3">
-			{{ session('success') }}
-		</div>
-	@endif
+	<x-breadcrumbs :crumbs="[['name' => 'Atrybuty', 'url' => route('admin.attributes')], ['name' => 'Formularz atrybutu', 'url' => '']]" />
 	<form action="@if(isset($attribute)) {{ route('admin.attributes.editSave', $attribute->id) }} @else {{ route('admin.attributes.save') }} @endif" method="POST" enctype="multipart/form-data">
 		@csrf
 		@if(isset($attribute->id))
@@ -45,9 +21,6 @@
 				<label for="image" class="text-sm text-gray-400 mt-4 block">
 					Obrazek
 					<input type="file" name="image" id="image" value="@if($errors->any()) {{ old('image') }} @else {{ $attribute->image ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
-					@error('image')
-							<div class="p-2 bg-red-200 text-red-700 rounded my-3">Obrazek nie powinien być większy niż 512kB.</div>
-					@enderror
 				</label>
 				<label for="imageAlt" class="text-sm text-gray-400 mt-4 block">
 					Opis obrazka
