@@ -21,7 +21,11 @@ class Post extends Model
         'description',
         'image',
         'imageAlt',
-        'show'
+        'show',
+        'seoTitle',
+        'seoDescription',
+        'ogTitle',
+        'ogDescription'
     ];
 
     /**
@@ -32,11 +36,6 @@ class Post extends Model
     protected $casts = [
         'show' => 'boolean',
     ];
-
-    public function seo()
-    {
-        return $this->hasOne('App\Models\PostSEO', 'postId');
-    }
 
     /**
      * Mutator for slug made of title column

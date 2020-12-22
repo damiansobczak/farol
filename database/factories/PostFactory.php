@@ -23,7 +23,7 @@ class PostFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(5),
-            'description' => $this->faker->sentence(300),
+            'description' => $this->faker->text(1600),
             'image' => $this->faker->imageUrl(),
             'imageAlt' => $this->faker->sentence(5),
             'show' => true

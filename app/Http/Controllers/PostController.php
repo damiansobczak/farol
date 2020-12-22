@@ -16,7 +16,7 @@ class PostController extends Controller
     {
         return Validator::make($data, [
             'title' => 'required|max:255',
-            'description' => 'required|max:1000',
+            'description' => 'required|max:2000',
             'image' => 'nullable|image|max:512',
             'imageAlt' => 'nullable|string|max:255',
             'show' => 'nullable|boolean',
@@ -34,7 +34,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()->paginate(10);
-        return view('admin.pages.posts', compact('posts'));
+        return view('admin.pages.posts.index', compact('posts'));
     }
 
     /**
@@ -44,7 +44,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.posts.create');
+        return view('admin.pages.posts.form');
     }
 
     /**
@@ -64,10 +64,6 @@ class PostController extends Controller
 
         $post = Post::create($postValidated);
 
-        $postValidated = Arr::add($postValidated, 'postId', $post->id);
-
-        $postSeo = PostSEO::create($postValidated);
-
         session()->flash('success', 'Post został pomyślnie utworzony!');
 
         return redirect(route('admin.posts.edit', $post->id));
@@ -81,7 +77,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('admin.pages.post', compact('post'));
+        return view('admin.pages.posts.form', compact('post'));
     }
 
     /**
@@ -93,7 +89,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view('admin.pages.posts.edit', compact('post'));
+        return view('admin.pages.posts.form', compact('post'));
     }
 
     /**
@@ -117,15 +113,6 @@ class PostController extends Controller
         }
 
         $post->update($postValidated);
-
-        $postSeo = PostSEO::where('postId', $id)->first();
-
-        if ($postSeo) {
-            $postSeo->update($postValidated);
-        } else {
-            $postValidated = Arr::add($postValidated, 'postId', $post->id);
-            $postsSEO = PostSEO::create($postValidated);
-        }
 
         return back()->with('success', 'Post został pomyślnie zaktualizowany!');
     }

@@ -38,20 +38,24 @@ Route::view('/', 'welcome');
 
 Route::prefix('admin')->group(function () {
     /*
-    * Auth
+    * Dashboard
     */
     Route::view('/', 'admin.pages.dashboard')->middleware('auth')->name('admin.dashboard');
 
+    /*
+    * Auth
+    */
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
     Route::get('/wyloguj', [LoginController::class, 'logout'])->name('admin.logout');
-
     Route::get('/przypomnienie', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
     Route::post('/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-
     Route::get('/resetowanie/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
     Route::post('/resetowanie/', [ResetPasswordController::class, 'reset'])->name('password.update');
 
+    /*
+    * Categories
+    */
     Route::get('/kategorie', [CategoryController::class, 'index'])->middleware('auth')->name('admin.categories');
     Route::get('/kategorie/formularz', [CategoryController::class, 'form'])->middleware('auth')->name('admin.categories.form');
     Route::get('/kategorie/formularz/{categoryId}', [CategoryController::class, 'form'])->middleware('auth')->name('admin.categories.form.edit');
@@ -62,10 +66,8 @@ Route::prefix('admin')->group(function () {
     * News
     */
     Route::get('/aktualnosci', [PostController::class, 'index'])->middleware('auth')->name('admin.posts');
-
-    Route::get('/aktualnosci/utworz', [PostController::class, 'create'])->middleware('auth')->name('admin.posts.create');
-    Route::post('/aktualnosci/utworz', [PostController::class, 'store'])->middleware('auth');
-
+    Route::get('/aktualnosci/formularz', [PostController::class, 'create'])->middleware('auth')->name('admin.posts.create');
+    Route::post('/aktualnosci/formularz', [PostController::class, 'store'])->middleware('auth');
     Route::get('/aktualnosci/{id}', [PostController::class, 'edit'])->middleware('auth')->name('admin.posts.edit');
     Route::put('/aktualnosci/{id}', [PostController::class, 'update'])->middleware('auth');
     Route::delete('/aktualnosci/{id}', [PostController::class, 'destroy'])->middleware('auth')->name('admin.posts.delete');
@@ -80,6 +82,9 @@ Route::prefix('admin')->group(function () {
     Route::put('/banery/{id}', [SliderController::class, 'update']);
     Route::delete('/banery/{id}', [SliderController::class, 'destroy'])->name('admin.sliders.delete');
 
+    /*
+    * Attributes
+    */
     Route::get('/atrybuty', [AttributesController::class, 'index'])->middleware('auth')->name('admin.attributes');
     Route::get('/atrybuty/formularz', [AttributesController::class, 'create'])->middleware('auth')->name('admin.attributes.create');
     Route::post('/atrybuty/formularz', [AttributesController::class, 'store'])->middleware('auth')->name('admin.attributes.save');
