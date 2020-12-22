@@ -21,6 +21,10 @@ class CreatePostsTable extends Migration
 			$table->string('image')->nullable();
 			$table->string('imageAlt')->nullable();
 			$table->boolean('show')->nullable()->default(true);
+			$table->string('seoTitle')->nullable();
+			$table->string('seoDescription')->nullable();
+			$table->string('ogTitle')->nullable();
+			$table->string('ogDescription')->nullable();
 			$table->timestamps();
 		});
 	}
