@@ -22,11 +22,11 @@
 
 		<label for="title" class="text-sm text-gray-400 mt-4 block">
 			Tytuł
-			<input type="text" name="title" id="title" value="@if($errors->any()) {{ old('title') }} @else {{ $condition->title ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+			<input type="text" name="title" id="title" value="@if($errors->any()){{ old('title') }}@else{{ $condition->title ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 		</label>
 		<label for="content" class="text-sm text-gray-400 mt-4 block">
 			Opis
-			<input type="text" name="content" id="content" value="@if($errors->any()) {{ old('content') }} @else {{ $condition->content ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+			<input type="text" name="content" id="content" value="@if($errors->any()){{ old('content') }}@else{{ $condition->content ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 		</label>
 	</form>
 @endsection

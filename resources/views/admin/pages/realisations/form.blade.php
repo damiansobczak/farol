@@ -22,14 +22,14 @@
 
 		<label for="title" class="text-sm text-gray-400 mt-4 block">
 			Tytuł
-			<input type="text" name="title" id="title" value="@if($errors->any()) {{ old('title') }} @else {{ $realisation->title ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+			<input type="text" name="title" id="title" value="@if($errors->any()){{ old('title') }}@else{{ $realisation->title ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 			@error('title')
 					<div class="p-2 bg-red-200 text-red-700 rounded my-3">To pole jest wymagane.</div>
 			@enderror
 		</label>
 		<label for="description" class="text-sm text-gray-400 mt-4 block">
 			Opis
-			<input type="text" name="description" id="description" value="@if($errors->any()) {{ old('description') }} @else {{ $realisation->description ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+			<input type="text" name="description" id="description" value="@if($errors->any()){{ old('description') }}@else{{ $realisation->description ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 			@error('description')
 					<div class="p-2 bg-red-200 text-red-700 rounded my-3">To pole jest wymagane.</div>
 			@enderror
@@ -46,7 +46,7 @@
 		</label>
 		<label for="imageAlt" class="text-sm text-gray-400 mt-4 block">
 			Opis obrazka
-			<input type="text" name="imageAlt" id="imageAlt" value="@if($errors->any()) {{ old('imageAlt') }} @else {{ $realisation->imageAlt ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+			<input type="text" name="imageAlt" id="imageAlt" value="@if($errors->any()){{ old('imageAlt') }}@else{{ $realisation->imageAlt ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 			@error('imageAlt')
 				<div class="p-2 bg-red-200 text-red-700 rounded my-3">Tekst nie powinien przekraczać 255 znaków.</div>
 			@enderror
@@ -77,28 +77,28 @@
 		</label>
 		<label for="seoTitle" class="text-sm text-gray-400 mt-4 block">
 			seoTitle
-			<input type="text" name="seoTitle" id="seoTitle" value="@if($errors->any()) {{ old('seoTitle') }} @else {{ $realisation->seoTitle ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+			<input type="text" name="seoTitle" id="seoTitle" value="@if($errors->any()){{ old('seoTitle') }}@else{{ $realisation->seoTitle ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 			@error('seoTitle')
 				<div class="p-2 bg-red-200 text-red-700 rounded my-3">Tekst nie powinien przekraczać 255 znaków.</div>
 			@enderror
 		</label>
 		<label for="seoDescription" class="text-sm text-gray-400 mt-4 block">
 			seoDescription
-			<input type="text" name="seoDescription" id="seoDescription" value="@if($errors->any()) {{ old('seoDescription') }} @else {{ $realisation->seoDescription ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+			<input type="text" name="seoDescription" id="seoDescription" value="@if($errors->any()){{ old('seoDescription') }}@else{{ $realisation->seoDescription ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 			@error('seoDescription')
 				<div class="p-2 bg-red-200 text-red-700 rounded my-3">Tekst nie powinien przekraczać 255 znaków.</div>
 			@enderror
 		</label>
 		<label for="ogTitle" class="text-sm text-gray-400 mt-4 block">
 			ogTitle
-			<input type="text" name="ogTitle" id="ogTitle" value="@if($errors->any()) {{ old('ogTitle') }} @else {{ $realisation->ogTitle ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+			<input type="text" name="ogTitle" id="ogTitle" value="@if($errors->any()){{ old('ogTitle') }}@else{{ $realisation->ogTitle ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 			@error('ogTitle')
 				<div class="p-2 bg-red-200 text-red-700 rounded my-3">Tekst nie powinien przekraczać 255 znaków.</div>
 			@enderror
 		</label>
 		<label for="ogDescription" class="text-sm text-gray-400 mt-4 block">
 			ogDescription
-			<input type="text" name="ogDescription" id="ogDescription" value="@if($errors->any()) {{ old('ogDescription') }} @else {{ $realisation->ogDescription ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+			<input type="text" name="ogDescription" id="ogDescription" value="@if($errors->any()){{ old('ogDescription') }}@else{{ $realisation->ogDescription ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 			@error('ogDescription')
 				<div class="p-2 bg-red-200 text-red-700 rounded my-3">Tekst nie powinien przekraczać 255 znaków.</div>
 			@enderror
