@@ -20,17 +20,17 @@
 				@endif
 				<label for="image" class="text-sm text-gray-400 mt-4 block">
 					Obrazek
-					<input type="file" name="image" id="image" value="@if($errors->any()) {{ old('image') }} @else {{ $attribute->image ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+					<input type="file" name="image" id="image" value="@if($errors->any()){{ old('image') }}@else{{ $attribute->image ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 				</label>
 				<label for="imageAlt" class="text-sm text-gray-400 mt-4 block">
 					Opis obrazka
-					<input type="text" name="imageAlt" id="imageAlt" value="@if($errors->any()) {{ old('imageAlt') }} @else {{ $attribute->imageAlt ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+					<input type="text" name="imageAlt" id="imageAlt" value="@if($errors->any()){{ old('imageAlt') }}@else{{ $attribute->imageAlt ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 				</label>
 			</div>
 			<div class="flex-1 flex-col pl-6">
 				<label for="name" class="text-sm text-gray-400 mt-4 block">
 					Nazwa
-					<input type="text" name="name" id="name" value="@if($errors->any()) {{ old('name') }} @else {{ $attribute->name ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+					<input type="text" name="name" id="name" value="@if($errors->any()){{ old('name') }}@else{{ $attribute->name ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 				</label>
 				<label for="attributeType" class="text-sm text-gray-400 mt-4 block">
 					Typ atrybutu
@@ -43,11 +43,11 @@
 				</label>
 				<label for="minValue" class="text-sm text-gray-400 mt-4 block">
 					Minimalna wartość
-					<input type="text" name="minValue" id="minValue" value="@if($errors->any()) {{ old('minValue') }} @else {{ $attribute->minValue ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+					<input type="text" name="minValue" id="minValue" value="@if($errors->any()){{ old('minValue') }}@else{{ $attribute->minValue ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 				</label>
 				<label for="maxValue" class="text-sm text-gray-400 mt-4 block">
 					Maksymalna wartość
-					<input type="text" name="maxValue" id="maxValue" value="@if($errors->any()) {{ old('maxValue') }} @else {{ $attribute->maxValue ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+					<input type="text" name="maxValue" id="maxValue" value="@if($errors->any()){{ old('maxValue') }}@else{{ $attribute->maxValue ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 				</label>
 			</div>
 		</div>

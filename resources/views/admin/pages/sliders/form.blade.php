@@ -36,25 +36,25 @@
 				</label>
 				<label for="imageAlt" class="text-sm text-gray-400 mt-4 block">
 					Opis obrazka
-					<input type="text" name="imageAlt" id="imageAlt" value="@if($errors->any()) {{ old('imageAlt') }} @else {{ $slider->imageAlt ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+					<input type="text" name="imageAlt" id="imageAlt" value="@if($errors->any()){{ old('imageAlt') }}@else{{ $slider->imageAlt ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 				</label>
 			</div>
 			<div class="flex-1 flex-col pl-6">
 				<label for="title" class="text-sm text-gray-400 mt-4 block">
 					Tytuł
-					<input type="text" name="title" id="title" value="@if($errors->any()) {{ old('title') }} @else {{ $slider->title ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+					<input type="text" name="title" id="title" value="@if($errors->any()){{ old('title') }}@else{{ $slider->title ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 				</label>
 				<label for="description" class="text-sm text-gray-400 mt-4 block">
 					Opis
-					<input type="text" name="description" id="description" value="@if($errors->any()) {{ old('description') }} @else {{ $slider->description ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+					<input type="text" name="description" id="description" value="@if($errors->any()){{ old('description') }}@else{{ $slider->description ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 				</label>
 				<label for="actionName" class="text-sm text-gray-400 mt-4 block">
 					Tekst na przycisku
-					<input type="text" name="actionName" id="actionName" value="@if($errors->any()) {{ old('actionName') }} @else {{ $slider->actionName ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+					<input type="text" name="actionName" id="actionName" value="@if($errors->any()){{ old('actionName') }}@else{{ $slider->actionName ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 				</label>
 				<label for="actionLink" class="text-sm text-gray-400 mt-4 block">
 					Link przycisku
-					<input type="text" name="actionLink" id="actionLink" value="@if($errors->any()) {{ old('actionLink') }} @else {{ $slider->actionLink ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+					<input type="text" name="actionLink" id="actionLink" value="@if($errors->any()){{ old('actionLink') }}@else{{ $slider->actionLink ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 				</label>
 			</div>
 		</div>
@@ -83,7 +83,7 @@
 				</div>
 				<label for="onlyImageLink" class="flex-1 text-sm text-gray-400 mt-4 block">
 					Link
-					<input type="text" name="onlyImageLink" id="onlyImageLink" value="@if($errors->any()) {{ old('onlyImageLink') }} @else {{ $slider->onlyImageLink ?? NULL }} @endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+					<input type="text" name="onlyImageLink" id="onlyImageLink" value="@if($errors->any()){{ old('onlyImageLink') }}@else{{ $slider->onlyImageLink ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 				</label>
 			</div>
 		</div>

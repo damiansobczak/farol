@@ -30,19 +30,17 @@
 					</label>
 					<label for="imageAlt" class="text-sm text-gray-400 mt-4 block">
 						<p class="mb-2 text-gray-500">Alt:</p>
-						<input class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="imageAlt" id="imageAlt" value="@if($errors->any()) {{ old('imageAlt') }} @else {{ $post->imageAlt ?? NULL }} @endif">
+						<input class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="imageAlt" id="imageAlt" value="@if($errors->any()){{ old('imageAlt') }}@else{{ $post->imageAlt ?? NULL }}@endif">
 					</label>
 				</div>
 				<div class="flex-1 pl-6">
 					<label for="title" class="text-sm text-gray-400 mt-4 block">
 						<p class="mb-2 text-gray-500">Tytuł:</p>
-						<input required class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="title" id="title" placeholder="Tytuł strony" value="@if($errors->any()) {{ old('title') }} @else {{ $post->title ?? NULL }} @endif">
+						<input required class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="title" id="title" placeholder="Tytuł strony" value="@if($errors->any()){{ old('title') }}@else{{ $post->title ?? NULL }}@endif">
 					</label>
 					<label for="description" class="text-sm text-gray-400 my-4 block">
 						<p class="mb-2 text-gray-500">Opis:</p>
-						<textarea required class="h-64 font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="description" id="description" placeholder="Wpis">
-							@if($errors->any()){{ old('description') }}@else{{ $post->description ?? NULL }}@endif
-						</textarea>
+						<textarea required class="h-64 font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="description" id="description" placeholder="Wpis">@if($errors->any()){{ old('description') }}@else{{ $post->description ?? NULL }}@endif</textarea>
 					</label>
 					<input type="hidden" name="show" class="hidden" @if(isset($post) && !$post->show) {{ 'checked' }} @endif value="0">
 					<label for="show" class="flex items-center block cursor-pointer mb-3">
@@ -62,21 +60,21 @@
 					<div class="flex-1 border-r border-gray-200 pr-6">
 						<label for="seoTitle" class="text-sm text-gray-400 mt-4 block">
 							<p class="mb-2 text-gray-500">Tytuł:</p>
-							<input class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="seoTitle" id="seoTitle" value="@if($errors->any()) {{ old('seoTitle') }} @else {{ $post->seoTitle ?? NULL }} @endif" >
+							<input class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="seoTitle" id="seoTitle" value="@if($errors->any()){{ old('seoTitle') }}@else{{ $post->seoTitle ?? NULL }}@endif" >
 						</label>
 						<label for="seoDescription" class="text-sm text-gray-400 mt-4 block">
 							<p class="mb-2 text-gray-500">Opis:</p>
-							<input class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="seoDescription" id="seoDescription" value="@if($errors->any()) {{ old('seoDescription') }} @else {{ $post->seoDescription ?? NULL }} @endif">
+							<input class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="seoDescription" id="seoDescription" value="@if($errors->any()){{ old('seoDescription') }}@else{{ $post->seoDescription ?? NULL }}@endif">
 						</label>
 					</div>
 					<div class="flex-1 pl-6">
 						<label for="ogTitle" class="text-sm text-gray-400 mt-4 block">
 							<p class="mb-2 text-gray-500">Og Title:</p>
-							<input class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="ogTitle" id="ogTitle" value="@if($errors->any()) {{ old('ogTitle') }} @else {{ $post->ogTitle ?? NULL }} @endif">
+							<input class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="ogTitle" id="ogTitle" value="@if($errors->any()){{ old('ogTitle') }}@else{{ $post->ogTitle ?? NULL }}@endif">
 						</label>
 						<label for="ogDescription" class="text-sm text-gray-400 mt-4 block">
 							<p class="mb-2 text-gray-500">Og Description:</p>
-							<input class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="ogDescription" id="ogDescription" value="@if($errors->any()) {{ old('ogDescription') }} @else {{ $post->ogDescription ?? NULL }} @endif">
+							<input class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" type="text" name="ogDescription" id="ogDescription" value="@if($errors->any()){{ old('ogDescription') }}@else{{ $post->ogDescription ?? NULL }}@endif">
 						</label>
 					</div>
 				</div>
