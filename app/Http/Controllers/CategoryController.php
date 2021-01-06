@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
@@ -18,7 +19,7 @@ class CategoryController extends Controller
 	}
 	public function index()
 	{
-		$categories = Category::select('id', 'image', 'name')->get();
+		$categories = Category::select('id', 'image', 'imageAlt', 'name')->get();
 		return view('admin.pages.category.index', compact('categories'));
 	}
 	public function create()
@@ -28,6 +29,10 @@ class CategoryController extends Controller
 	public function store(Request $req)
 	{
 		$validated = $this->validator($req->all())->validate();
+		if(isset($validated['image'])) {
+			$file = $req->file('image')->store('categories');
+			$validated['image'] = $file;
+		}
 		$category = Category::create($validated);
 		return redirect()->route('admin.categories');
 	}
@@ -39,7 +44,13 @@ class CategoryController extends Controller
 	public function update(Request $req, $categoryId)
 	{
 		$category = Category::findOrFail($categoryId);
+		$oldImage = $category->image;
 		$validated = $this->validator($req->all())->validate();
+		if(isset($validated['image'])) {
+			$file = $req->file('image')->store('categories');
+			$validated['image'] = $file;
+			Storage::delete($oldImage);
+		}
 		$category->update($validated);
 		return redirect()->route('admin.categories');
 	}

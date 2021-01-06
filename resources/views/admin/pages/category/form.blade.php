@@ -2,7 +2,7 @@
 @section('title', 'Kategorie')
 @section('content')
 	<x-breadcrumbs :crumbs="[['name' => 'Kategorie', 'url' => route('admin.categories')], ['name' => 'Formularz kategorii', 'url' => '']]" />
-	<form action="@if(isset($category->id)) {{ route('admin.categories.editSave', $category->id) }} @else {{ route('admin.categories.save') }} @endif" method="POST">
+	<form action="@if(isset($category->id)) {{ route('admin.categories.editSave', $category->id) }} @else {{ route('admin.categories.save') }} @endif" method="POST" enctype="multipart/form-data">
 		@csrf
 		@if(isset($category->id))
 			{{ method_field('PUT') }} 
@@ -13,7 +13,7 @@
 		<div class="flex rounded shadow-sm bg-white p-8">
 			<div class="flex flex-col flex-1 border-gray-200 pr-6">
 				@if(isset($category) && $category->image)
-					<img src="{{ $category->image }}" class="object-cover bg-gray-100 h-64 rounded">
+					<img src="{{ $category->img }}" class="object-cover bg-gray-100 h-64 rounded">
 				@else
 					<div class="object-cover bg-gray-100 h-64 rounded"></div>
 				@endif
