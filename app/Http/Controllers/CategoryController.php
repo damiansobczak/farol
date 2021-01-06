@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
-	public function validator($data)
+	public function validator($data, $edit)
 	{
 		return Validator::make($data, [
-			"name" => "required|string|unique:categories,name",
+			"name" => $edit ? "required|string" : "required|string|unique:categories,name",
 			"image" => "nullable|image",
 			"imageAlt" => "nullable|string"
 		]);
@@ -28,7 +28,7 @@ class CategoryController extends Controller
 	}
 	public function store(Request $req)
 	{
-		$validated = $this->validator($req->all())->validate();
+		$validated = $this->validator($req->all(), false)->validate();
 		if(isset($validated['image'])) {
 			$file = $req->file('image')->store('categories');
 			$validated['image'] = $file;
@@ -45,7 +45,7 @@ class CategoryController extends Controller
 	{
 		$category = Category::findOrFail($categoryId);
 		$oldImage = $category->image;
-		$validated = $this->validator($req->all())->validate();
+		$validated = $this->validator($req->all(), true)->validate();
 		if(isset($validated['image'])) {
 			$file = $req->file('image')->store('categories');
 			$validated['image'] = $file;

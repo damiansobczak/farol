@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Validator;
 
 class AttributesController extends Controller
 {
-	public function validator($data)
+	public function validator($data, $edit)
 	{
 		return Validator::make($data, [
-			'name' => 'required|string|unique:attribute_types,name',
+			'name' => $edit ? 'required|string' : 'required|string|unique:attribute_types,name',
 			'image' => 'nullable|image',
 			'imageAlt' => 'nullable|string',
 			'attributeType' => 'required',
@@ -33,7 +33,7 @@ class AttributesController extends Controller
 	}
 	public function store(Request $req)
 	{
-		$validated = $this->validator($req->all())->validate();
+		$validated = $this->validator($req->all(), false)->validate();
 		if(isset($validated['image'])) {
 			$file = $req->file('image')->store('attributes');
 			$validated['image'] = $file;
@@ -51,7 +51,7 @@ class AttributesController extends Controller
 	{
 		$attribute = Attributes::findOrFail($attrId);
 		$oldImage = $attribute->image;
-		$validated = $this->validator($req->all())->validate();
+		$validated = $this->validator($req->all(), true)->validate();
 		if(isset($validated['image'])) {
 			$file = $req->file('image')->store('attributes');
 			$validated['image'] = $file;
