@@ -9,13 +9,20 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
+	public function attributes()
+	{
+		return ['name' => 'Nazwa kategorii',
+				'image' => 'Obraz kategorii',
+				'imageAlt' => 'Opis obrazu kategorii',
+		];
+	}
 	public function validator($data, $edit)
 	{
 		return Validator::make($data, [
 			"name" => $edit ? "required|string" : "required|string|unique:categories,name",
 			"image" => "nullable|image",
 			"imageAlt" => "nullable|string"
-		]);
+		], [], $this->attributes());
 	}
 	public function index()
 	{

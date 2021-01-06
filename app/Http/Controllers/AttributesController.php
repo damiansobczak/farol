@@ -10,16 +10,26 @@ use Illuminate\Support\Facades\Validator;
 
 class AttributesController extends Controller
 {
+	public function attributes()
+	{
+		return ['name' => 'Nazwa atrybutu',
+				'image' => 'Obraz atrybutu',
+				'imageAlt' => 'Opis obrazu atrybutu',
+				'attributeType' => 'Typ atrybutu',
+				'minValue' => 'Minimalna wartość atrybutu',
+				'maxValue' => 'Maksymalna wartość atrybutu',
+		];
+	}
 	public function validator($data, $edit)
 	{
 		return Validator::make($data, [
-			'name' => $edit ? 'required|string' : 'required|string|unique:attribute_types,name',
+			'name' => $edit ? 'required|string' : 'required|string|unique:attributes,name',
 			'image' => 'nullable|image',
 			'imageAlt' => 'nullable|string',
 			'attributeType' => 'required',
 			'minValue' => 'nullable|numeric',
 			'maxValue' => 'nullable|numeric'
-		]);
+		], [], $this->attributes());
 	}
 	public function index()
 	{
