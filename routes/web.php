@@ -57,10 +57,10 @@ Route::prefix('admin')->group(function () {
     * Categories
     */
     Route::get('/kategorie', [CategoryController::class, 'index'])->middleware('auth')->name('admin.categories');
-    Route::get('/kategorie/formularz', [CategoryController::class, 'form'])->middleware('auth')->name('admin.categories.form');
-    Route::get('/kategorie/formularz/{categoryId}', [CategoryController::class, 'form'])->middleware('auth')->name('admin.categories.form.edit');
-    Route::post('/kategorie/formularz', [CategoryController::class, 'store'])->middleware('auth')->name('admin.categories.form.save');
-    Route::post('/kategorie/formularz/{categoryId}', [CategoryController::class, 'store'])->middleware('auth')->name('admin.categories.form.editSave');
+    Route::get('/kategorie/formularz', [CategoryController::class, 'create'])->middleware('auth')->name('admin.categories.create');
+    Route::post('/kategorie/formularz', [CategoryController::class, 'store'])->middleware('auth')->name('admin.categories.save');
+    Route::get('/kategorie/{categoryId}', [CategoryController::class, 'edit'])->middleware('auth')->name('admin.categories.edit');
+    Route::put('/kategorie/{categoryId}', [CategoryController::class, 'update'])->middleware('auth')->name('admin.categories.editSave');
 
     /*
     * News

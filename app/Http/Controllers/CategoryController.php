@@ -4,45 +4,61 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
+	public function attributes()
+	{
+		return ['name' => 'Nazwa kategorii',
+				'image' => 'Obraz kategorii',
+				'imageAlt' => 'Opis obrazu kategorii',
+		];
+	}
+	public function validator($data, $edit)
+	{
+		return Validator::make($data, [
+			"name" => $edit ? "required|string" : "required|string|unique:categories,name",
+			"image" => "nullable|image",
+			"imageAlt" => "nullable|string"
+		], [], $this->attributes());
+	}
 	public function index()
 	{
-		$categories = Category::select('id', 'name')->get();
-		return view('admin.pages.category.index', ['categories' => $categories]);
+		$categories = Category::select('id', 'image', 'imageAlt', 'name')->get();
+		return view('admin.pages.category.index', compact('categories'));
 	}
-	public function form($categoryId = NULL)
+	public function create()
 	{
-		$categoryData = [];
-		if(isset($categoryId))
-			$categoryData = Category::find($categoryId)->first();
-		return view('admin.pages.category.form', ['categoryData' => $categoryData, 'categoryId' => $categoryId]);
+		return view('admin.pages.category.form');
 	}
-	public function store(Request $req, $categoryId = NULL)
+	public function store(Request $req)
 	{
-		if(isset($categoryId))
-		{
-			$req->validate([
-				"name" => "required|string",
-				"image" => "nullable|image",
-				"imageAlt" => "nullable|string"
-			]);
-			$category = Category::find($categoryId);
+		$validated = $this->validator($req->all(), false)->validate();
+		if(isset($validated['image'])) {
+			$file = $req->file('image')->store('categories');
+			$validated['image'] = $file;
 		}
-		else
-		{
-			$req->validate([
-				"name" => "required|string|unique:categories,name",
-				"image" => "nullable|image",
-				"imageAlt" => "nullable|string"
-			]);
-			$category = new Category();
+		$category = Category::create($validated);
+		return redirect()->route('admin.categories');
+	}
+	public function edit($categoryId)
+	{
+		$category = Category::findOrFail($categoryId);
+		return view('admin.pages.category.form', compact('category'));
+	}
+	public function update(Request $req, $categoryId)
+	{
+		$category = Category::findOrFail($categoryId);
+		$oldImage = $category->image;
+		$validated = $this->validator($req->all(), true)->validate();
+		if(isset($validated['image'])) {
+			$file = $req->file('image')->store('categories');
+			$validated['image'] = $file;
+			Storage::delete($oldImage);
 		}
-		$category->name = $req->name;
-		$category->image = $req->image;
-		$category->imageAlt = $req->imageAlt;
-		$category->save();
+		$category->update($validated);
 		return redirect()->route('admin.categories');
 	}
 }

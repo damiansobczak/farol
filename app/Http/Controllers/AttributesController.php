@@ -5,20 +5,31 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Attributes;
 use App\Models\AttributeType;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class AttributesController extends Controller
 {
-	public function validator($data)
+	public function attributes()
+	{
+		return ['name' => 'Nazwa atrybutu',
+				'image' => 'Obraz atrybutu',
+				'imageAlt' => 'Opis obrazu atrybutu',
+				'attributeType' => 'Typ atrybutu',
+				'minValue' => 'Minimalna wartość atrybutu',
+				'maxValue' => 'Maksymalna wartość atrybutu',
+		];
+	}
+	public function validator($data, $edit)
 	{
 		return Validator::make($data, [
-			'name' => 'required|string|unique:attribute_types,name',
+			'name' => $edit ? 'required|string' : 'required|string|unique:attributes,name',
 			'image' => 'nullable|image',
 			'imageAlt' => 'nullable|string',
 			'attributeType' => 'required',
 			'minValue' => 'nullable|numeric',
 			'maxValue' => 'nullable|numeric'
-		]);
+		], [], $this->attributes());
 	}
 	public function index()
 	{
@@ -32,7 +43,11 @@ class AttributesController extends Controller
 	}
 	public function store(Request $req)
 	{
-		$validated = $this->validator($req->all())->validate();
+		$validated = $this->validator($req->all(), false)->validate();
+		if(isset($validated['image'])) {
+			$file = $req->file('image')->store('attributes');
+			$validated['image'] = $file;
+		}
 		$attributeType = Attributes::create($validated);
 		return redirect()->route('admin.attributes');
 	}
@@ -45,7 +60,13 @@ class AttributesController extends Controller
 	public function update(Request $req, $attrId)
 	{
 		$attribute = Attributes::findOrFail($attrId);
-		$validated = $this->validator($req->all())->validate();
+		$oldImage = $attribute->image;
+		$validated = $this->validator($req->all(), true)->validate();
+		if(isset($validated['image'])) {
+			$file = $req->file('image')->store('attributes');
+			$validated['image'] = $file;
+			Storage::delete($oldImage);
+		}
 		$attribute->update($validated);
 		return redirect()->route('admin.attributes');
 	}
