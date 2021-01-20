@@ -19461,7 +19461,7 @@ var popOut = function popOut() {
     transform: "translateY(0)"
   }, {
     opacity: "0",
-    transform: "translateY(-10)"
+    transform: "translateY(-10px)"
   }], {
     duration: 100,
     fill: "both",

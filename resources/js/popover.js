@@ -26,7 +26,7 @@ const popOut = () => {
     popover.animate(
         [
             { opacity: "1", transform: "translateY(0)" },
-            { opacity: "0", transform: "translateY(-10)" }
+            { opacity: "0", transform: "translateY(-10px)" }
         ],
         {
             duration: 100,
