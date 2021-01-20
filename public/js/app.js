@@ -19354,6 +19354,14 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./menu */ "./resources/js/menu.js");
+
+__webpack_require__(/*! ./popover */ "./resources/js/popover.js");
+
+__webpack_require__(/*! ./slider */ "./resources/js/slider.js");
+
+__webpack_require__(/*! ./popular */ "./resources/js/popular.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -19385,6 +19393,180 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/menu.js":
+/*!******************************!*\
+  !*** ./resources/js/menu.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var menu = document.querySelector("#menu");
+var menuTrigger = document.querySelector("#menu-trigger");
+var open = false;
+menuTrigger.addEventListener("click", function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  if (open) {
+    menu.classList.add("hidden");
+    open = false;
+    return;
+  } else {
+    menu.classList.remove("hidden");
+    open = true;
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/popover.js":
+/*!*********************************!*\
+  !*** ./resources/js/popover.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var trigger = document.querySelector("#menu-popover-trigger");
+var popover = document.querySelector("#menu-popover");
+var animating = false;
+
+var popIn = function popIn() {
+  animating = true;
+  popover.classList.remove("hidden", "opacity-0");
+
+  popover.animate([{
+    opacity: "0",
+    transform: "translateY(-10px)"
+  }, {
+    opacity: "1",
+    transform: "translateY(0)"
+  }], {
+    duration: 100,
+    fill: "both",
+    easing: "cubic-bezier(0.42, 0, 0.58, 1)"
+  }).onfinish = function () {
+    trigger.setAttribute("aria-expanded", "true");
+    animating = false;
+  };
+};
+
+var popOut = function popOut() {
+  animating = true;
+
+  popover.animate([{
+    opacity: "1",
+    transform: "translateY(0)"
+  }, {
+    opacity: "0",
+    transform: "translateY(-10px)"
+  }], {
+    duration: 100,
+    fill: "both",
+    easing: "cubic-bezier(0.42, 0, 0.58, 1)"
+  }).onfinish = function () {
+    trigger.setAttribute("aria-expanded", "false");
+    popover.classList.add("hidden", "opacity-0");
+    animating = false;
+  };
+};
+
+trigger.addEventListener("click", function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  if (trigger.getAttribute("aria-expanded") === "false" && !animating) {
+    popIn();
+  }
+
+  if (trigger.getAttribute("aria-expanded") === "true" && !animating) {
+    popOut();
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/popular.js":
+/*!*********************************!*\
+  !*** ./resources/js/popular.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var wrapper = document.querySelector("#popular-products");
+var left = document.querySelector("#popular-left");
+var right = document.querySelector("#popular-right");
+var product = document.querySelectorAll("#popular-product");
+var count = product.length;
+var availableSlide = Math.ceil((count * product[0].clientWidth - wrapper.clientWidth) / product[0].clientWidth);
+var current = 0;
+
+var slideLeft = function slideLeft() {
+  if (current > 0) {
+    current--;
+    wrapper.style.transform = "translateX(".concat(current * product[0].clientWidth * -1, "px)");
+  }
+};
+
+var slideRight = function slideRight() {
+  if (current < availableSlide) {
+    current++;
+    wrapper.style.transform = "translateX(".concat(current * product[0].clientWidth * -1, "px)");
+  }
+};
+
+left.addEventListener("click", function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+  slideLeft();
+});
+right.addEventListener("click", function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+  slideRight();
+});
+
+/***/ }),
+
+/***/ "./resources/js/slider.js":
+/*!********************************!*\
+  !*** ./resources/js/slider.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var slider = document.querySelector("#slider");
+var sliderLeft = document.querySelector("#slider-control-left");
+var sliderRight = document.querySelector("#slider-control-right");
+var sliderCount = slider.childElementCount;
+var current = 0;
+
+var slideLeft = function slideLeft() {
+  if (current > 0) {
+    current--;
+    slider.style.transform = "translateX(".concat(current * 100 * -1, "%)");
+  }
+};
+
+var slideRight = function slideRight() {
+  if (current < sliderCount - 1) {
+    current++;
+    slider.style.transform = "translateX(".concat(current * 100 * -1, "%)");
+  }
+};
+
+sliderLeft.addEventListener("click", function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+  slideLeft();
+});
+sliderRight.addEventListener("click", function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+  slideRight();
+});
 
 /***/ }),
 
