@@ -12,7 +12,7 @@ class RealisationController extends Controller
 	/**
 	 * Request validation function
 	 */
-	protected function validator($data)
+	protected function validator(Array $data)
 	{
 		return Validator::make($data, [
 			'title' => 'required|string|max:255',
@@ -69,12 +69,8 @@ class RealisationController extends Controller
 			$paths = json_encode($paths);
 			$realisationValidated['gallery'] = $paths;
 		}
-
 		$realisation = Realisation::create($realisationValidated);
-
-		session()->flash('success', 'Realizacja została pomyślnie utworzona!');
-
-		return redirect(route('admin.realisations.edit', $realisation->id));
+		return redirect()->route('admin.realisations.edit', $realisation->id)->with('success', 'Realizacja została pomyślnie utworzona!');
 	}
 
 	/**
@@ -83,7 +79,7 @@ class RealisationController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show($id)
+	public function show(Int $id)
 	{
 		//
 	}
@@ -94,7 +90,7 @@ class RealisationController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit($id)
+	public function edit(Int $id)
 	{
 		$realisation = Realisation::findOrFail($id);
 		return view('admin.pages.realisations.form', compact('realisation'));
@@ -107,7 +103,7 @@ class RealisationController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id)
+	public function update(Request $request, Int $id)
 	{
 		$realisation = Realisation::findOrFail($id);
 
@@ -125,15 +121,14 @@ class RealisationController extends Controller
 			}
 			$paths = json_encode($paths);
 			$realisationValidated['gallery'] = $paths;
+
 			if($realisation->gallery) {
 				foreach (json_decode($oldGallery) as $gImg) {
 					ManageStorageController::destroy($gImg);
 				}
 			}
 		}
-
 		$realisation->update($realisationValidated);
-
 		return back()->with('success', 'Realizacja została pomyślnie zaktualizowana!');
 	}
 
@@ -143,7 +138,7 @@ class RealisationController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id)
+	public function destroy(Int $id)
 	{
 		$realisation = Realisation::findOrFail($id);
 		$realisation->delete();
@@ -154,7 +149,6 @@ class RealisationController extends Controller
 				ManageStorageController::destroy($gImg);
 			}
 		}
-
-		return redirect(route('admin.realisations'))->with('success', 'Realizacja została pomyślnie usunięta!');
+		return redirect()->route('admin.realisations')->with('success', 'Realizacja została pomyślnie usunięta!');
 	}
 }

@@ -9,7 +9,7 @@ use App\Http\Controllers\ManageStorageController;
 
 class PostController extends Controller
 {
-	protected function validator($data)
+	protected function validator(Array $data)
 	{
 		return Validator::make($data, [
 			'title' => 'required|max:255',
@@ -55,10 +55,7 @@ class PostController extends Controller
 		$postValidated = $this->validator($request->all())->validate();
 		$postValidated['image'] = ManageStorageController::store($request->file('image'), 'posts');
 		$post = Post::create($postValidated);
-
-		session()->flash('success', 'Post został pomyślnie utworzony!');
-
-		return redirect(route('admin.posts.edit', $post->id));
+		return redirect()->route('admin.posts.edit', $post->id)->with('success', 'Post został pomyślnie utworzony!');
 	}
 
 	/**
@@ -78,7 +75,7 @@ class PostController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit($id)
+	public function edit(Int $id)
 	{
 		$post = Post::findOrFail($id);
 		return view('admin.pages.posts.form', compact('post'));
@@ -91,7 +88,7 @@ class PostController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id)
+	public function update(Request $request, Int $id)
 	{
 		$post = Post::findOrFail($id);
 		$oldImage = $post->image;
@@ -107,14 +104,11 @@ class PostController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id)
+	public function destroy(Int $id)
 	{
 		$post = Post::findOrFail($id);
-
 		$post->delete();
-
 		ManageStorageController::destroy($post->image);
-
-		return redirect(route('admin.posts'))->with('success', 'Post został pomyślnie usunięty!');
+		return redirect()->route('admin.posts')->with('success', 'Post został pomyślnie usunięty!');
 	}
 }

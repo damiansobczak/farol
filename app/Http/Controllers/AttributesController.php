@@ -20,7 +20,7 @@ class AttributesController extends Controller
 				'maxValue' => 'Maksymalna wartość atrybutu',
 		];
 	}
-	public function validator($data, $edit)
+	public function validator(Array $data, Bool $edit)
 	{
 		return Validator::make($data, [
 			'name' => $edit ? 'required|string' : 'required|string|unique:attributes,name',
@@ -46,21 +46,21 @@ class AttributesController extends Controller
 		$validated = $this->validator($req->all(), false)->validate();
 		$validated['image'] = ManageStorageController::store($req->file('image'), 'attributes');
 		$attributeType = Attributes::create($validated);
-		return redirect()->route('admin.attributes');
+		return redirect()->route('admin.attributes')->with('success', 'Atrybut został pomyślnie utworzony!');
 	}
-	public function edit($attrId)
+	public function edit(Int $attrId)
 	{
 		$attribute = Attributes::findOrFail($attrId);
 		$attributeTypes = AttributeType::all();
 		return view('admin.pages.attributes.form', compact(['attribute', 'attributeTypes']));
 	}
-	public function update(Request $req, $attrId)
+	public function update(Request $req, Int $attrId)
 	{
 		$attribute = Attributes::findOrFail($attrId);
 		$oldImage = $attribute->image;
 		$validated = $this->validator($req->all(), true)->validate();
 		$validated['image'] = ManageStorageController::update($req->file('image'), $oldImage, 'attributes');
 		$attribute->update($validated);
-		return redirect()->route('admin.attributes');
+		return redirect()->route('admin.attributes')->with('success', 'Atrybut został pomyślnie zaktualizowany!');
 	}
 }
