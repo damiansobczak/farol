@@ -1,5 +1,4 @@
 require("./bootstrap");
-require("./menu");
-require("./popover");
+require("./header");
 require("./slider");
 require("./popular");

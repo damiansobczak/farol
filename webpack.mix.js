@@ -17,6 +17,8 @@ mix.js("resources/js/app.js", "public/js").postCss(
     [tailwindcss("tailwind.config.js")]
 );
 
+mix.js("resources/js/header.js", "public/js");
+
 /*
  * Backend tailwindcss processing
  */
