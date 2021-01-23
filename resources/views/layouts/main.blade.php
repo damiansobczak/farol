@@ -13,13 +13,7 @@
 </head>
 
 <body>
-    @include('components.header')
-    @include('components.slider')
-    @include('components.assets')
-    @include('components.about')
-    @include('components.popularProducts')
-    @include('components.news')
-    @include('components.footer')
+    @yield('content')
 
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

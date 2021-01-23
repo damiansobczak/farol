@@ -1,4 +1,4 @@
-<div class="max-w-fluid px-3 mx-auto">
+<div class="max-w-fluid px-3 mx-auto mt-16">
     <div class="container mx-auto flex items-center mb-24">
         <div class="w-full md:w-1/2 flex flex-col items-start justify-center">
             <div class="mb-4">

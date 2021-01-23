@@ -16,7 +16,7 @@
             <a href="#" class="px-3 py-2 hover:text-green-600 font-medium">Strona Główna</a>
         </li>
         <li>
-            <a href="#" class="px-3 py-2 hover:text-green-600 font-medium">O nas</a>
+            <a href="{{ route('company') }}" class="px-3 py-2 hover:text-green-600 font-medium">O nas</a>
         </li>
         <li>
             <a href="#" class="px-3 py-2 hover:text-green-600 font-medium" id="menu-popover-trigger"

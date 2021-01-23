@@ -30,7 +30,8 @@ use App\Http\Controllers\ConditionController;
 * Front Office routes
 */
 
-Route::view('/', 'layouts.main');
+Route::view('/', 'pages.main')->name('main');
+Route::view('/o-firmie', 'pages.company')->name('company');
 
 /*
 * Admin routes
