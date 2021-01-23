@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Http\Controllers\ManageImgStorageController;
+use App\Http\Controllers\ManageStorageController;
 use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
@@ -36,7 +36,7 @@ class CategoryController extends Controller
 	public function store(Request $req)
 	{
 		$validated = $this->validator($req->all(), false)->validate();
-		$validated['image'] = ManageImgStorageController::store($req->file('image'), 'categories');
+		$validated['image'] = ManageStorageController::store($req->file('image'), 'categories');
 		$category = Category::create($validated);
 		return redirect()->route('admin.categories');
 	}
@@ -50,7 +50,7 @@ class CategoryController extends Controller
 		$category = Category::findOrFail($categoryId);
 		$oldImage = $category->image;
 		$validated = $this->validator($req->all(), true)->validate();
-		$validated['image'] = ManageImgStorageController::update($req->file('image'), $oldImage, 'categories');
+		$validated['image'] = ManageStorageController::update($req->file('image'), $oldImage, 'categories');
 		$category->update($validated);
 		return redirect()->route('admin.categories');
 	}

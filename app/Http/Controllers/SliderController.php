@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Slider;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Controllers\ManageImgStorageController;
+use App\Http\Controllers\ManageStorageController;
 
 class SliderController extends Controller
 {
@@ -57,8 +57,8 @@ class SliderController extends Controller
 	{
 		$sliderValidated = $this->validator($request->all())->validate();
 
-		$sliderValidated['image'] = ManageImgStorageController::store($request->file('image'), 'sliders');
-		$sliderValidated['onlyImage'] = ManageImgStorageController::store($request->file('onlyImage'), 'sliders');
+		$sliderValidated['image'] = ManageStorageController::store($request->file('image'), 'sliders');
+		$sliderValidated['onlyImage'] = ManageStorageController::store($request->file('onlyImage'), 'sliders');
 
 		$slider = Slider::create($sliderValidated);
 
@@ -106,8 +106,8 @@ class SliderController extends Controller
 
 		$sliderValidated = $this->validator($request->all())->validate();
 
-		$sliderValidated['image'] = ManageImgStorageController::update($request->file('image'), $oldImage, 'sliders');
-		$sliderValidated['onlyImage'] = ManageImgStorageController::update($request->file('onlyImage'), $oldOnlyImage, 'sliders');
+		$sliderValidated['image'] = ManageStorageController::update($request->file('image'), $oldImage, 'sliders');
+		$sliderValidated['onlyImage'] = ManageStorageController::update($request->file('onlyImage'), $oldOnlyImage, 'sliders');
 
 		$slider->update($sliderValidated);
 
@@ -126,8 +126,8 @@ class SliderController extends Controller
 
 		$slider->delete();
 
-		ManageImgStorageController::destroy($slider->image);
-		ManageImgStorageController::destroy($slider->onlyImage);
+		ManageStorageController::destroy($slider->image);
+		ManageStorageController::destroy($slider->onlyImage);
 
 		return redirect(route('admin.sliders'))->with('success', 'Baner został pomyślnie usunięty!');
 	}

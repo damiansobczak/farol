@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Realisation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Controllers\ManageImgStorageController;
+use App\Http\Controllers\ManageStorageController;
 
 class RealisationController extends Controller
 {
@@ -58,13 +58,13 @@ class RealisationController extends Controller
 	public function store(Request $request)
 	{
 		$realisationValidated = $this->validator($request->all())->validate();
-		$realisationValidated['image'] = ManageImgStorageController::store($request->file('image'), 'realisations');
-		$realisationValidated['video'] = ManageImgStorageController::store($request->file('video'), 'realisations');
+		$realisationValidated['image'] = ManageStorageController::store($request->file('image'), 'realisations');
+		$realisationValidated['video'] = ManageStorageController::store($request->file('video'), 'realisations');
 
 		if (isset($realisationValidated['gallery'])) {
 			$paths = [];
 			foreach ($realisationValidated['gallery'] as $key => $file) {
-				$paths[$key] = ManageImgStorageController::store($file, 'realisations');
+				$paths[$key] = ManageStorageController::store($file, 'realisations');
 			}
 			$paths = json_encode($paths);
 			$realisationValidated['gallery'] = $paths;
@@ -116,18 +116,18 @@ class RealisationController extends Controller
 		$oldGallery = $realisation->gallery;
 
 		$realisationValidated = $this->validator($request->all())->validate();
-		$realisationValidated['image'] = ManageImgStorageController::update($request->file('image'), $oldImage, 'realisations');
-		$realisationValidated['video'] = ManageImgStorageController::update($request->file('video'), $oldVideo, 'realisations');
+		$realisationValidated['image'] = ManageStorageController::update($request->file('image'), $oldImage, 'realisations');
+		$realisationValidated['video'] = ManageStorageController::update($request->file('video'), $oldVideo, 'realisations');
 		if (isset($realisationValidated['gallery'])) {
 			$paths = [];
 			foreach ($realisationValidated['gallery'] as $key => $file) {
-				$paths[$key] = ManageImgStorageController::store($file, 'realisations');
+				$paths[$key] = ManageStorageController::store($file, 'realisations');
 			}
 			$paths = json_encode($paths);
 			$realisationValidated['gallery'] = $paths;
 			if($realisation->gallery) {
 				foreach (json_decode($oldGallery) as $gImg) {
-					ManageImgStorageController::destroy($gImg);
+					ManageStorageController::destroy($gImg);
 				}
 			}
 		}
@@ -147,11 +147,11 @@ class RealisationController extends Controller
 	{
 		$realisation = Realisation::findOrFail($id);
 		$realisation->delete();
-		ManageImgStorageController::destroy($realisation->image);
-		ManageImgStorageController::destroy($realisation->video);
+		ManageStorageController::destroy($realisation->image);
+		ManageStorageController::destroy($realisation->video);
 		if($realisation->gallery) {
 			foreach (json_decode($realisation->gallery) as $gImg) {
-				ManageImgStorageController::destroy($gImg);
+				ManageStorageController::destroy($gImg);
 			}
 		}
 
