@@ -19354,9 +19354,7 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ./menu */ "./resources/js/menu.js");
-
-__webpack_require__(/*! ./popover */ "./resources/js/popover.js");
+__webpack_require__(/*! ./header */ "./resources/js/header.js");
 
 __webpack_require__(/*! ./slider */ "./resources/js/slider.js");
 
@@ -19393,6 +19391,19 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/header.js":
+/*!********************************!*\
+  !*** ./resources/js/header.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ./menu */ "./resources/js/menu.js");
+
+__webpack_require__(/*! ./popover */ "./resources/js/popover.js");
 
 /***/ }),
 
