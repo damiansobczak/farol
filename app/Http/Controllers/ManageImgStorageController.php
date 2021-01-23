@@ -10,11 +10,11 @@ class ManageImgStorageController extends Controller
 	/**
 	 * Store image to storage
 	 *
-	 * @param Illuminate\Http\UploadedFile $image
-	 * @param string $storageDir
+	 * @param ?Illuminate\Http\UploadedFile $image
+	 * @param ?string $storageDir
 	 * @return Illuminate\Support\Facades\Storage
 	 */
-	public static function store(UploadedFile $image, string $storageDir)
+	public static function store(?UploadedFile $image, ?string $storageDir)
 	{
 		if(isset($image) && $image->isValid())
 			return $image->store($storageDir);
@@ -22,10 +22,10 @@ class ManageImgStorageController extends Controller
 	/**
 	 * Remove image to storage
 	 *
-	 * @param string $storageDir
+	 * @param ?string $storageDir
 	 * @return Illuminate\Support\Facades\Storage
 	 */
-	public static function destroy(string $image)
+	public static function destroy(?string $image)
 	{
 		if(isset($image))
 			return Storage::delete($image);
@@ -33,12 +33,12 @@ class ManageImgStorageController extends Controller
 	/**
 	 * Remove old image and store new image to storage
 	 *
-	 * @param Illuminate\Http\UploadedFile $newImage
+	 * @param ?Illuminate\Http\UploadedFile $newImage
 	 * @param ?string $oldImage
-	 * @param string $storageDir
+	 * @param ?string $storageDir
 	 * @return Illuminate\Support\Facades\Storage
 	 */
-	public static function update(UploadedFile $newImage, ?string $oldImage, string $storageDir)
+	public static function update(?UploadedFile $newImage, ?string $oldImage, ?string $storageDir)
 	{
 		if(isset($oldImage))
 			self::destroy($oldImage);

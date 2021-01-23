@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Attributes;
 use App\Models\AttributeType;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\ManageImgStorageController;
 
 class AttributesController extends Controller
 {
@@ -44,10 +44,7 @@ class AttributesController extends Controller
 	public function store(Request $req)
 	{
 		$validated = $this->validator($req->all(), false)->validate();
-		if(isset($validated['image'])) {
-			$file = $req->file('image')->store('attributes');
-			$validated['image'] = $file;
-		}
+		$validated['image'] = ManageImgStorageController::store($req->file('image'), 'attributes');
 		$attributeType = Attributes::create($validated);
 		return redirect()->route('admin.attributes');
 	}
@@ -62,11 +59,7 @@ class AttributesController extends Controller
 		$attribute = Attributes::findOrFail($attrId);
 		$oldImage = $attribute->image;
 		$validated = $this->validator($req->all(), true)->validate();
-		if(isset($validated['image'])) {
-			$file = $req->file('image')->store('attributes');
-			$validated['image'] = $file;
-			Storage::delete($oldImage);
-		}
+		$validated['image'] = ManageImgStorageController::update($req->file('image'), $oldImage, 'attributes');
 		$attribute->update($validated);
 		return redirect()->route('admin.attributes');
 	}
