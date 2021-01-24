@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Attributes;
 use App\Models\AttributeType;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Controllers\ManageStorageController;
+use App\Services\ManageStorageService;
 
 class AttributesController extends Controller
 {
@@ -44,7 +44,7 @@ class AttributesController extends Controller
 	public function store(Request $req)
 	{
 		$validated = $this->validator($req->all(), false)->validate();
-		$validated['image'] = ManageStorageController::store($req->file('image'), 'attributes');
+		$validated['image'] = ManageStorageService::store($req->file('image'), 'attributes');
 		$attributeType = Attributes::create($validated);
 		return redirect()->route('admin.attributes')->with('success', 'Atrybut został pomyślnie utworzony!');
 	}
@@ -59,7 +59,7 @@ class AttributesController extends Controller
 		$attribute = Attributes::findOrFail($attrId);
 		$oldImage = $attribute->image;
 		$validated = $this->validator($req->all(), true)->validate();
-		$validated['image'] = ManageStorageController::update($req->file('image'), $oldImage, 'attributes');
+		$validated['image'] = ManageStorageService::update($req->file('image'), $oldImage, 'attributes');
 		$attribute->update($validated);
 		return redirect()->route('admin.attributes')->with('success', 'Atrybut został pomyślnie zaktualizowany!');
 	}

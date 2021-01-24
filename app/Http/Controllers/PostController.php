@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Controllers\ManageStorageController;
+use App\Services\ManageStorageService;
 
 class PostController extends Controller
 {
@@ -53,7 +53,7 @@ class PostController extends Controller
 	public function store(Request $request)
 	{
 		$postValidated = $this->validator($request->all())->validate();
-		$postValidated['image'] = ManageStorageController::store($request->file('image'), 'posts');
+		$postValidated['image'] = ManageStorageService::store($request->file('image'), 'posts');
 		$post = Post::create($postValidated);
 		return redirect()->route('admin.posts.edit', $post->id)->with('success', 'Post został pomyślnie utworzony!');
 	}
@@ -93,7 +93,7 @@ class PostController extends Controller
 		$post = Post::findOrFail($id);
 		$oldImage = $post->image;
 		$postValidated = $this->validator($request->all())->validate();
-		$postValidated['image'] = ManageStorageController::update($request->file('image'), $oldImage, 'posts');
+		$postValidated['image'] = ManageStorageService::update($request->file('image'), $oldImage, 'posts');
 		$post->update($postValidated);
 		return back()->with('success', 'Post został pomyślnie zaktualizowany!');
 	}
@@ -108,7 +108,7 @@ class PostController extends Controller
 	{
 		$post = Post::findOrFail($id);
 		$post->delete();
-		ManageStorageController::destroy($post->image);
+		ManageStorageService::destroy($post->image);
 		return redirect()->route('admin.posts')->with('success', 'Post został pomyślnie usunięty!');
 	}
 }

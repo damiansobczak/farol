@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Realisation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Controllers\ManageStorageController;
+use App\Services\ManageStorageService;
 
 class RealisationController extends Controller
 {
@@ -58,13 +58,13 @@ class RealisationController extends Controller
 	public function store(Request $request)
 	{
 		$realisationValidated = $this->validator($request->all())->validate();
-		$realisationValidated['image'] = ManageStorageController::store($request->file('image'), 'realisations');
-		$realisationValidated['video'] = ManageStorageController::store($request->file('video'), 'realisations');
+		$realisationValidated['image'] = ManageStorageService::store($request->file('image'), 'realisations');
+		$realisationValidated['video'] = ManageStorageService::store($request->file('video'), 'realisations');
 
 		if (isset($realisationValidated['gallery'])) {
 			$paths = [];
 			foreach ($realisationValidated['gallery'] as $key => $file) {
-				$paths[$key] = ManageStorageController::store($file, 'realisations');
+				$paths[$key] = ManageStorageService::store($file, 'realisations');
 			}
 			$paths = json_encode($paths);
 			$realisationValidated['gallery'] = $paths;
@@ -112,19 +112,19 @@ class RealisationController extends Controller
 		$oldGallery = $realisation->gallery;
 
 		$realisationValidated = $this->validator($request->all())->validate();
-		$realisationValidated['image'] = ManageStorageController::update($request->file('image'), $oldImage, 'realisations');
-		$realisationValidated['video'] = ManageStorageController::update($request->file('video'), $oldVideo, 'realisations');
+		$realisationValidated['image'] = ManageStorageService::update($request->file('image'), $oldImage, 'realisations');
+		$realisationValidated['video'] = ManageStorageService::update($request->file('video'), $oldVideo, 'realisations');
 		if (isset($realisationValidated['gallery'])) {
 			$paths = [];
 			foreach ($realisationValidated['gallery'] as $key => $file) {
-				$paths[$key] = ManageStorageController::store($file, 'realisations');
+				$paths[$key] = ManageStorageService::store($file, 'realisations');
 			}
 			$paths = json_encode($paths);
 			$realisationValidated['gallery'] = $paths;
 
 			if($realisation->gallery) {
 				foreach (json_decode($oldGallery) as $gImg) {
-					ManageStorageController::destroy($gImg);
+					ManageStorageService::destroy($gImg);
 				}
 			}
 		}
@@ -142,11 +142,11 @@ class RealisationController extends Controller
 	{
 		$realisation = Realisation::findOrFail($id);
 		$realisation->delete();
-		ManageStorageController::destroy($realisation->image);
-		ManageStorageController::destroy($realisation->video);
+		ManageStorageService::destroy($realisation->image);
+		ManageStorageService::destroy($realisation->video);
 		if($realisation->gallery) {
 			foreach (json_decode($realisation->gallery) as $gImg) {
-				ManageStorageController::destroy($gImg);
+				ManageStorageService::destroy($gImg);
 			}
 		}
 		return redirect()->route('admin.realisations')->with('success', 'Realizacja została pomyślnie usunięta!');

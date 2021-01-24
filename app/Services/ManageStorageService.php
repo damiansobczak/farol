@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
-class ManageStorageController extends Controller
+class ManageStorageService extends Controller
 {
 	/**
 	 * Store image to storage
