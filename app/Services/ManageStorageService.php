@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Services;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
-class ManageStorageService extends Controller
+class ManageStorageService
 {
 	/**
 	 * Store image to storage
