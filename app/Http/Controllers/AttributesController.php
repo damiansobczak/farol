@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Attributes;
 use App\Models\AttributeType;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use App\Services\ManageStorageService;
 
 class AttributesController extends Controller
 {
@@ -20,7 +20,7 @@ class AttributesController extends Controller
 				'maxValue' => 'Maksymalna wartość atrybutu',
 		];
 	}
-	public function validator($data, $edit)
+	public function validator(Array $data, Bool $edit)
 	{
 		return Validator::make($data, [
 			'name' => $edit ? 'required|string' : 'required|string|unique:attributes,name',
@@ -44,30 +44,23 @@ class AttributesController extends Controller
 	public function store(Request $req)
 	{
 		$validated = $this->validator($req->all(), false)->validate();
-		if(isset($validated['image'])) {
-			$file = $req->file('image')->store('attributes');
-			$validated['image'] = $file;
-		}
+		$validated['image'] = ManageStorageService::store($req->file('image'), 'attributes');
 		$attributeType = Attributes::create($validated);
-		return redirect()->route('admin.attributes');
+		return redirect()->route('admin.attributes')->with('success', 'Atrybut został pomyślnie utworzony!');
 	}
-	public function edit($attrId)
+	public function edit(Int $attrId)
 	{
 		$attribute = Attributes::findOrFail($attrId);
 		$attributeTypes = AttributeType::all();
 		return view('admin.pages.attributes.form', compact(['attribute', 'attributeTypes']));
 	}
-	public function update(Request $req, $attrId)
+	public function update(Request $req, Int $attrId)
 	{
 		$attribute = Attributes::findOrFail($attrId);
 		$oldImage = $attribute->image;
 		$validated = $this->validator($req->all(), true)->validate();
-		if(isset($validated['image'])) {
-			$file = $req->file('image')->store('attributes');
-			$validated['image'] = $file;
-			Storage::delete($oldImage);
-		}
+		$validated['image'] = ManageStorageService::update($req->file('image'), $oldImage, 'attributes');
 		$attribute->update($validated);
-		return redirect()->route('admin.attributes');
+		return redirect()->route('admin.attributes')->with('success', 'Atrybut został pomyślnie zaktualizowany!');
 	}
 }

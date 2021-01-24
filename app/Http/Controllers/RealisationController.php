@@ -4,182 +4,151 @@ namespace App\Http\Controllers;
 
 use App\Models\Realisation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use App\Services\ManageStorageService;
 
 class RealisationController extends Controller
 {
-    /**
-     * Request validation function
-     */
-    protected function validator($data)
-    {
-        return Validator::make($data, [
-            'title' => 'required|string|max:255',
-            'description' => 'required|string|max:1000',
-            'image' => 'required|image|mimes:jpeg,jpg,png|max:512',
-            'video' => 'nullable|mimes:mp4|max:2048',
-            'imageAlt' => 'nullable|string|max:255',
-            'gallery.*' => 'nullable|mimes:jpeg,jpg,png|max:256',
-            'seoTitle' => 'nullable|string|max:255',
-            'seoDescription' => 'nullable|string|max:255',
-            'ogTitle' => 'nullable|string|max:255',
-            'ogDescription' => 'nullable|string|max:255'
-        ]);
-    }
+	/**
+	 * Request validation function
+	 */
+	protected function validator(Array $data)
+	{
+		return Validator::make($data, [
+			'title' => 'required|string|max:255',
+			'description' => 'required|string|max:1000',
+			'image' => 'required|image|mimes:jpeg,jpg,png|max:512',
+			'video' => 'nullable|mimes:mp4|max:2048',
+			'imageAlt' => 'nullable|string|max:255',
+			'gallery.*' => 'nullable|mimes:jpeg,jpg,png|max:256',
+			'seoTitle' => 'nullable|string|max:255',
+			'seoDescription' => 'nullable|string|max:255',
+			'ogTitle' => 'nullable|string|max:255',
+			'ogDescription' => 'nullable|string|max:255'
+		]);
+	}
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $realisations = Realisation::latest()->get();
-        return view('admin.pages.realisations.index', compact('realisations'));
-    }
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index()
+	{
+		$realisations = Realisation::latest()->get();
+		return view('admin.pages.realisations.index', compact('realisations'));
+	}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('admin.pages.realisations.form');
-    }
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function create()
+	{
+		return view('admin.pages.realisations.form');
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $realisationValidated = $this->validator($request->all())->validate();
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function store(Request $request)
+	{
+		$realisationValidated = $this->validator($request->all())->validate();
+		$realisationValidated['image'] = ManageStorageService::store($request->file('image'), 'realisations');
+		$realisationValidated['video'] = ManageStorageService::store($request->file('video'), 'realisations');
 
-        if (isset($realisationValidated['image'])) {
-            $file = $request->file('image')->store('realisations');
-            $realisationValidated['image'] = $file;
-        }
+		if (isset($realisationValidated['gallery'])) {
+			$paths = [];
+			foreach ($realisationValidated['gallery'] as $key => $file) {
+				$paths[$key] = ManageStorageService::store($file, 'realisations');
+			}
+			$paths = json_encode($paths);
+			$realisationValidated['gallery'] = $paths;
+		}
+		$realisation = Realisation::create($realisationValidated);
+		return redirect()->route('admin.realisations.edit', $realisation->id)->with('success', 'Realizacja została pomyślnie utworzona!');
+	}
 
-        if (isset($realisationValidated['video'])) {
-            $file = $request->file('video')->store('realisations');
-            $realisationValidated['video'] = $file;
-        }
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function show(Int $id)
+	{
+		//
+	}
 
-        if (isset($realisationValidated['gallery'])) {
-            $paths = [];
-            foreach ($realisationValidated['gallery'] as $key => $file) {
-                $path = $file->store('realisations');
-                $paths[$key] = $path;
-            }
-            $paths = json_encode($paths);
-            $realisationValidated['gallery'] = $paths;
-        }
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function edit(Int $id)
+	{
+		$realisation = Realisation::findOrFail($id);
+		return view('admin.pages.realisations.form', compact('realisation'));
+	}
 
-        $realisation = Realisation::create($realisationValidated);
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function update(Request $request, Int $id)
+	{
+		$realisation = Realisation::findOrFail($id);
 
-        session()->flash('success', 'Realizacja została pomyślnie utworzona!');
+		$oldImage = $realisation->image;
+		$oldVideo = $realisation->video;
+		$oldGallery = $realisation->gallery;
 
-        return redirect(route('admin.realisations.edit', $realisation->id));
-    }
+		$realisationValidated = $this->validator($request->all())->validate();
+		$realisationValidated['image'] = ManageStorageService::update($request->file('image'), $oldImage, 'realisations');
+		$realisationValidated['video'] = ManageStorageService::update($request->file('video'), $oldVideo, 'realisations');
+		if (isset($realisationValidated['gallery'])) {
+			$paths = [];
+			foreach ($realisationValidated['gallery'] as $key => $file) {
+				$paths[$key] = ManageStorageService::store($file, 'realisations');
+			}
+			$paths = json_encode($paths);
+			$realisationValidated['gallery'] = $paths;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+			if($realisation->gallery) {
+				foreach (json_decode($oldGallery) as $gImg) {
+					ManageStorageService::destroy($gImg);
+				}
+			}
+		}
+		$realisation->update($realisationValidated);
+		return back()->with('success', 'Realizacja została pomyślnie zaktualizowana!');
+	}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $realisation = Realisation::findOrFail($id);
-        return view('admin.pages.realisations.form', compact('realisation'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $realisation = Realisation::findOrFail($id);
-
-        $oldImage = $realisation->image;
-        $oldVideo = $realisation->video;
-        $oldGallery = $realisation->gallery;
-
-        $realisationValidated = $this->validator($request->all())->validate();
-
-        if (isset($realisationValidated['image'])) {
-            $file = $request->file('image')->store('realisations');
-            $realisationValidated['image'] = $file;
-            Storage::delete($oldImage);
-        }
-
-        if (isset($realisationValidated['video'])) {
-            $file = $request->file('video')->store('realisations');
-            $realisationValidated['video'] = $file;
-            Storage::delete($oldVideo);
-        }
-
-        if (isset($realisationValidated['gallery'])) {
-            $paths = [];
-            foreach ($realisationValidated['gallery'] as $key => $file) {
-                $path = $file->store('realisations');
-                $paths[$key] = $path;
-            }
-            $paths = json_encode($paths);
-            $realisationValidated['gallery'] = $paths;
-            Storage::delete($oldGallery);
-        }
-
-        $realisation->update($realisationValidated);
-
-        return back()->with('success', 'Realizacja została pomyślnie zaktualizowana!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $realisation = Realisation::findOrFail($id);
-
-        $realisation->delete();
-
-        if ($realisation->image) {
-            Storage::delete($realisation->image);
-        }
-
-        if ($realisation->video) {
-            Storage::delete($realisation->video);
-        }
-
-        if ($realisation->gallery) {
-            foreach (json_decode($realisation->gallery) as $video) {
-                Storage::delete($video);
-            }
-        }
-
-        return redirect(route('admin.realisations'))->with('success', 'Realizacja została pomyślnie usunięta!');
-    }
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function destroy(Int $id)
+	{
+		$realisation = Realisation::findOrFail($id);
+		$realisation->delete();
+		ManageStorageService::destroy($realisation->image);
+		ManageStorageService::destroy($realisation->video);
+		if($realisation->gallery) {
+			foreach (json_decode($realisation->gallery) as $gImg) {
+				ManageStorageService::destroy($gImg);
+			}
+		}
+		return redirect()->route('admin.realisations')->with('success', 'Realizacja została pomyślnie usunięta!');
+	}
 }

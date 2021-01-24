@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Category;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Services\ManageStorageService;
 
 class CategoryController extends Controller
 {
@@ -16,7 +16,7 @@ class CategoryController extends Controller
 				'imageAlt' => 'Opis obrazu kategorii',
 		];
 	}
-	public function validator($data, $edit)
+	public function validator(Array $data, Bool $edit)
 	{
 		return Validator::make($data, [
 			"name" => $edit ? "required|string" : "required|string|unique:categories,name",
@@ -36,29 +36,22 @@ class CategoryController extends Controller
 	public function store(Request $req)
 	{
 		$validated = $this->validator($req->all(), false)->validate();
-		if(isset($validated['image'])) {
-			$file = $req->file('image')->store('categories');
-			$validated['image'] = $file;
-		}
+		$validated['image'] = ManageStorageService::store($req->file('image'), 'categories');
 		$category = Category::create($validated);
-		return redirect()->route('admin.categories');
+		return redirect()->route('admin.categories')->with('success', 'Kategoria została pomyślnie utworzona!');
 	}
-	public function edit($categoryId)
+	public function edit(Int $categoryId)
 	{
 		$category = Category::findOrFail($categoryId);
 		return view('admin.pages.category.form', compact('category'));
 	}
-	public function update(Request $req, $categoryId)
+	public function update(Request $req, Int $categoryId)
 	{
 		$category = Category::findOrFail($categoryId);
 		$oldImage = $category->image;
 		$validated = $this->validator($req->all(), true)->validate();
-		if(isset($validated['image'])) {
-			$file = $req->file('image')->store('categories');
-			$validated['image'] = $file;
-			Storage::delete($oldImage);
-		}
+		$validated['image'] = ManageStorageService::update($req->file('image'), $oldImage, 'categories');
 		$category->update($validated);
-		return redirect()->route('admin.categories');
+		return redirect()->route('admin.categories')->with('success', 'Kategoria została pomyślnie zaktualizowana!');
 	}
 }
