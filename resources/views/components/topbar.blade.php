@@ -1,8 +1,8 @@
 <div class="border-b border-solid border-gray-100 py-5">
     <div class="container mx-auto flex items-center justify-center flex-wrap sm:justify-between">
-        <div class="w-auto xl:w-96">
+        <a href="{{ route('main') }}" class="w-auto xl:w-96">
             <img src="{{ asset('logo.png') }}" alt="Logo sklepu internetowego" class="w-40">
-        </div>
+        </a>
         <div class="flex items-center w-full sm:w-80 mt-3 md:mt-0">
             <input type="text" name="" placeholder="Wyszukaj..." id=""
                 class="p-3 rounded-full border border-solid text-gray-400 border-gray-100 w-full h-10 font-light text-sm">

@@ -13,7 +13,7 @@
     <ul class="md:flex items-center hidden absolute md:static top-full bg-white rounded-sm shadow-lg leading-10	w-64 md:w-auto md:shadow-none"
         id="menu">
         <li>
-            <a href="#" class="px-3 py-2 hover:text-green-600 font-medium">Strona Główna</a>
+            <a href="{{ route('main') }}" class="px-3 py-2 hover:text-green-600 font-medium">Strona Główna</a>
         </li>
         <li>
             <a href="{{ route('company') }}" class="px-3 py-2 hover:text-green-600 font-medium">O nas</a>
@@ -29,7 +29,7 @@
                 </div>
                 <ul class="flex flex-col md:flex-row md:items-center px-3 md:px-8 justify-between flex-1 leading-10">
                     <li>
-                        <a href="#"
+                        <a href="{{ route('product') }}"
                             class="text-sm md:text-center flex flex-col md:items-center hover:opacity-75 mb-4 md:mb-0">
                             <img src="{{ asset('produkt.png') }}" alt="" class="hidden md:block object-cover h-28 mb-3">
                             <span class="text-gray-800 font-medium">Rolety Wolnowiszące</span>
@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{ route('product') }}"
                             class="text-sm md:text-center flex flex-col md:items-center hover:opacity-75 mb-4 md:mb-0">
                             <img src="{{ asset('produkt.png') }}" alt="" class="hidden md:block object-cover h-28 mb-3">
                             <span class="text-gray-800 font-medium">Rolety Wolnowiszące</span>
@@ -45,7 +45,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{ route('product') }}"
                             class="text-sm md:text-center flex flex-col md:items-center hover:opacity-75 mb-4 md:mb-0">
                             <img src="{{ asset('produkt.png') }}" alt="" class="hidden md:block object-cover h-28 mb-3">
                             <span class="text-gray-800 font-medium">Rolety Wolnowiszące</span>
@@ -53,7 +53,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{ route('product') }}"
                             class="text-sm md:text-center flex flex-col md:items-center hover:opacity-75 mb-4 md:mb-0">
                             <img src="{{ asset('produkt.png') }}" alt="" class="hidden md:block object-cover h-28 mb-3">
                             <span class="text-gray-800 font-medium">Rolety Wolnowiszące</span>
@@ -61,7 +61,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{ route('product') }}"
                             class="text-sm md:text-center flex flex-col md:items-center hover:opacity-75 mb-4 md:mb-0">
                             <img src="{{ asset('produkt.png') }}" alt="" class="hidden md:block object-cover h-28 mb-3">
                             <span class="text-gray-800 font-medium">Rolety Wolnowiszące</span>
@@ -69,7 +69,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{ route('product') }}"
                             class="text-sm md:text-center flex flex-col md:items-center hover:opacity-75 mb-4 md:mb-0">
                             <img src="{{ asset('produkt.png') }}" alt="" class="hidden md:block object-cover h-28 mb-3">
                             <span class="text-gray-800 font-medium">Rolety Wolnowiszące</span>
