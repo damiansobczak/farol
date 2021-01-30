@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
 			$table->foreignId('categoryId')->references('id')->on('categories');
 			$table->string('imageAlt')->nullable();
 			$table->string('image');
+			$table->string('attributeTypes');
 			$table->string('priceList');
 			$table->string('featured')->nullable()->default(false);
 			$table->text('description');

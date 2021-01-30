@@ -16,6 +16,7 @@ class Product extends Model
 		'imageAlt',
 		'image',
 		'categoryId',
+		'attributeTypes',
 		'priceList',
 		'featured',
 		'description',
@@ -45,8 +46,8 @@ class Product extends Model
 	public function getGalleryImgAttribute()
 	{
 		$gallery = json_decode($this->gallery);
-		if ($gallery) {
-			foreach ($gallery as $key => $image) {
+		if($gallery) {
+			foreach($gallery as $key => $image) {
 				$gallery[$key] = Storage::url($image);
 			}
 		}
@@ -60,7 +61,7 @@ class Product extends Model
 	public function setNameAttribute($value)
 	{
 		$this->attributes['name'] = $value;
-		if (static::whereSlug($slug = Str::slug($value))->exists()) {
+		if(static::whereSlug($slug = Str::slug($value))->exists()) {
 			$slug = $this->incrementSlug($slug);
 		}
 		$this->attributes['slug'] = $slug;
@@ -85,5 +86,23 @@ class Product extends Model
 	public function productCategory()
 	{
 		return $this->belongsTo('App\Models\Category', 'categoryId');
+	}
+	/**
+	 * Accessor for types attribute of product
+	 *
+	 * @return array
+	 */	
+	public function getAttributeTypesAttribute($value)
+	{
+		return $this->attributes['attributeTypes'] = json_decode($value);
+	}
+	/**
+	 * Mutator for types attribute of product
+	 *
+	 * @return array
+	 */	
+	public function setAttributeTypesAttribute($value)
+	{
+		$this->attributes['attributeTypes'] = json_encode($value);
 	}
 }

@@ -44,9 +44,9 @@
 						@endforeach
 					</select>
 				</label>
-				<label for="attributes" class="text-sm text-gray-400 mt-4 block">
+				<label for="attributeTypes" class="text-sm text-gray-400 mt-4 block">
 					Atrybuty produktu
-					<select name="attributes" id="attributes" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" multiple>
+					<select name="attributeTypes[]" id="attributeTypes" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" multiple>
 						@foreach($attributeType as $aType)
 							<option value="{{ $aType->id }}" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full" @if(isset($product) && $aType->id === $product->categoryId) selected @endif>{{ $aType->name }}</option>
 						@endforeach
