@@ -92,9 +92,9 @@ class Product extends Model
 	 *
 	 * @return array
 	 */	
-	public function getAttributeTypesAttribute($value)
+	public function getAttributeTypesAttribute()
 	{
-		return $this->attributes['attributeTypes'] = json_decode($value);
+		return json_decode($this->attributes['attributeTypes']);
 	}
 	/**
 	 * Mutator for types attribute of product

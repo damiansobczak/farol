@@ -48,7 +48,7 @@
 					Atrybuty produktu
 					<select name="attributeTypes[]" id="attributeTypes" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" multiple>
 						@foreach($attributeType as $aType)
-							<option value="{{ $aType->id }}" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full" @if(isset($product) && $aType->id === $product->categoryId) selected @endif>{{ $aType->name }}</option>
+							<option value="{{ $aType->id }}" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full" @if(isset($product) &&  array_search($aType->id, $product->attributeTypes) !== false) selected @endif>{{ $aType->name }}</option>
 						@endforeach
 					</select>
 				</label>
