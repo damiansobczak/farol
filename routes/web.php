@@ -33,6 +33,8 @@ use App\Http\Controllers\ConditionController;
 Route::view('/', 'pages.main')->name('main');
 Route::view('/o-firmie', 'pages.company')->name('company');
 Route::view('/produkt', 'pages.product')->name('product');
+Route::view('/realizacje', 'pages.realisations')->name('realisations');
+Route::view('/realizacja', 'pages.realisation')->name('realisation');
 
 /*
 * Admin routes

@@ -80,7 +80,7 @@
             </div>
         </li>
         <li>
-            <a href="#" class="px-3 py-2 hover:text-green-600 font-medium">Realizacje</a>
+            <a href="{{ route('realisations') }}" class="px-3 py-2 hover:text-green-600 font-medium">Realizacje</a>
         </li>
         <li>
             <a href="#" class="px-3 py-2 hover:text-green-600 font-medium">Kontakt</a>
