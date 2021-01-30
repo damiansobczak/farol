@@ -18,14 +18,18 @@ class CreateProductsTable extends Migration
 			$table->string('slug');
 			$table->string('name');
 			$table->foreignId('categoryId')->references('id')->on('categories');
-			$table->string('imageAlt');
+			$table->string('imageAlt')->nullable();
 			$table->string('image');
-			$table->double('priceNet');
-			$table->double('priceGross');
-			$table->string('featured');
+			$table->string('priceList');
+			$table->string('featured')->nullable()->default(false);
 			$table->text('description');
-			$table->boolean('show');
-			$table->string('avaibility');
+			$table->boolean('show')->nullable()->default(false);
+			$table->string('avaibility')->nullable()->default(false);
+			$table->string('gallery')->nullable();
+			$table->string('seoTitle')->nullable();
+			$table->string('seoDescription')->nullable();
+			$table->string('ogTitle')->nullable();
+			$table->string('ogDesc')->nullable();
 			$table->timestamps();
 		});
 	}
