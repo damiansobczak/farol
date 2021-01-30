@@ -14,6 +14,7 @@ use App\Http\Controllers\SliderController;
 use App\Http\Controllers\AttributesController;
 use App\Http\Controllers\AttributeTypeController;
 use App\Http\Controllers\ConditionController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,15 @@ Route::prefix('admin')->group(function () {
     Route::post('/kategorie/formularz', [CategoryController::class, 'store'])->middleware('auth')->name('admin.categories.save');
     Route::get('/kategorie/{categoryId}', [CategoryController::class, 'edit'])->middleware('auth')->name('admin.categories.edit');
     Route::put('/kategorie/{categoryId}', [CategoryController::class, 'update'])->middleware('auth')->name('admin.categories.editSave');
+    
+    /*
+    * Products
+    */
+    Route::get('/produkty', [ProductController::class, 'index'])->middleware('auth')->name('admin.products');
+    Route::get('/produkty/formularz', [ProductController::class, 'create'])->middleware('auth')->name('admin.products.create');
+    Route::post('/produkty/formularz', [ProductController::class, 'store'])->middleware('auth')->name('admin.products.save');
+    Route::get('/produkty/{productId}', [ProductController::class, 'edit'])->middleware('auth')->name('admin.products.edit');
+    Route::put('/produkty/{productId}', [ProductController::class, 'update'])->middleware('auth')->name('admin.products.editSave');
 
     /*
     * News
