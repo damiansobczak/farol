@@ -13,6 +13,7 @@ use App\Http\Controllers\RealisationController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\AttributesController;
 use App\Http\Controllers\AttributeTypeController;
+use App\Http\Controllers\AttributeGroupController;
 use App\Http\Controllers\ConditionController;
 use App\Http\Controllers\ProductController;
 
@@ -103,6 +104,8 @@ Route::prefix('admin')->group(function () {
     Route::put('/atrybuty/{attrId}', [AttributesController::class, 'update'])->middleware('auth')->name('admin.attributes.editSave');
     Route::get('/typAtrybutu/formularz', [AttributeTypeController::class, 'create'])->middleware('auth')->name('admin.attributeType.create');
     Route::post('/typAtrybutu/formularz', [AttributeTypeController::class, 'store'])->middleware('auth')->name('admin.attributeType.save');
+    Route::get('/grupaAtrybutu/formularz', [AttributeGroupController::class, 'create'])->middleware('auth')->name('admin.attributeGroup.create');
+    Route::post('/grupaAtrybutu/formularz', [AttributeGroupController::class, 'store'])->middleware('auth')->name('admin.attributeGroup.save');
 
     /*
     * Realisation

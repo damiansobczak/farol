@@ -16,11 +16,11 @@ class CreateAttributesTable extends Migration
 		Schema::create('attributes', function (Blueprint $table) {
 			$table->id();
 			$table->foreignId('attributeType')->references('id')->on('attribute_types');
+			$table->foreignId('attributeGroup')->nullable()->references('id')->on('attribute_groups');
 			$table->string('name');
 			$table->string('image')->nullable();
 			$table->string('imageAlt')->nullable();
-			$table->integer('minValue')->nullable();
-			$table->integer('maxValue')->nullable();
+			$table->integer('cost')->nullable()->default(0);
 			$table->timestamps();
 		});
 	}

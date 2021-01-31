@@ -4,6 +4,7 @@
 	<x-breadcrumbs :crumbs="[['name' => 'Atrybuty', 'url' => '']]" />
 	<div class="flex flex-col">
 		<a href="{{ route('admin.attributeType.create') }}" class="mb-5 ml-auto rounded px-4 py-2 bg-indigo-500 text-white">Utwórz typ atrybut</a>
+		<a href="{{ route('admin.attributeGroup.create') }}" class="mb-5 ml-auto rounded px-4 py-2 bg-indigo-500 text-white">Utwórz grupę atrybut</a>
 		<a href="{{ route('admin.attributes.create') }}" class="mb-5 ml-auto rounded px-4 py-2 bg-indigo-500 text-white">Utwórz atrybut</a>
 		<div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
 			<div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">

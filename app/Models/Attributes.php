@@ -15,8 +15,7 @@ class Attributes extends Model
 		'name',
 		'image',
 		'imageAlt',
-		'minValue',
-		'maxValue',
+		'cost'
 	];
 	public function attrType()
 	{

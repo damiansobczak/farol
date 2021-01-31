@@ -34,20 +34,25 @@
 				</label>
 				<label for="attributeType" class="text-sm text-gray-400 mt-4 block">
 					Typ atrybutu
-					<select name="attributeType" id="attributeType">
+					<select name="attributeType" id="attributeType" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 						<option></option>
 						@foreach($attributeTypes as $attrType)
 							<option value="{{ $attrType->id }}" @if(isset($attribute) && $attrType->id === $attribute->attributeType) selected @endif>{{ $attrType->name }}</option>
 						@endforeach
 					</select>
 				</label>
-				<label for="minValue" class="text-sm text-gray-400 mt-4 block">
-					Minimalna wartość
-					<input type="text" name="minValue" id="minValue" value="@if($errors->any()){{ old('minValue') }}@else{{ $attribute->minValue ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+				<label for="attributeGroup" class="text-sm text-gray-400 mt-4 block">
+					Typ atrybutu
+					<select name="attributeGroup" id="attributeGroup" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+						<option></option>
+						@foreach($attributeGroups as $attrGroup)
+							<option value="{{ $attrGroup->id }}" @if(isset($attribute) && $attrGroup->id === $attribute->attributeGroup) selected @endif>{{ $attrGroup->name }}</option>
+						@endforeach
+					</select>
 				</label>
-				<label for="maxValue" class="text-sm text-gray-400 mt-4 block">
-					Maksymalna wartość
-					<input type="text" name="maxValue" id="maxValue" value="@if($errors->any()){{ old('maxValue') }}@else{{ $attribute->maxValue ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+				<label for="cost" class="text-sm text-gray-400 mt-4 block">
+					Koszt atrybutu
+					<input type="text" name="cost" id="cost" value="@if($errors->any()){{ old('cost') }}@else{{ $attribute->cost ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 				</label>
 			</div>
 		</div>
