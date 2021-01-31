@@ -73,13 +73,40 @@
 		<div class="flex rounded shadow-sm bg-white p-8">
 			<div class="flex flex-col flex-1 border-gray-200 pr-6">
 				@if(isset($product) && $product->priceList)
-					<div class="object-cover bg-gray-100 h-64 rounded"></div>
+					<div class="object-cover bg-gray-100 h-auto rounded">
+						<table class="m-auto text-center">
+							<thead>
+								<tr>
+									@foreach($product->priceList as $row)
+										@foreach($row as $k => $r)
+											@if($loop->parent->first)
+												<th class="border border-gray-300 rounded-md">{{ $k }}</th>
+											@endif
+										@endforeach
+									@endforeach
+								</tr>
+							</thead>
+							<tbody>
+								@foreach($product->priceList as $row)
+									<tr>
+										@foreach($row as $k => $r)
+											@if($loop->first)
+												<th class="border border-gray-300 rounded-md">{{ $r }}</th>
+											@else
+												<td class="border border-gray-300 rounded-md">{{ $r }}</td>
+											@endif
+										@endforeach
+									</tr>
+								@endforeach
+							</tbody>
+						</table>
+					</div>
 				@else
 					<div class="object-cover bg-gray-100 h-64 rounded"></div>
 				@endif
 				<label for="priceList" class="text-sm text-gray-400 mt-4 block">
 					Cennik produktu
-					<input type="file" name="priceList" id="priceList" value="@if($errors->any()){{ old('priceList') }}@else{{ $product->priceList ?? NULL }}@endif" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
+					<input type="file" name="priceList" id="priceList" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200">
 				</label>
 			</div>
 		</div>

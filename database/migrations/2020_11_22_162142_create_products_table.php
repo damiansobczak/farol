@@ -21,7 +21,11 @@ class CreateProductsTable extends Migration
 			$table->string('imageAlt')->nullable();
 			$table->string('image');
 			$table->string('attributeTypes');
-			$table->string('priceList');
+			$table->text('priceList');
+			$table->integer('minWidth');
+			$table->integer('maxWidth');
+			$table->integer('minHeight');
+			$table->integer('maxHeight');
 			$table->string('featured')->nullable()->default(false);
 			$table->text('description');
 			$table->boolean('show')->nullable()->default(false);

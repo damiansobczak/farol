@@ -8,6 +8,7 @@ use App\Models\AttributeType;
 use Illuminate\Http\Request;
 use App\Services\ManageStorageService;
 use App\Services\GalleryService;
+use App\Services\PriceListService;
 use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
@@ -67,6 +68,7 @@ class ProductController extends Controller
 		$validated = $this->validator($req->all(), false)->validate();
 		$validated['image'] = ManageStorageService::store($req->file('image'), 'products');
 		$validated['gallery'] = GalleryService::store($req->file('gallery'), 'products');
+		$validated['priceList'] = PriceListService::processFile($req->file('priceList'));
 		$product = Product::create($validated);
 		return redirect()->route('admin.products')->with('success', 'Produkt został pomyślnie utworzony!');
 	}
@@ -85,6 +87,7 @@ class ProductController extends Controller
 		$validated = $this->validator($req->all(), true)->validate();
 		$validated['image'] = ManageStorageService::update($req->file('image'), $oldImage, 'products');
 		$validated['gallery'] = GalleryService::update($req->file('gallery'), $oldGallery, 'products');
+		$validated['priceList'] = PriceListService::processFile($req->file('priceList'));
 		$product->update($validated);
 		return redirect()->route('admin.products')->with('success', 'Produkt został pomyślnie zaktualizowany!');
 	}

@@ -18,6 +18,10 @@ class Product extends Model
 		'categoryId',
 		'attributeTypes',
 		'priceList',
+		'minWidth',
+		'maxWidth',
+		'minHeight',
+		'maxHeight',
 		'featured',
 		'description',
 		'show',
@@ -104,5 +108,27 @@ class Product extends Model
 	public function setAttributeTypesAttribute($value)
 	{
 		$this->attributes['attributeTypes'] = json_encode($value);
+	}
+	/**
+	 * Accessor for price list of product
+	 *
+	 * @return array
+	 */	
+	public function getPriceListAttribute()
+	{
+		return json_decode($this->attributes['priceList']);
+	}
+	/**
+	 * Mutator for price list of product
+	 *
+	 * @return array
+	 */	
+	public function setPriceListAttribute($value)
+	{
+		$this->attributes['priceList'] = json_encode($value);
+		$this->attributes['minWidth'] = array_keys(last($value))[1];
+		$this->attributes['maxWidth'] = last(array_keys(last($value)));
+		$this->attributes['minHeight'] = head(head($value));
+		$this->attributes['maxHeight'] = head(last($value));
 	}
 }
