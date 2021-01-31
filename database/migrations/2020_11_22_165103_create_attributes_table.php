@@ -21,6 +21,7 @@ class CreateAttributesTable extends Migration
 			$table->string('image')->nullable();
 			$table->string('imageAlt')->nullable();
 			$table->integer('cost')->nullable()->default(0);
+			$table->boolean('costIsPercent')->nullable()->default(false);
 			$table->timestamps();
 		});
 	}

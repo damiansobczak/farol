@@ -29,7 +29,8 @@ class AttributesController extends Controller
 			'imageAlt' => 'nullable|string',
 			'attributeType' => 'required|exists:attribute_types,id',
 			'attributeGroup' => 'nullable|exists:attribute_groups,id',
-			'cost' => 'nullable|numeric'
+			'cost' => 'nullable|numeric',
+			'costIsPercent' => "nullable|boolean"
 		], [], $this->attributes());
 	}
 	public function index()

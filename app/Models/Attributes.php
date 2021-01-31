@@ -12,10 +12,12 @@ class Attributes extends Model
 	use HasFactory;
 	protected $fillable = [
 		'attributeType',
+		'attributeGroup',
 		'name',
 		'image',
 		'imageAlt',
-		'cost'
+		'cost',
+		'costIsPercent'
 	];
 	public function attrType()
 	{
