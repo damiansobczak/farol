@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Attributes;
 use App\Models\AttributeType;
+use App\Models\AttributeGroup;
 use Illuminate\Support\Facades\Validator;
 use App\Services\ManageStorageService;
 
@@ -16,8 +17,8 @@ class AttributesController extends Controller
 				'image' => 'Obraz atrybutu',
 				'imageAlt' => 'Opis obrazu atrybutu',
 				'attributeType' => 'Typ atrybutu',
-				'minValue' => 'Minimalna wartość atrybutu',
-				'maxValue' => 'Maksymalna wartość atrybutu',
+				'attributeGroup' => 'Grupa atrybutu',
+				'cost' => 'Koszt atrybutu'
 		];
 	}
 	public function validator(Array $data, Bool $edit)
@@ -26,9 +27,10 @@ class AttributesController extends Controller
 			'name' => $edit ? 'required|string' : 'required|string|unique:attributes,name',
 			'image' => 'nullable|image',
 			'imageAlt' => 'nullable|string',
-			'attributeType' => 'required',
-			'minValue' => 'nullable|numeric',
-			'maxValue' => 'nullable|numeric'
+			'attributeType' => 'required|exists:attribute_types,id',
+			'attributeGroup' => 'nullable|exists:attribute_groups,id',
+			'cost' => 'nullable|numeric',
+			'costIsPercent' => "nullable|boolean"
 		], [], $this->attributes());
 	}
 	public function index()
@@ -39,7 +41,8 @@ class AttributesController extends Controller
 	public function create()
 	{
 		$attributeTypes = AttributeType::all();
-		return view('admin.pages.attributes.form', compact('attributeTypes'));
+		$attributeGroups = AttributeGroup::all();
+		return view('admin.pages.attributes.form', compact('attributeTypes', 'attributeGroups'));
 	}
 	public function store(Request $req)
 	{
@@ -52,7 +55,8 @@ class AttributesController extends Controller
 	{
 		$attribute = Attributes::findOrFail($attrId);
 		$attributeTypes = AttributeType::all();
-		return view('admin.pages.attributes.form', compact(['attribute', 'attributeTypes']));
+		$attributeGroups = AttributeGroup::all();
+		return view('admin.pages.attributes.form', compact(['attribute', 'attributeTypes', 'attributeGroups']));
 	}
 	public function update(Request $req, Int $attrId)
 	{

@@ -6,6 +6,7 @@ use App\Models\Realisation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Services\ManageStorageService;
+use App\Services\GalleryService;
 
 class RealisationController extends Controller
 {
@@ -60,15 +61,7 @@ class RealisationController extends Controller
 		$realisationValidated = $this->validator($request->all())->validate();
 		$realisationValidated['image'] = ManageStorageService::store($request->file('image'), 'realisations');
 		$realisationValidated['video'] = ManageStorageService::store($request->file('video'), 'realisations');
-
-		if (isset($realisationValidated['gallery'])) {
-			$paths = [];
-			foreach ($realisationValidated['gallery'] as $key => $file) {
-				$paths[$key] = ManageStorageService::store($file, 'realisations');
-			}
-			$paths = json_encode($paths);
-			$realisationValidated['gallery'] = $paths;
-		}
+		$realisationValidated['gallery'] = GalleryService::store($request->file('gallery'), 'realisations');
 		$realisation = Realisation::create($realisationValidated);
 		return redirect()->route('admin.realisations.edit', $realisation->id)->with('success', 'Realizacja została pomyślnie utworzona!');
 	}
@@ -114,20 +107,7 @@ class RealisationController extends Controller
 		$realisationValidated = $this->validator($request->all())->validate();
 		$realisationValidated['image'] = ManageStorageService::update($request->file('image'), $oldImage, 'realisations');
 		$realisationValidated['video'] = ManageStorageService::update($request->file('video'), $oldVideo, 'realisations');
-		if (isset($realisationValidated['gallery'])) {
-			$paths = [];
-			foreach ($realisationValidated['gallery'] as $key => $file) {
-				$paths[$key] = ManageStorageService::store($file, 'realisations');
-			}
-			$paths = json_encode($paths);
-			$realisationValidated['gallery'] = $paths;
-
-			if($realisation->gallery) {
-				foreach (json_decode($oldGallery) as $gImg) {
-					ManageStorageService::destroy($gImg);
-				}
-			}
-		}
+		$realisationValidated['gallery'] = GalleryService::update($request->file('gallery'), $oldGallery, 'realisations');
 		$realisation->update($realisationValidated);
 		return back()->with('success', 'Realizacja została pomyślnie zaktualizowana!');
 	}
@@ -144,11 +124,7 @@ class RealisationController extends Controller
 		$realisation->delete();
 		ManageStorageService::destroy($realisation->image);
 		ManageStorageService::destroy($realisation->video);
-		if($realisation->gallery) {
-			foreach (json_decode($realisation->gallery) as $gImg) {
-				ManageStorageService::destroy($gImg);
-			}
-		}
+		GalleryService::destroy($realisation->gallery);
 		return redirect()->route('admin.realisations')->with('success', 'Realizacja została pomyślnie usunięta!');
 	}
 }

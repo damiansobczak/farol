@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\ProductGallery;
+use App\Models\AttributeGroup;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ProductGalleryFactory extends Factory
+class AttributeGroupFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = ProductGallery::class;
+    protected $model = AttributeGroup::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,7 @@ class ProductGalleryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "name" => $this->faker->randomDigit()
         ];
     }
 }

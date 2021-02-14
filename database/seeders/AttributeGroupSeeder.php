@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Attributes;
+use App\Models\AttributeGroup;
 
-class AttributesSeeder extends Seeder
+class AttributeGroupSeeder extends Seeder
 {
 	/**
 	 * Run the database seeds.
@@ -14,8 +14,8 @@ class AttributesSeeder extends Seeder
 	 */
 	public function run()
 	{
-		Attributes::factory()
-				->times(3)
-				->create();
+		AttributeGroup::factory()
+					->times(3)
+					->create();
 	}
 }

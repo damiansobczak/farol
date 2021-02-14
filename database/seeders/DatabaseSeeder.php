@@ -20,6 +20,11 @@ class DatabaseSeeder extends Seeder
             SliderSeeder::class,
             RealisationSeeder::class,
             ConditionSeeder::class,
+            CategorySeeder::class,
+            AttributeTypeSeeder::class,
+            AttributeGroupSeeder::class,
+            AttributesSeeder::class,
+            ProductSeeder::class,
         ]);
     }
 }
