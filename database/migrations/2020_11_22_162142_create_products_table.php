@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
 			$table->string('image');
 			$table->string('attributeTypes');
 			$table->text('priceList');
+			$table->integer('startingPrice');
 			$table->integer('minWidth');
 			$table->integer('maxWidth');
 			$table->integer('minHeight');

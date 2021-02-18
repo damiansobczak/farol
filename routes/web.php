@@ -16,6 +16,7 @@ use App\Http\Controllers\AttributeTypeController;
 use App\Http\Controllers\AttributeGroupController;
 use App\Http\Controllers\ConditionController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,7 @@ use App\Http\Controllers\ProductController;
 * Front Office routes
 */
 
-Route::view('/', 'pages.main')->name('main');
+Route::get('/', [MainController::class, 'main'])->name('main');
 Route::view('/o-firmie', 'pages.company')->name('company');
 Route::view('/produkt', 'pages.product')->name('product');
 Route::view('/realizacje', 'pages.realisations')->name('realisations');
