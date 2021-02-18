@@ -21,22 +21,24 @@
 		</div>
 		<div class="overflow-hidden">
 			<div class="flex items stretch flex-nowrap w-full min-w-full transition-all" id="popular-products">
-				@foreach($featuredProducts as $product)
-					<div class="flex-shrink-0 w-1/2 md:w-1/3 lg:w-1/5 px-2 -ml-2" id="popular-product">
-						<div class="border px-3 py-6 text-center rounded-md relative group">
-							<img src="{{ $product->image ? $product->img : asset('img/product.png') }}" alt="{{ $product->imageAlt }}" class="w-auto max-h-52 mx-auto" />
-							<span class="uppercase text-xs text-gray-400">{{ $product->productCategory->name }}</span>
-							<p class="text-gray-800 font-semibold">{{ $product->name }}</p>
-							<span class="uppercase text-gray-400 text-sm">129,99 PLN</span>
-							<div class="rounded-md bg-green-500 flex items-center justify-center absolute bottom-2 opacity-0 w-3/4 py-3 left-1/2 transform -translate-x-2/4 cursor-pointer hover:bg-green-600 group-hover:opacity-100 transition-all">
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#ffffff" class="w-5 h-5">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-								</svg>
-								<span class="text-white ml-2 text-sm font-semibold">Skonfiguruj i kup</span>
+				@if(isset($featuredProducts))
+					@foreach($featuredProducts as $product)
+						<div class="flex-shrink-0 w-1/2 md:w-1/3 lg:w-1/5 px-2 -ml-2" id="popular-product">
+							<div class="border px-3 py-6 text-center rounded-md relative group">
+								<img src="{{ $product->image ? $product->img : asset('img/product.png') }}" alt="{{ $product->imageAlt }}" class="w-auto max-h-52 mx-auto" />
+								<span class="uppercase text-xs text-gray-400">{{ $product->productCategory->name }}</span>
+								<p class="text-gray-800 font-semibold">{{ $product->name }}</p>
+								<span class="uppercase text-gray-400 text-sm">JUŻ OD {{ $product->startingPrice }} PLN</span>
+								<div class="rounded-md bg-green-500 flex items-center justify-center absolute bottom-2 opacity-0 w-3/4 py-3 left-1/2 transform -translate-x-2/4 cursor-pointer hover:bg-green-600 group-hover:opacity-100 transition-all">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#ffffff" class="w-5 h-5">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+									</svg>
+									<span class="text-white ml-2 text-sm font-semibold">Skonfiguruj i kup</span>
+								</div>
 							</div>
 						</div>
-					</div>
-				@endforeach
+					@endforeach
+				@endif
 			</div>
 		</div>
 	</div>

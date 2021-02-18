@@ -24,15 +24,17 @@
 					Nasz asortyment
 				</div>
 				<ul class="flex flex-col md:flex-row md:items-center px-3 md:px-8 justify-between flex-1 leading-10">
-					@foreach($categories as $category)
-						<li>
-							<a href="#" class="text-sm md:text-center flex flex-col md:items-center hover:opacity-75 mb-4 md:mb-0">
-								<img src="{{ $category->image ? $category->img : asset('produkt.png') }}" alt="{{ $category->imageAlt }}" class="hidden md:block object-cover h-28 mb-3">
-								<span class="text-gray-800 font-medium">{{ $category->name }}</span>
-								<span class="text-xs text-gray-400">juz od 255zł</span>
-							</a>
-						</li>
-					@endforeach
+					@if(isset($categories))
+						@foreach($categories as $category)
+							<li>
+								<a href="#" class="text-sm md:text-center flex flex-col md:items-center hover:opacity-75 mb-4 md:mb-0">
+									<img src="{{ $category->image ? $category->img : asset('produkt.png') }}" alt="{{ $category->imageAlt }}" class="hidden md:block object-cover h-28 mb-3">
+									<span class="text-gray-800 font-medium">{{ $category->name }}</span>
+									<span class="text-xs text-gray-400">już od {{ $category->cheapestProduct->startingPrice }} PLN</span>
+								</a>
+							</li>
+						@endforeach
+					@endif
 				</ul>
 			</div>
 		</li>
