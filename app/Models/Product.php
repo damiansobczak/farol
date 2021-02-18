@@ -90,7 +90,7 @@ class Product extends Model
 	 */
 	public function productCategory()
 	{
-		return $this->belongsTo('App\Models\Category', 'categoryId');
+		return $this->belongsTo(Category::class, 'categoryId');
 	}
 	/**
 	 * Accessor for types attribute of product

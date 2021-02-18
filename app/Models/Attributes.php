@@ -21,7 +21,7 @@ class Attributes extends Model
 	];
 	public function attrType()
 	{
-		return $this->belongsTo('App\Models\AttributeType', 'attributeType');
+		return $this->belongsTo(AttributeType::class, 'attributeType');
 	}
 	public function getImgAttribute()
 	{
