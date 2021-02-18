@@ -12,7 +12,7 @@
 	</button>
 	<ul class="md:flex items-center hidden absolute md:static top-full bg-white rounded-sm shadow-lg leading-10	w-64 md:w-auto md:shadow-none" id="menu">
 		<li>
-			<a href="#" class="px-3 py-2 hover:text-green-600 font-medium">Strona Główna</a>
+			<a href="{{ route('main') }}" class="px-3 py-2 hover:text-green-600 font-medium">Strona Główna</a>
 		</li>
 		<li>
 			<a href="{{ route('company') }}" class="px-3 py-2 hover:text-green-600 font-medium">O nas</a>
@@ -24,8 +24,8 @@
 					Nasz asortyment
 				</div>
 				<ul class="flex flex-col md:flex-row md:items-center px-3 md:px-8 justify-between flex-1 leading-10">
-					@if(isset($categories))
-						@foreach($categories as $category)
+					@if(isset($headCategories))
+						@foreach($headCategories as $category)
 							<li>
 								<a href="#" class="text-sm md:text-center flex flex-col md:items-center hover:opacity-75 mb-4 md:mb-0">
 									<img src="{{ $category->image ? $category->img : asset('produkt.png') }}" alt="{{ $category->imageAlt }}" class="hidden md:block object-cover h-28 mb-3">
@@ -39,7 +39,7 @@
 			</div>
 		</li>
 		<li>
-			<a href="#" class="px-3 py-2 hover:text-green-600 font-medium">Realizacje</a>
+			<a href="{{ route('realisations') }}" class="px-3 py-2 hover:text-green-600 font-medium">Realizacje</a>
 		</li>
 		<li>
 			<a href="#" class="px-3 py-2 hover:text-green-600 font-medium">Kontakt</a>
