@@ -46,6 +46,8 @@ Route::prefix('klient')->group(function () {
     Route::view('/logowanie', 'pages.customer.login')->name('customer.login');
     Route::view('/resetowanie', 'pages.customer.reset')->name('customer.reset');
     Route::view('/przypomnienie', 'pages.customer.forgot')->name('customer.request');
+    Route::view('/profil', 'pages.customer.dashboard')->name('customer.dashboard');
+    Route::view('/zamowienia', 'pages.customer.orders')->name('customer.orders');
 });
 
 /*
