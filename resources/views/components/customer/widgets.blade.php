@@ -1,4 +1,4 @@
-<div class="container max-w-screen-sm mx-auto py-12">
+<div class="container max-w-screen-md mx-auto py-12">
     <div class="flex items-stretch">
         <a href="{{ route('customer.dashboard') }}"
             class="{{ request()->routeIs('customer.dashboard') ? 'border-2 border-green-600' : 'border border-gray-200 ' }} flex flex-col md:flex-row md:text-left text-center justify-center items-center flex-1 px-2 py-4 md:py-8 md:px-10 cursor-pointer hover:bg-gray-50 md:rounded-l-md">

@@ -10,4 +10,5 @@
 
 @section('scripts')
 <script src="{{ asset('js/header.js') }}"></script>
+<script src="{{ asset('js/order.js') }}"></script>
 @endsection

@@ -1,4 +1,4 @@
-<div class="container max-w-screen-sm mx-auto pb-12">
+<div class="container max-w-screen-md mx-auto pb-12">
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -22,6 +22,10 @@
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Status
                                 </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Szczegóły
+                                </th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
@@ -41,6 +45,12 @@
                                         Anulowano
                                     </span>
                                 </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <button id="customer-order-trigger"
+                                        class="px-4 py-2 inline-flex text-xs leading-5 font-semibold rounded bg-green-600 hover:bg-green-800 cursor-pointer text-white">
+                                        Więcej
+                                    </button>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="px-6 py-4 text-gray-500 whitespace-nowrap">
@@ -54,10 +64,16 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <span
-                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
-                                        Przygotowanie
+                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-700">
+                                        Oczekiwanie
                                     </span>
                                 </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <button id="customer-order-trigger"
+                                        class="px-4 py-2 inline-flex text-xs leading-5 font-semibold rounded bg-green-600 hover:bg-green-800 cursor-pointer text-white">
+                                        Więcej
+                                    </button>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="px-6 py-4 text-gray-500 whitespace-nowrap">
@@ -71,10 +87,16 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <span
-                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-700">
                                         Opłacono
                                     </span>
                                 </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <button id="customer-order-trigger"
+                                        class="px-4 py-2 inline-flex text-xs leading-5 font-semibold rounded bg-green-600 hover:bg-green-800 cursor-pointer text-white">
+                                        Więcej
+                                    </button>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="px-6 py-4 text-gray-500 whitespace-nowrap">
@@ -88,10 +110,16 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <span
-                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                        Opłacono
+                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-700">
+                                        Anulowano
                                     </span>
                                 </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <button id="customer-order-trigger"
+                                        class="px-4 py-2 inline-flex text-xs leading-5 font-semibold rounded bg-green-600 hover:bg-green-800 cursor-pointer text-white">
+                                        Więcej
+                                    </button>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="px-6 py-4 text-gray-500 whitespace-nowrap">
@@ -105,8 +133,14 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <span
-                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                        Opłacono
+                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-700">
+                                        Anulowano
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span
+                                        class="px-4 py-2 inline-flex text-xs leading-5 font-semibold rounded bg-green-600 hover:bg-green-800 cursor-pointer text-white">
+                                        Więcej
                                     </span>
                                 </td>
                             </tr>
@@ -116,5 +150,5 @@
             </div>
         </div>
     </div>
-
 </div>
+@include('components.customer.details')
