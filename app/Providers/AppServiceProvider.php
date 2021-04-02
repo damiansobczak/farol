@@ -16,18 +16,4 @@ class AppServiceProvider extends ServiceProvider
 	{
 		//
 	}
-
-	/**
-	 * Bootstrap any application services.
-	 *
-	 * @return void
-	 */
-	public function boot()
-	{
-		view()->composer('*', function($view)
-		{
-			$categories = Category::select('id', 'image', 'imageAlt', 'name')->with('cheapestProduct')->get();
-			$view->with('headCategories', $categories);
-		});
-	}
 }

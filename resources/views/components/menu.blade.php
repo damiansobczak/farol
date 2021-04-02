@@ -29,20 +29,16 @@
 					Nasz asortyment
 				</div>
 				<ul class="flex flex-col md:flex-row md:items-center px-3 md:px-8 justify-between flex-1 leading-10">
-					@if(isset($headCategories))
-					@foreach($headCategories as $category)
+					@foreach($categories as $category)
 					<li>
 						<a href="#"
 							class="text-sm md:text-center flex flex-col md:items-center hover:opacity-75 mb-4 md:mb-0">
 							<img src="{{ $category->image ? $category->img : asset('produkt.png') }}"
 								alt="{{ $category->imageAlt }}" class="hidden md:block object-cover h-28 mb-3">
 							<span class="text-gray-800 font-medium">{{ $category->name }}</span>
-							<span class="text-xs text-gray-400">już od {{ $category->cheapestProduct->startingPrice }}
-								PLN</span>
 						</a>
 					</li>
 					@endforeach
-					@endif
 				</ul>
 			</div>
 		</li>
@@ -54,18 +50,6 @@
 		</li>
 	</ul>
 	<ul class="flex items-center">
-		<li>
-			<a href="{{ route('customer.login') }}" class="flex flex-col items-center hover:text-green-600">
-				<span class="flex items-center justify-center text-center w-20 h-6">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-						class="w-7 h-7">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-							d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-					</svg>
-				</span>
-				<span class="font-medium pt-2">Twoje Konto</span>
-			</a>
-		</li>
 		<li>
 			<a href="#" class="flex flex-col items-center hover:text-green-600">
 				<span class="flex items-center justify-center text-center w-20 h-6">

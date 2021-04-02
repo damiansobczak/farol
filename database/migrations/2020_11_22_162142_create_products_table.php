@@ -20,13 +20,6 @@ class CreateProductsTable extends Migration
 			$table->foreignId('categoryId')->references('id')->on('categories');
 			$table->string('imageAlt')->nullable();
 			$table->string('image');
-			$table->string('attributeTypes');
-			$table->text('priceList');
-			$table->integer('startingPrice');
-			$table->integer('minWidth');
-			$table->integer('maxWidth');
-			$table->integer('minHeight');
-			$table->integer('maxHeight');
 			$table->string('featured')->nullable()->default(false);
 			$table->text('description');
 			$table->boolean('show')->nullable()->default(false);
