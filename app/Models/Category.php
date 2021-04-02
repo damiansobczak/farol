@@ -33,13 +33,4 @@ class Category extends Model
 	{
 		return $this->hasMany(Product::class, 'categoryId');
 	}
-	/**
-	 * Get product from category with lowest price
-	 *
-	 * @return array
-	 */
-	public function cheapestProduct()
-	{
-		return $this->hasOne(Product::class, 'categoryId')->orderBy('startingPrice', 'ASC');
-	}
 }

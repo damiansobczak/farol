@@ -24,13 +24,5 @@ class UserTableSeeder extends Seeder
             'password' => Hash::make('pass'),
             'remember_token' => Str::random(10),
         ]);
-        User::create([
-            'name' => 'klient',
-            'email' => 'klient@p.pl',
-            'role' => 1,
-            'email_verified_at' => now(),
-            'password' => Hash::make('pass'),
-            'remember_token' => Str::random(10),
-        ]);
     }
 }

@@ -11,12 +11,13 @@ class CategoryController extends Controller
 {
 	public function attributes()
 	{
-		return ['name' => 'Nazwa kategorii',
-				'image' => 'Obraz kategorii',
-				'imageAlt' => 'Opis obrazu kategorii',
+		return [
+			'name' => 'Nazwa kategorii',
+			'image' => 'Obraz kategorii',
+			'imageAlt' => 'Opis obrazu kategorii',
 		];
 	}
-	public function validator(Array $data, Bool $edit)
+	public function validator(array $data, Bool $edit)
 	{
 		return Validator::make($data, [
 			"name" => $edit ? "required|string" : "required|string|unique:categories,name",
