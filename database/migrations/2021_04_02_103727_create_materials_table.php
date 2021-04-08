@@ -16,14 +16,14 @@ class CreateMaterialsTable extends Migration
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('code');
-            $table->string('transmission');
-            $table->string('absorption');
-            $table->string('reflection');
-            $table->string('image');
+            $table->string('code')->nullable();
+            $table->string('transmission')->nullable();
+            $table->string('absorption')->nullable();
+            $table->string('reflection')->nullable();
+            $table->string('image')->nullable();
             $table->string('imageAlt')->nullable();
-            $table->foreignId('color_id')->constrained('colors');
-            $table->foreignId('collection_id')->constrained('collections');
+            $table->foreignId('color_id')->nullable()->constrained('colors');
+            $table->foreignId('collection_id')->nullable()->constrained('collections');
             $table->timestamps();
         });
     }

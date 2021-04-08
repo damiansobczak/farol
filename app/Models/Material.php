@@ -16,6 +16,12 @@ class Material extends Model
      */
     protected $fillable = [
         'name',
+        'code',
+        'transmission',
+        'absorption',
+        'reflection',
+        'image',
+        'imageAlt',
         'color_id',
         'collection_id'
     ];

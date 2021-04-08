@@ -11,7 +11,7 @@ use App\Http\Controllers\SliderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\AboutPageController;
-use App\Http\Controllers\ColorController;
+use App\Http\Controllers\ProductMaterialController;
 use App\Http\Controllers\RealisationPageController;
 
 /*
@@ -75,13 +75,9 @@ Route::prefix('admin')->group(function () {
     Route::put('/produkty/{productId}', [ProductController::class, 'update'])->middleware('auth')->name('admin.products.editSave');
 
     /*
-    * Colors
+    * Materials
     */
-    Route::get('/kolory', [ColorController::class, 'index'])->middleware('auth')->name('admin.colors');
-    Route::post('/kolory/formularz', [ColorController::class, 'store'])->middleware('auth')->name('admin.colors.create');
-    // Route::get('/kolory/{id}', [ColorController::class, 'edit'])->middleware('auth')->name('admin.colors.edit');
-    // Route::put('/kolory/{id}', [ColorController::class, 'update'])->middleware('auth');
-    // Route::delete('/kolory/{id}', [ColorController::class, 'destroy'])->middleware('auth')->name('admin.colors.delete');
+    Route::get('/materialy', [ProductMaterialController::class, 'index'])->middleware('auth')->name('admin.materials');
 
     /*
     * News
