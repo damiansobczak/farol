@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ProductSeeder::class,
             ColorSeeder::class,
+            CollectionSeeder::class,
+            MaterialSeeder::class,
         ]);
     }
 }
