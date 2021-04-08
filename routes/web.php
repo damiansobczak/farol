@@ -30,9 +30,9 @@ use App\Http\Controllers\RealisationPageController;
 */
 
 Route::get('/', [MainPageController::class, 'main'])->name('main');
-Route::get('/o-firmie', [AboutPageController::class, 'main'])->name('company');
+Route::view('/o-firmie', 'pages.about')->name('company');
 Route::view('/produkt', 'pages.product')->name('product');
-Route::get('/realizacje', [RealisationPageController::class, 'main'])->name('realisations');
+Route::view('/realizacje', 'pages.realisations')->name('realisations');
 Route::view('/realizacja', 'pages.realisation')->name('realisation');
 
 /*

@@ -17,10 +17,13 @@ class MainPageController extends Controller
 		$posts = Cache::remember('pages.main.posts', 60 * 60 * 24, function () {
 			return Post::select('id', 'title', 'description', 'image', 'imageAlt')->latest()->where('show', true)->limit(3)->get();
 		});
-		$categories = Cache::remember('pages.categories', 60 * 60 * 24, function () {
+
+		return view('pages.main', compact('featuredProducts', 'posts'));
+	}
+	public static function categories()
+	{
+		return Cache::remember('pages.categories', 60 * 60 * 24, function () {
 			return Category::select('id', 'image', 'imageAlt', 'name')->get();
 		});
-
-		return view('pages.main', compact('featuredProducts', 'posts', 'categories'));
 	}
 }
