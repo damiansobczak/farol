@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Material;
 use Illuminate\Http\Request;
 use App\Services\ManageStorageService;
 use App\Services\GalleryService;
@@ -22,6 +23,7 @@ class ProductController extends Controller
 			"description" => "Opis",
 			"show" => "Aktywny",
 			"avaibility" => "Dostępność",
+			"availableMaterials" => "Dostępne kolory",
 			"gallery" => "Galeria",
 			"seoTitle" => "Tytuł seo",
 			"seoDescription" => "Opis seo",
@@ -39,6 +41,7 @@ class ProductController extends Controller
 			"featured" => "nullable|boolean",
 			"description" => "required",
 			"show" => "nullable|boolean",
+			"availableMaterials.*" => "nullable|exists:materials,id",
 			"avaibility" => "nullable|boolean",
 			"gallery.*" => "nullable|image",
 			"seoTitle" => "nullable|max:255",
@@ -55,7 +58,8 @@ class ProductController extends Controller
 	public function create()
 	{
 		$categories = Category::select('id', 'name')->get();
-		return view('admin.pages.products.form', compact('categories'));
+		$materials = Material::select('id', 'name')->get();
+		return view('admin.pages.products.form', compact('categories', 'materials'));
 	}
 	public function store(Request $req)
 	{
@@ -69,7 +73,8 @@ class ProductController extends Controller
 	{
 		$product = Product::findOrFail($productId);
 		$categories = Category::select('id', 'name')->get();
-		return view('admin.pages.products.form', compact('product', 'categories'));
+		$materials = Material::select('id', 'name')->get();
+		return view('admin.pages.products.form', compact('product', 'categories', 'materials'));
 	}
 	public function update(Request $req, Int $productId)
 	{
