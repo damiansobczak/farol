@@ -3,10 +3,7 @@
         <a href="{{ route('main') }}" class="w-auto xl:w-96">
             <img src="{{ asset('logo.png') }}" alt="Logo sklepu internetowego" class="w-40">
         </a>
-        <div class="flex items-center w-full sm:w-80 mt-3 md:mt-0">
-            <input type="text" name="" placeholder="Wyszukaj..." id=""
-                class="p-3 rounded-full border border-solid text-gray-400 border-gray-100 w-full h-10 font-light text-sm">
-        </div>
+        @livewire('search')
         <p class="font-light text-gray-400 text-sm text-center w-full lg:text-right lg:w-96 mt-4 lg:mt-0 font-display">
             Potrzebujesz
             pomocy
