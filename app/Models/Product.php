@@ -20,7 +20,6 @@ class Product extends Model
 		'description',
 		'show',
 		'avaibility',
-		'availableMaterials',
 		'gallery',
 		'seoTitle',
 		'seoDescription',
@@ -87,21 +86,12 @@ class Product extends Model
 		return $this->belongsTo(Category::class, 'categoryId');
 	}
 	/**
-	 * Accessor for types available materials of product
+	 * Get collections for product
 	 *
 	 * @return array
-	 */	
-	public function getAvailableMaterialsAttribute()
+	 */
+	public function collections()
 	{
-		return json_decode($this->attributes['availableMaterials']);
-	}
-	/**
-	 * Mutator for types available materials of product
-	 *
-	 * @return void
-	 */	
-	public function setAvailableMaterialsAttribute($value)
-	{
-		$this->attributes['availableMaterials'] = json_encode($value);
+		return $this->belongsToMany(Collection::class);
 	}
 }

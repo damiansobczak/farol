@@ -30,7 +30,6 @@ class ProductFactory extends Factory
 			"description" => $this->faker->sentence(20),
 			"show" => $this->faker->numberBetween(0, 1),
 			"avaibility" => $this->faker->numberBetween(0, 1),
-			"availableMaterials" => array("1"),
 			"seoTitle" => $this->faker->sentence(20),
 			"seoDescription" => $this->faker->sentence(20),
 			"ogTitle" => $this->faker->sentence(20),

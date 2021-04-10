@@ -24,7 +24,6 @@ class CreateProductsTable extends Migration
 			$table->text('description');
 			$table->boolean('show')->nullable()->default(false);
 			$table->string('avaibility')->nullable()->default(false);
-			$table->string('availableMaterials')->nullable();
 			$table->string('gallery')->nullable();
 			$table->string('seoTitle')->nullable();
 			$table->string('seoDescription')->nullable();

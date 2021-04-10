@@ -81,12 +81,14 @@
 					@if(isset($product) && $product->featured) {{ 'checked' }} @endif value="1">
 				<p class="text-sm text-gray-500 ml-2 font-light">Promowanie</p>
 			</label>
-			<label for="availableMaterials" class="text-sm text-gray-400 mt-4 block">
-				Atrybuty produktu
-				<select name="availableMaterials[]" id="availableMaterials" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" multiple>
-					@foreach($materials as $material)
-						<option value="{{ $material->id }}" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full" @if(isset($product) &&  array_search($material->id, $product->availableMaterials) !== false) selected @endif>{{ $material->name }}</option>
-					@endforeach
+			<label for="collections" class="text-sm text-gray-400 mt-4 block">
+				Dostępne kolekcje
+				<select name="collections[]" id="collections" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full p-3 rounded border border-gray-200" multiple>
+					@if(isset($collections))
+						@foreach($collections as $collection)
+							<option value="{{ $collection->id }}" class="font-light hover:border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 placeholder-gray-300 w-full" @if(isset($product->collections))@foreach($product->collections as $pcol)@if($pcol->id === $collection->id) selected @endif @endforeach @endif>{{ $collection->name }}</option>
+						@endforeach
+					@endif
 				</select>
 			</label>
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Material;
+use App\Models\Collection;
 use Illuminate\Http\Request;
 use App\Services\ManageStorageService;
 use App\Services\GalleryService;
@@ -23,7 +23,7 @@ class ProductController extends Controller
 			"description" => "Opis",
 			"show" => "Aktywny",
 			"avaibility" => "Dostępność",
-			"availableMaterials" => "Dostępne kolory",
+			"collections" => "Dostępne kolekcje",
 			"gallery" => "Galeria",
 			"seoTitle" => "Tytuł seo",
 			"seoDescription" => "Opis seo",
@@ -41,7 +41,7 @@ class ProductController extends Controller
 			"featured" => "nullable|boolean",
 			"description" => "required",
 			"show" => "nullable|boolean",
-			"availableMaterials.*" => "nullable|exists:materials,id",
+			"collections.*" => "nullable|exists:collections,id",
 			"avaibility" => "nullable|boolean",
 			"gallery.*" => "nullable|image",
 			"seoTitle" => "nullable|max:255",
@@ -58,8 +58,8 @@ class ProductController extends Controller
 	public function create()
 	{
 		$categories = Category::select('id', 'name')->get();
-		$materials = Material::select('id', 'name')->get();
-		return view('admin.pages.products.form', compact('categories', 'materials'));
+		$collections = Collection::select('id', 'name')->get();
+		return view('admin.pages.products.form', compact('categories', 'collections'));
 	}
 	public function store(Request $req)
 	{
@@ -67,14 +67,15 @@ class ProductController extends Controller
 		$validated['image'] = ManageStorageService::store($req->file('image'), 'products');
 		$validated['gallery'] = GalleryService::store($req->file('gallery'), 'products');
 		$product = Product::create($validated);
+		$product->collections()->attach(Collection::find($validated['collections']));
 		return redirect()->route('admin.products')->with('success', 'Produkt został pomyślnie utworzony!');
 	}
 	public function edit(Int $productId)
 	{
-		$product = Product::findOrFail($productId);
+		$product = Product::with('collections')->findOrFail($productId);
 		$categories = Category::select('id', 'name')->get();
-		$materials = Material::select('id', 'name')->get();
-		return view('admin.pages.products.form', compact('product', 'categories', 'materials'));
+		$collections = Collection::select('id', 'name')->get();
+		return view('admin.pages.products.form', compact('product', 'categories', 'collections'));
 	}
 	public function update(Request $req, Int $productId)
 	{
@@ -85,6 +86,8 @@ class ProductController extends Controller
 		$validated['image'] = ManageStorageService::update($req->file('image'), $oldImage, 'products');
 		$validated['gallery'] = GalleryService::update($req->file('gallery'), $oldGallery, 'products');
 		$product->update($validated);
+		$product->collections()->detach();
+		$product->collections()->attach(Collection::find($validated['collections']));
 		return redirect()->route('admin.products')->with('success', 'Produkt został pomyślnie zaktualizowany!');
 	}
 }

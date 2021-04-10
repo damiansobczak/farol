@@ -13,6 +13,7 @@ use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\AboutPageController;
 use App\Http\Controllers\ProductMaterialController;
 use App\Http\Controllers\RealisationPageController;
+use App\Http\Controllers\ProductPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +32,7 @@ use App\Http\Controllers\RealisationPageController;
 
 Route::get('/', [MainPageController::class, 'main'])->name('main');
 Route::view('/o-firmie', 'pages.about')->name('company');
-Route::view('/produkt', 'pages.product')->name('product');
+Route::get('/produkt/{slug}', [ProductPageController::class, 'show'])->name('product');
 Route::view('/realizacje', 'pages.realisations')->name('realisations');
 Route::view('/realizacja', 'pages.realisation')->name('realisation');
 

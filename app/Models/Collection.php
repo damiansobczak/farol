@@ -25,4 +25,11 @@ class Collection extends Model
     {
         return $this->hasMany(Material::class);
     }
+    /**
+     * Get the products of the collection.
+     */
+    public function products()
+    {
+        return $this->belongsToMany(Products::class);
+    }
 }
