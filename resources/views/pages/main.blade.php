@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('styles')
+@livewireScripts
+@endsection
+
 @section('Strona Główna')
 
 @section('content')
@@ -13,5 +17,6 @@
 @endsection
 
 @section('scripts')
+@livewireScripts
 <script src="{{ asset('js/app.js') }}"></script>
 @endsection
