@@ -95,8 +95,6 @@
 
 __webpack_require__(/*! ./menu */ "./resources/js/menu.js");
 
-__webpack_require__(/*! ./popover */ "./resources/js/popover.js");
-
 /***/ }),
 
 /***/ "./resources/js/menu.js":
@@ -120,72 +118,6 @@ menuTrigger.addEventListener("click", function (e) {
   } else {
     menu.classList.remove("hidden");
     open = true;
-  }
-});
-
-/***/ }),
-
-/***/ "./resources/js/popover.js":
-/*!*********************************!*\
-  !*** ./resources/js/popover.js ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var trigger = document.querySelector("#menu-popover-trigger");
-var popover = document.querySelector("#menu-popover");
-var animating = false;
-
-var popIn = function popIn() {
-  animating = true;
-  popover.classList.remove("hidden", "opacity-0");
-
-  popover.animate([{
-    opacity: "0",
-    transform: "translateY(-10px)"
-  }, {
-    opacity: "1",
-    transform: "translateY(0)"
-  }], {
-    duration: 100,
-    fill: "both",
-    easing: "cubic-bezier(0.42, 0, 0.58, 1)"
-  }).onfinish = function () {
-    trigger.setAttribute("aria-expanded", "true");
-    animating = false;
-  };
-};
-
-var popOut = function popOut() {
-  animating = true;
-
-  popover.animate([{
-    opacity: "1",
-    transform: "translateY(0)"
-  }, {
-    opacity: "0",
-    transform: "translateY(-10px)"
-  }], {
-    duration: 100,
-    fill: "both",
-    easing: "cubic-bezier(0.42, 0, 0.58, 1)"
-  }).onfinish = function () {
-    trigger.setAttribute("aria-expanded", "false");
-    popover.classList.add("hidden", "opacity-0");
-    animating = false;
-  };
-};
-
-trigger.addEventListener("click", function (e) {
-  e.preventDefault();
-  e.stopPropagation();
-
-  if (trigger.getAttribute("aria-expanded") === "false" && !animating) {
-    popIn();
-  }
-
-  if (trigger.getAttribute("aria-expanded") === "true" && !animating) {
-    popOut();
   }
 });
 

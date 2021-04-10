@@ -20,27 +20,8 @@
 			<a href="{{ route('company') }}" class="px-3 py-2 hover:text-green-600 font-medium">O nas</a>
 		</li>
 		<li>
-			<a href="#" class="px-3 py-2 hover:text-green-600 font-medium" id="menu-popover-trigger"
-				aria-expanded="false">Produkty</a>
-			<div class="flex flex-col md:flex-row bg-none bg-transparent md:bg-white w-full mx-auto max-w-fluid md:fixed left-0 right-0 md:top-52 lg:top-44 border border-gray-100 py-2 md:py-6 hidden opacity-0"
-				id="menu-popover">
-				<div
-					class="bg-gray-100 md:bg-transparent border-r border-gray-100 border-solid px-3 md:px-5 font-medium w-full md:w-64 mb-3 md:mb-0 text-gray-800">
-					Nasz asortyment
-				</div>
-				<ul class="flex flex-col md:flex-row md:items-center px-3 md:px-8 justify-between flex-1 leading-10">
-					@foreach($categories as $category)
-					<li>
-						<a href="#"
-							class="text-sm md:text-center flex flex-col md:items-center hover:opacity-75 mb-4 md:mb-0">
-							<img src="{{ $category->image ? $category->img : asset('produkt.png') }}"
-								alt="{{ $category->imageAlt }}" class="hidden md:block object-cover h-28 mb-3">
-							<span class="text-gray-800 font-medium">{{ $category->name }}</span>
-						</a>
-					</li>
-					@endforeach
-				</ul>
-			</div>
+			<a href="{{ route('products') }}" class="px-3 py-2 hover:text-green-600 font-medium"
+				id="menu-popover-trigger" aria-expanded="false">Produkty</a>
 		</li>
 		<li>
 			<a href="{{ route('realisations') }}" class="px-3 py-2 hover:text-green-600 font-medium">Realizacje</a>
