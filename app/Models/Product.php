@@ -85,4 +85,13 @@ class Product extends Model
 	{
 		return $this->belongsTo(Category::class, 'categoryId');
 	}
+	/**
+	 * Get collections for product
+	 *
+	 * @return array
+	 */
+	public function collections()
+	{
+		return $this->belongsToMany(Collection::class);
+	}
 }

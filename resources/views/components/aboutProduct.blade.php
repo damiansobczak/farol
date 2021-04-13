@@ -1,12 +1,12 @@
 <div class="max-w-fluid mx-auto pt-12 pb-12 mb-12 border-b border-gray-100 lg:py-20">
     <div class="container mx-auto flex flex-wrap items-center">
         <div class="w-full md:w-1/2 lg:w-1/3 rounded-lg p-5 flex items-center justify-center border border-gray-100">
-            <img src="{{ asset('produkt.png') }}" alt="" class="h-96">
+            <img src="{{ asset('storage/'.$product->image) }}" alt="" class="h-96">
         </div>
         <div class="w-full md:w-1/2 lg:w-3/5 mt-12 md:pl-12">
             <div class="rounded w-52 h-1 bg-green-500 mb-6"></div>
             <p class="font-semibold text-green-400 font-display mb-3 text-sm">Idealne do mieszkań i apartamentów</p>
-            <h2 class="font-semibold text-3xl text-gray-800 font-display">Roleta Uni Besta</h2>
+            <h2 class="font-semibold text-3xl text-gray-800 font-display">{{ $product->name }}</h2>
             <p class="text-gray-400 my-5 text-sm leading-6">Firma Farol powstała w 2014 roku. Specjalizujemy się w
                 branży
                 osłon
