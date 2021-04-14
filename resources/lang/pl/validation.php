@@ -106,8 +106,8 @@ return [
 	'required_without_all' => 'Pole :attribute jest wymagane, gdy nie ma żadnej z wartości :value.',
 	'same' => ':attribute i :other muszą być zgodne.',
 	'size' => [
-		'numeric' => ':attribute musi mieć wartość: rozmiar.',
-		'file' => ':attribute musi mieć: rozmiar w kilobajtach.',
+		'numeric' => ':attribute musi mieć wartość :size.',
+		'file' => ':attribute musi mieć :size w kilobajtach.',
 		'string' => ':attribute musi zawierać: rozmiar znaków.',
 		'array' => ':attribute musi zawierać: rozmiar elementów.',
 	],

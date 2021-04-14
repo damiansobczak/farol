@@ -17,42 +17,66 @@ class CategoryController extends Controller
 			'imageAlt' => 'Opis obrazu kategorii',
 		];
 	}
-	public function validator(array $data, Bool $edit)
+
+	public function validator(array $data)
 	{
 		return Validator::make($data, [
-			"name" => $edit ? "required|string" : "required|string|unique:categories,name",
-			"image" => "nullable|image",
+			"name" => "required|string",
+			"image" => "nullable|file|mimes:jpeg,jpg,png|max:512",
 			"imageAlt" => "nullable|string"
 		], [], $this->attributes());
 	}
+
 	public function index()
 	{
-		$categories = Category::select('id', 'image', 'imageAlt', 'name')->get();
+		$categories = Category::select('id', 'image', 'imageAlt', 'name')->latest()->get();
 		return view('admin.pages.category.index', compact('categories'));
 	}
+
 	public function create()
 	{
 		return view('admin.pages.category.form');
 	}
+
 	public function store(Request $req)
 	{
-		$validated = $this->validator($req->all(), false)->validate();
+		$validated = $this->validator($req->all())->validate();
 		$validated['image'] = ManageStorageService::store($req->file('image'), 'categories');
 		$category = Category::create($validated);
 		return redirect()->route('admin.categories')->with('success', 'Kategoria została pomyślnie utworzona!');
 	}
+
 	public function edit(Int $categoryId)
 	{
 		$category = Category::findOrFail($categoryId);
 		return view('admin.pages.category.form', compact('category'));
 	}
+
 	public function update(Request $req, Int $categoryId)
 	{
 		$category = Category::findOrFail($categoryId);
 		$oldImage = $category->image;
-		$validated = $this->validator($req->all(), true)->validate();
+		$validated = $this->validator($req->all())->validate();
 		$validated['image'] = ManageStorageService::update($req->file('image'), $oldImage, 'categories');
 		$category->update($validated);
 		return redirect()->route('admin.categories')->with('success', 'Kategoria została pomyślnie zaktualizowana!');
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function destroy(Int $categoryId)
+	{
+		$category = Category::findOrFail($categoryId);
+		if ($category->products->count()) {
+			return redirect()->route('admin.categories.edit', $categoryId)->with('error', 'Kategoria zawiera produkty. W pierwszej kolejności usuń obecną kategorię z wszystkich produktów które ją uzywają!');
+		}
+		$category->delete();
+		ManageStorageService::destroy($category->image);
+
+		return redirect()->route('admin.categories')->with('success', 'Kategoria została pomyślnie usunięta!');
 	}
 }

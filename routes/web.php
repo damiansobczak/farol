@@ -46,7 +46,11 @@ Route::prefix('admin')->group(function () {
     /*
     * Dashboard
     */
-    Route::view('/', 'admin.pages.dashboard')->middleware('auth')->name('admin.dashboard');
+    Route::view('/', 'admin.pages.dashboard', [
+        "products" => \App\Models\Product::all(),
+        "categories" => \App\Models\Category::all(),
+        "materials" => \App\Models\Material::all(),
+    ])->middleware('auth')->name('admin.dashboard');
 
     /*
     * Auth
@@ -67,6 +71,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/kategorie/formularz', [CategoryController::class, 'store'])->middleware('auth')->name('admin.categories.save');
     Route::get('/kategorie/{categoryId}', [CategoryController::class, 'edit'])->middleware('auth')->name('admin.categories.edit');
     Route::put('/kategorie/{categoryId}', [CategoryController::class, 'update'])->middleware('auth')->name('admin.categories.editSave');
+    Route::delete('/kategorie/{categoryId}', [CategoryController::class, 'destroy'])->middleware('auth')->name('admin.categories.delete');
 
     /*
     * Products
@@ -76,6 +81,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/produkty/formularz', [ProductController::class, 'store'])->middleware('auth')->name('admin.products.save');
     Route::get('/produkty/{productId}', [ProductController::class, 'edit'])->middleware('auth')->name('admin.products.edit');
     Route::put('/produkty/{productId}', [ProductController::class, 'update'])->middleware('auth')->name('admin.products.editSave');
+    Route::delete('/produkty/{productId}', [ProductController::class, 'destroy'])->middleware('auth')->name('admin.products.delete');
 
     /*
     * Materials
