@@ -31,11 +31,12 @@ class ProductController extends Controller
 			"ogDesc" => "Opis og"
 		];
 	}
-	public function validator(array $data, Bool $edit)
+
+	public function validator(array $data)
 	{
 		return Validator::make($data, [
 			"name" => "required|max:64",
-			"image" => "required|image",
+			"image" => "required|file|mimes:jpg,jpeg,png|max:512",
 			"imageAlt" => "nullable|max:255",
 			"categoryId" => "required|exists:categories,id",
 			"featured" => "nullable|boolean",
@@ -43,33 +44,41 @@ class ProductController extends Controller
 			"show" => "nullable|boolean",
 			"collections.*" => "nullable|exists:collections,id",
 			"avaibility" => "nullable|boolean",
-			"gallery.*" => "nullable|image",
+			"gallery.*" => "nullable|file|mimes:jpeg,jpg,png|max:256",
 			"seoTitle" => "nullable|max:255",
 			"seoDescription" => "nullable|max:600",
 			"ogTitle" => "nullable|max:255",
 			"ogDesc" => "nullable|max:600"
 		], [], $this->attributes());
 	}
+
 	public function index()
 	{
-		$products = Product::select('id', 'image', 'imageAlt', 'name')->get();
+		$products = Product::select('id', 'image', 'imageAlt', 'name')->latest()->get();
 		return view('admin.pages.products.index', compact('products'));
 	}
+
 	public function create()
 	{
 		$categories = Category::select('id', 'name')->get();
 		$collections = Collection::select('id', 'name')->get();
 		return view('admin.pages.products.form', compact('categories', 'collections'));
 	}
+
 	public function store(Request $req)
 	{
-		$validated = $this->validator($req->all(), false)->validate();
+		$validated = $this->validator($req->all())->validate();
 		$validated['image'] = ManageStorageService::store($req->file('image'), 'products');
 		$validated['gallery'] = GalleryService::store($req->file('gallery'), 'products');
 		$product = Product::create($validated);
-		$product->collections()->attach(Collection::find($validated['collections']));
+
+		if (isset($validated['collections'])) {
+			$product->collections()->attach(Collection::findOrFail($validated['collections']));
+		}
+
 		return redirect()->route('admin.products')->with('success', 'Produkt został pomyślnie utworzony!');
 	}
+
 	public function edit(Int $productId)
 	{
 		$product = Product::with('collections')->findOrFail($productId);
@@ -77,17 +86,37 @@ class ProductController extends Controller
 		$collections = Collection::select('id', 'name')->get();
 		return view('admin.pages.products.form', compact('product', 'categories', 'collections'));
 	}
+
 	public function update(Request $req, Int $productId)
 	{
 		$product = Product::findOrFail($productId);
 		$oldImage = $product->image;
 		$oldGallery = $product->gallery;
-		$validated = $this->validator($req->all(), true)->validate();
+		$validated = $this->validator($req->all())->validate();
 		$validated['image'] = ManageStorageService::update($req->file('image'), $oldImage, 'products');
 		$validated['gallery'] = GalleryService::update($req->file('gallery'), $oldGallery, 'products');
 		$product->update($validated);
 		$product->collections()->detach();
-		$product->collections()->attach(Collection::find($validated['collections']));
+		if (isset($validated['collections'])) {
+			$product->collections()->attach(Collection::findOrFail($validated['collections']));
+		}
 		return redirect()->route('admin.products')->with('success', 'Produkt został pomyślnie zaktualizowany!');
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function destroy(Int $productId)
+	{
+		$product = Product::findOrFail($productId);
+		$product->collections()->detach();
+		$product->delete();
+		ManageStorageService::destroy($product->image);
+		GalleryService::destroy($product->gallery);
+
+		return redirect()->route('admin.products')->with('success', 'Produkt został pomyślnie usunięty!');
 	}
 }

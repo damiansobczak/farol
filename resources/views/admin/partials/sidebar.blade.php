@@ -1,11 +1,6 @@
 <aside class="h-full w-1/6 bg-gray-800">
 	<div class="flex items-center justify-between h-20 border-b border-gray-700 px-5">
-		<div class="font-bold text-base text-white">UICLOUD | <span class="font-light text-gray-400">Admin</span></div>
-		<div class="flex justify-center items-center p-2 bg-gray-700 rounded hover:bg-gray-600 cursor-pointer">
-			<svg class="text-white" width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none"
-				viewBox="0 0 24 24" stroke="currentColor">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
-			</svg>
+		<div class="font-bold text-base text-white">UICLOUD | <span class="font-light text-gray-400"> Farol Admin</span>
 		</div>
 	</div>
 	{{--  Shop--}}
