@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Material extends Model
 {
@@ -40,5 +42,15 @@ class Material extends Model
     public function collection()
     {
         return $this->belongsTo(Collection::class);
+    }
+
+    /**
+     * Accessor for product images
+     *
+     * @return Storage instance
+     */
+    public function getImgAttribute()
+    {
+        return Str::startsWith($this->image, 'http') ? $this->image : Storage::url($this->image);
     }
 }
