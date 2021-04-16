@@ -36,7 +36,7 @@
                 <label for="formColorName" class="flex-1">
                     <div class="font-semibold text-gray-700 mb-2">Nazwa koloru</div>
                     <input
-                        class="appereance-none px-3 py-2 rounded border ring-4 ring-transparent focus:ring-indigo-100 focus:border-indigo-500 outline-none h-10 w-full"
+                        class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200"
                         type="text" name="formColorName" id="formColorName" placeholder="Niebieski..."
                         wire:model="formColorName">
                     @error('formColorName')
@@ -50,7 +50,7 @@
                     <div class="font-semibold text-gray-700 mb-2">Kolor</div>
                     <input type="color" name="formColorColor" id="formColorColor" placeholder="#ffffff"
                         wire:model="formColorColor"
-                        class="appereance-none px-3 py-2 rounded border ring-4 ring-transparent focus:ring-indigo-100 focus:border-indigo-500 outline-none h-10 w-full bg-transparent">
+                        class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
                     @error('formColorColor')
                     <div class="bg-red-50 text-red-500 p-2 rounded mt-2">
                         {{ $message }}
@@ -100,7 +100,7 @@
                     <div class="font-semibold text-gray-700 mb-2">Nazwa kolekcji</div>
                     <input type="text" name="formCollectionName" id="formCollectionName" placeholder="Carina..."
                         wire:model="formCollectionName"
-                        class="appereance-none px-3 py-2 rounded border ring-4 ring-transparent focus:ring-indigo-100 focus:border-indigo-500 outline-none h-10 w-full bg-transparent">
+                        class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
                     @error('formCollectionName')
                     <div class="bg-red-50 text-red-500 p-2 rounded mt-2">
                         {{ $message }}
@@ -166,8 +166,7 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $material->absorption }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $material->reflection }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            <img src="{{ url('/') . "/" . $material->image }}" class="rounded-full w-8 h-8 object-cover"
-                                alt="">
+                            <img src="{{ $material->img }}" class="rounded-full w-8 h-8 object-cover" alt="">
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             {{ $material->color->name ?? 'Brak koloru' }}
@@ -194,7 +193,7 @@
                     <div class="font-semibold text-gray-700 mb-2">Nazwa materiału</div>
                     <input type="text" name="formMaterialName" id="formMaterialName" placeholder="Materiał..."
                         wire:model="formMaterialName"
-                        class="appereance-none px-3 py-2 rounded border ring-4 ring-transparent focus:ring-indigo-100 focus:border-indigo-500 outline-none h-10 w-full bg-transparent">
+                        class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
                     @error('formMaterialName')
                     <div class="bg-red-50 text-red-500 p-2 rounded mt-2">
                         {{ $message }}
@@ -206,7 +205,7 @@
                     <div class="font-semibold text-gray-700 mb-2">Kod</div>
                     <input type="text" name="formMaterialCode" id="formMaterialCode" placeholder="A602.."
                         wire:model="formMaterialCode"
-                        class="appereance-none px-3 py-2 rounded border ring-4 ring-transparent focus:ring-indigo-100 focus:border-indigo-500 outline-none h-10 w-full bg-transparent">
+                        class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
                 </label>
 
                 <div class="w-full mt-6 mb-4">
@@ -217,21 +216,21 @@
                     <div class="font-semibold text-gray-700 mb-2">Transmisja</div>
                     <input type="text" name="formMaterialTransmission" id="formMaterialTransmission" placeholder="0%.."
                         wire:model="formMaterialTransmission"
-                        class="appereance-none px-3 py-2 rounded border ring-4 ring-transparent focus:ring-indigo-100 focus:border-indigo-500 outline-none h-10 w-full bg-transparent">
+                        class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
                 </label>
 
                 <label for="formMaterialReflection" class="w-full md:w-1/3 pr-4 pb-4">
                     <div class="font-semibold text-gray-700 mb-2">Refleksja</div>
                     <input type="text" name="formMaterialReflection" id="formMaterialReflection" placeholder="0%.."
                         wire:model="formMaterialReflection"
-                        class="appereance-none px-3 py-2 rounded border ring-4 ring-transparent focus:ring-indigo-100 focus:border-indigo-500 outline-none h-10 w-full bg-transparent">
+                        class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
                 </label>
 
                 <label for="formMaterialAbsorption" class="w-full md:w-1/3 pr-4 pb-4">
                     <div class="font-semibold text-gray-700 mb-2">Absorpcja</div>
                     <input type="text" name="formMaterialAbsorption" id="formMaterialAbsorption" placeholder="0%.."
                         wire:model="formMaterialAbsorption"
-                        class="appereance-none px-3 py-2 rounded border ring-4 ring-transparent focus:ring-indigo-100 focus:border-indigo-500 outline-none h-10 w-full bg-transparent">
+                        class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
                 </label>
 
                 <div class="w-full mt-6 mb-4">
@@ -242,7 +241,7 @@
                     <div class="font-semibold text-gray-700 mb-2">Obrazek</div>
                     <input type="file" name="formMaterialImage" id="formMaterialImage" placeholder="A602.."
                         wire:model="formMaterialImage"
-                        class="appereance-none px-3 py-2 rounded border ring-4 ring-transparent focus:ring-indigo-100 focus:border-indigo-500 outline-none h-10 w-full bg-transparent">
+                        class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
                     @error('formMaterialImage')
                     <div class="bg-red-50 text-red-500 p-2 rounded mt-2">
                         {{ $message }}
@@ -254,7 +253,7 @@
                     <div class="font-semibold text-gray-700 mb-2">Podpis obrazka</div>
                     <input type="text" name="formMaterialImageAlt" id="formMaterialImageAlt" placeholder="A602.."
                         wire:model="formMaterialImageAlt"
-                        class="appereance-none px-3 py-2 rounded border ring-4 ring-transparent focus:ring-indigo-100 focus:border-indigo-500 outline-none h-10 w-full bg-transparent">
+                        class="aoutline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
                 </label>
 
                 <div class="w-full mt-6 mb-4">
@@ -264,7 +263,7 @@
                 <label for="formMaterialColor" class="w-full md:w-1/2 pr-4 pb-4">
                     <div class="font-semibold text-gray-700 mb-2">Kolor</div>
                     <select id="formMaterialColor" name="formMaterialColor" wire:model="formMaterialColor"
-                        class="appereance-none px-3 py-2 rounded border ring-4 ring-transparent focus:ring-indigo-100 focus:border-indigo-500 outline-none h-10 w-full bg-transparent">
+                        class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
                         <option value="" selected>Wybierz...</option>
                         @foreach ($colors as $color)
                         <option value="{{ $color->id }}">{{ $color->name }}</option>
@@ -281,7 +280,7 @@
                     <div class="font-semibold text-gray-700 mb-2">Kolekcja</div>
                     <select id="formMaterialCollection" name="formMaterialCollection"
                         wire:model="formMaterialCollection"
-                        class="appereance-none px-3 py-2 rounded border ring-4 ring-transparent focus:ring-indigo-100 focus:border-indigo-500 outline-none h-10 w-full bg-transparent">
+                        class="aoutline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
                         <option value="" selected>Wybierz...</option>
                         @foreach ($collections as $collection)
                         <option value="{{ $collection->id }}">{{ $collection->name }}</option>

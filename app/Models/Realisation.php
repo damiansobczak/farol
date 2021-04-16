@@ -40,7 +40,7 @@ class Realisation extends Model
 	 */
 	public function getMovieAttribute()
 	{
-		return Storage::url($this->video) ?? null;
+		return $this->video ? Storage::url($this->video) : null;
 	}
 
 	/**

@@ -27,7 +27,7 @@ class Product extends Model
 		'ogDesc'
 	];
 	/**
-	 * Accessor for gallery images
+	 * Accessor for product image
 	 *
 	 * @return Storage instance
 	 */
