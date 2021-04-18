@@ -25,7 +25,17 @@ class Material extends Model
         'image',
         'imageAlt',
         'color_id',
-        'collection_id'
+        'collection_id',
+        'property_gummed',
+        'property_blackout',
+        'property_onecolor',
+        'property_patterned',
+        'property_washing',
+        'property_flame_retardant',
+        'property_teflon',
+        'property_pvc_free',
+        'property_office',
+        'property_rebound',
     ];
 
     /**
