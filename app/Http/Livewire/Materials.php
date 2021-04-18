@@ -35,6 +35,16 @@ class Materials extends Component
     public $formMaterialImageAlt;
     public $formMaterialColor;
     public $formMaterialCollection;
+    public $formMaterialPropertyGummed;
+    public $formMaterialPropertyBlackout;
+    public $formMaterialPropertyOneColor;
+    public $formMaterialPropertyPatterned;
+    public $formMaterialPropertyWashing;
+    public $formMaterialPropertyFlameRetardant;
+    public $formMaterialPropertyTeflon;
+    public $formMaterialPropertyPvcFree;
+    public $formMaterialPropertyOffice;
+    public $formMaterialPropertyRebound;
 
     protected $messages = [
         'formColorName.required' => 'Nazwa jest wymagana',
@@ -96,6 +106,16 @@ class Materials extends Component
             'imageAlt' => $this->formMaterialImageAlt,
             'color_id' => $this->formMaterialColor,
             'collection_id' => $this->formMaterialCollection,
+            'property_gummed' => $this->formMaterialPropertyGummed,
+            'property_blackout' => $this->formMaterialPropertyBlackout,
+            'property_onecolor' => $this->formMaterialPropertyOneColor,
+            'property_patterned' => $this->formMaterialPropertyPatterned,
+            'property_washing' => $this->formMaterialPropertyWashing,
+            'property_flame_retardant' => $this->formMaterialPropertyFlameRetardant,
+            'property_teflon' => $this->formMaterialPropertyTeflon,
+            'property_pvc_free' => $this->formMaterialPropertyPvcFree,
+            'property_office' => $this->formMaterialPropertyOffice,
+            'property_rebound' => $this->formMaterialPropertyRebound,
         ]);
 
         $this->materials = Material::all();

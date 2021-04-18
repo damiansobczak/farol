@@ -292,14 +292,91 @@
                     </div>
                     @enderror
                 </label>
+
+                <div class="w-full mt-6 mb-4">
+                    <p class="uppercase tracking-wider text-xs text-gray-700 font-semibold">Atrybuty</p>
+                    <div class="border-b border-gray-200 my-4"></div>
+                </div>
+                <div class="flex flex-wrap w-full">
+                    <label for="property_gummed" class="flex items-center cursor-pointer w-1/3 mb-4">
+                        <input type="checkbox" id="property_gummed" name="property_gummed"
+                            class="h-5 w-5 border border-gray-300 rounded checked:bg-indigo-500 appearance-none outline-none"
+                            value="{{ $formMaterialPropertyGummed || 0}}" wire:model="formMaterialPropertyGummed">
+                        <p class="text-sm text-gray-500 ml-2 font-light whitespace-nowrap">Tkanina podgumowana</p>
+                    </label>
+                    <label for="property_blackout" class="flex items-center cursor-pointer w-1/3 mb-4">
+                        <input type="checkbox" id="property_blackout" name="property_blackout"
+                            class="h-5 w-5 border border-gray-300 rounded checked:bg-indigo-500 appearance-none outline-none"
+                            value="{{ $formMaterialPropertyBlackout|| 0}}" wire:model="formMaterialPropertyBlackout">
+                        <p class="text-sm text-gray-500 ml-2 font-light whitespace-nowrap">Tkanina zaciemniająca</p>
+                    </label>
+                    <label for="property_onecolor" class="flex items-center cursor-pointer w-1/3 mb-4">
+                        <input type="checkbox" id="property_onecolor" name="property_onecolor"
+                            class="h-5 w-5 border border-gray-300 rounded checked:bg-indigo-500 appearance-none outline-none"
+                            value="{{ $formMaterialPropertyOneColor || 0}}" wire:model="formMaterialPropertyOneColor">
+                        <p class="text-sm text-gray-500 ml-2 font-light whitespace-nowrap">Tkanina jednobarwna</p>
+                    </label>
+                    <label for="property_patterned" class="flex items-center cursor-pointer w-1/3 mb-4">
+                        <input type="checkbox" id="property_patterned" name="property_patterned"
+                            class="h-5 w-5 border border-gray-300 rounded checked:bg-indigo-500 appearance-none outline-none"
+                            value="{{ $formMaterialPropertyPatterned || 0}}" wire:model="formMaterialPropertyPatterned">
+                        <p class="text-sm text-gray-500 ml-2 font-light whitespace-nowrap">Tkanina wzorzysta</p>
+                    </label>
+                    <label for="property_washing" class="flex items-center cursor-pointer w-1/3 mb-4">
+                        <input type="checkbox" id="property_washing" name="property_washing"
+                            class="h-5 w-5 border border-gray-300 rounded checked:bg-indigo-500 appearance-none outline-none"
+                            value="{{ $formMaterialPropertyWashing|| 0}}" wire:model="formMaterialPropertyWashing">
+                        <p class="text-sm text-gray-500 ml-2 font-light whitespace-nowrap">Tkanina przeznaczona do
+                            prania</p>
+                    </label>
+                    <label for="property_flame_retardant" class="flex items-center cursor-pointer w-1/3 mb-4">
+                        <input type="checkbox" id="property_flame_retardant" name="property_flame_retardant"
+                            class="h-5 w-5 border border-gray-300 rounded checked:bg-indigo-500 appearance-none outline-none"
+                            value="{{ $formMaterialPropertyFlameRetardant|| 0}}"
+                            wire:model="formMaterialPropertyFlameRetardant">
+                        <p class="text-sm text-gray-500 ml-2 font-light whitespace-nowrap">Tkanina z atestem na
+                            trudnopalność</p>
+                    </label>
+                    <label for="property_teflon" class="flex items-center cursor-pointer w-1/3 mb-4">
+                        <input type="checkbox" id="property_teflon" name="property_teflon"
+                            class="h-5 w-5 border border-gray-300 rounded checked:bg-indigo-500 appearance-none outline-none"
+                            value="{{ $formMaterialPropertyTeflon || 0}}" wire:model="formMaterialPropertyTeflon">
+                        <p class="text-sm text-gray-500 ml-2 font-light whitespace-nowrap">Tkanina zawierająca teflon
+                        </p>
+                    </label>
+                    <label for="property_pvc_free" class="flex items-center cursor-pointer w-1/3 mb-4">
+                        <input type="checkbox" id="property_pvc_free" name="property_pvc_free"
+                            class="h-5 w-5 border border-gray-300 rounded checked:bg-indigo-500 appearance-none outline-none"
+                            wire:model="formMaterialPropertyPvcFree" value="{{ $formMaterialPropertyPvcFree || 0}}">
+                        <p class="text-sm text-gray-500 ml-2 font-light whitespace-nowrap">Tkanina wolna od PVC
+                        </p>
+                    </label>
+                    <label for="property_office" class="flex items-center cursor-pointer w-1/3 mb-4">
+                        <input type="checkbox" id="property_office" name="property_office"
+                            class="h-5 w-5 border border-gray-300 rounded checked:bg-indigo-500 appearance-none outline-none"
+                            wire:model="formMaterialPropertyOffice" value="{{ $formMaterialPropertyOffice || 0}}">
+                        <p class="text-sm text-gray-500 ml-2 font-light whitespace-nowrap">Tkanina przeznaczona do biur
+                        </p>
+                    </label>
+                    <label for="'property_rebound" class="flex items-center cursor-pointer w-1/3 mb-4">
+                        <input type="checkbox" id="'property_rebound" name="'property_rebound"
+                            class="h-5 w-5 border border-gray-300 rounded checked:bg-indigo-500 appearance-none outline-none"
+                            wire:model="formMaterialPropertyRebound" value="{{ $formMaterialPropertyRebound || 0}}" />
+                        <p class="text-sm text-gray-500 ml-2 font-light whitespace-nowrap">Tkanina o zwiększonym odbiciu
+                        </p>
+                    </label>
+                </div>
             </div>
 
-            <div class="bg-gray-50 p-3 flex justify-end">
-                <button class="rounded bg-indigo-500 text-white px-3 py-2 mt-4"
-                    wire:click.debounce.200ms="addMaterial">Dodaj</button>
-            </div>
 
         </div>
 
+        <div class="bg-gray-50 p-3 flex justify-end">
+            <button class="rounded bg-indigo-500 text-white px-3 py-2 mt-4"
+                wire:click.debounce.200ms="addMaterial">Dodaj</button>
+        </div>
+
     </div>
+
+</div>
 </div>
