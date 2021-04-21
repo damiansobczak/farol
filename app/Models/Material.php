@@ -55,12 +55,28 @@ class Material extends Model
     }
 
     /**
+     * The materials that belong to the attribute.
+     */
+    public function attributes()
+    {
+        return $this->belongsToMany(Attribute::class);
+    }
+
+    public function hasAttribute($id)
+    {
+        return $this->belongsToMany(Attribute::class)->firstWhere('attribute_id', $id) ? true : false;
+    }
+
+    /**
      * Accessor for product images
      *
      * @return Storage instance
      */
     public function getImgAttribute()
     {
-        return Str::startsWith($this->image, 'http') ? $this->image : Storage::url($this->image);
+        if ($this->image) {
+            return Str::startsWith($this->image, 'http') ? $this->image : Storage::url($this->image);
+        }
+        return null;
     }
 }

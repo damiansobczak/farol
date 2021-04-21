@@ -10,10 +10,10 @@ use App\Http\Controllers\RealisationController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MainPageController;
-use App\Http\Controllers\AboutPageController;
-use App\Http\Controllers\ProductMaterialController;
+use App\Http\Controllers\AttributeController;
+use App\Http\Controllers\GroupController;
+use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\RealisationPageController;
 use App\Http\Controllers\ProductPageController;
 
 /*
@@ -86,8 +86,27 @@ Route::prefix('admin')->group(function () {
     /*
     * Materials
     */
-    Route::get('/materialy', [ProductMaterialController::class, 'index'])->middleware('auth')->name('admin.materials');
+    Route::get('/materialy', [MaterialController::class, 'index'])->middleware('auth')->name('admin.materials');
+    Route::get('/materialy/formularz', [MaterialController::class, 'create'])->middleware('auth')->name('admin.materials.create');
+    Route::post('/materialy/formularz', [MaterialController::class, 'store'])->middleware('auth');
+    Route::get('/materialy/{id}', [MaterialController::class, 'edit'])->middleware('auth')->name('admin.materials.edit');
+    Route::put('/materialy/{id}', [MaterialController::class, 'update'])->middleware('auth');
+    Route::delete('/materialy/{id}', [MaterialController::class, 'destroy'])->middleware('auth')->name('admin.materials.delete');
 
+    /*
+    * Attributes
+    */
+    Route::get('/atrybuty', [AttributeController::class, 'index'])->middleware('auth')->name('admin.attributes');
+    Route::get('/atrybuty/formularz', [AttributeController::class, 'create'])->middleware('auth')->name('admin.attributes.create');
+    Route::post('/atrybuty/formularz', [AttributeController::class, 'store'])->middleware('auth');
+    Route::get('/atrybuty/{id}', [AttributeController::class, 'edit'])->middleware('auth')->name('admin.attributes.edit');
+    Route::put('/atrybuty/{id}', [AttributeController::class, 'update'])->middleware('auth');
+    Route::delete('/atrybuty/{id}', [AttributeController::class, 'destroy'])->middleware('auth')->name('admin.attributes.delete');
+
+    /*
+    * Groups
+    */
+    Route::get('/grupy', [GroupController::class, 'main'])->middleware('auth')->name('admin.groups');
     /*
     * News
     */

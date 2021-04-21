@@ -26,7 +26,7 @@
                         <div class="w-2/5">
                             <p class="font-display font-semibold text-md">{{ $product->name }}</p>
                             <div class="border-2 border-green-500 w-16 rounded mt-2 mb-4"></div>
-                            <a href="#"
+                            <a href="{{ route('product', $product->slug) }}"
                                 class="text-gray-400 flex items-center text-xs uppercase font-semibold whitespace-nowrap">Zobacz
                                 więcej <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
