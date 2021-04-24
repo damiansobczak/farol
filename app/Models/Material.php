@@ -68,11 +68,11 @@ class Material extends Model
     }
 
     /**
-     * Accessor for product images
+     * Accessor for material image
      *
      * @return Storage instance
      */
-    public function getImgAttribute()
+    public function getPhotoAttribute()
     {
         if ($this->image) {
             return Str::startsWith($this->image, 'http') ? $this->image : Storage::url($this->image);

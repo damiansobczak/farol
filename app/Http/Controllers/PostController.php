@@ -9,12 +9,12 @@ use App\Services\ManageStorageService;
 
 class PostController extends Controller
 {
-	protected function validator(Array $data)
+	protected function validator(array $data)
 	{
 		return Validator::make($data, [
 			'title' => 'required|max:255',
 			'description' => 'required|max:2000',
-			'image' => 'nullable|image|max:512',
+			'image' => 'nullable|file|mimes:jpg,jpeg,png|max:256',
 			'imageAlt' => 'nullable|string|max:255',
 			'show' => 'nullable|boolean',
 			'seoTitle' => 'nullable|max:255',
@@ -53,7 +53,11 @@ class PostController extends Controller
 	public function store(Request $request)
 	{
 		$postValidated = $this->validator($request->all())->validate();
-		$postValidated['image'] = ManageStorageService::store($request->file('image'), 'posts');
+
+		if (isset($validated['image'])) {
+			$postValidated['image'] = ManageStorageService::store($request->file('image'), 'posts');
+		}
+
 		$post = Post::create($postValidated);
 		return redirect()->route('admin.posts.edit', $post->id)->with('success', 'Post został pomyślnie utworzony!');
 	}
@@ -93,7 +97,11 @@ class PostController extends Controller
 		$post = Post::findOrFail($id);
 		$oldImage = $post->image;
 		$postValidated = $this->validator($request->all())->validate();
-		$postValidated['image'] = ManageStorageService::update($request->file('image'), $oldImage, 'posts');
+
+		if (isset($postValidated['image'])) {
+			$postValidated['image'] = ManageStorageService::update($request->file('image'), $oldImage, 'posts');
+		}
+
 		$post->update($postValidated);
 		return back()->with('success', 'Post został pomyślnie zaktualizowany!');
 	}

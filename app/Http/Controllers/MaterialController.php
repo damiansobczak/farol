@@ -12,6 +12,15 @@ use Illuminate\Support\Facades\Validator;
 
 class MaterialController extends Controller
 {
+    public function attributes()
+    {
+        return [
+            "color_id" => "Kolor",
+            "collection_id" => "Kolekcja",
+            "image" => "Obrazek",
+        ];
+    }
+
     public function validator(array $data)
     {
         return Validator::make($data, [
@@ -20,7 +29,7 @@ class MaterialController extends Controller
             "collection_id" => "required|exists:collections,id",
             "attributes.*" => "nullable|exists:attributes,id",
             "image" => "file|mimes:jpg,jpeg,png|max:256",
-        ]);
+        ], [], $this->attributes());
     }
     /**
      * Display a listing of the resource.
@@ -55,7 +64,11 @@ class MaterialController extends Controller
     public function store(Request $request)
     {
         $validated = $this->validator($request->all())->validate();
-        $validated['image'] = ManageStorageService::store($request->file('image'), 'materials');
+
+        if (isset($validated['image'])) {
+            $validated['image'] = ManageStorageService::store($request->file('image'), 'materials');
+        }
+
         $material = Material::create($validated);
 
         if (isset($validated['attributes'])) {
