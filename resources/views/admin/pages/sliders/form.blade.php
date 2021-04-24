@@ -3,16 +3,6 @@
 @section('content')
 <x-breadcrumbs
 	:crumbs="[['name' => 'Banery', 'url' => route('admin.sliders')], ['name' => 'Nowy baner', 'url' => '']]" />
-@if(isset($slider))
-<form action="{{ route('admin.sliders.delete', $slider->id) }}" method="POST" class="flex flex-col">
-	@csrf
-	{{ method_field('DELETE') }}
-	<div class="flex">
-		<button type="submit" class="rounded px-4 py-2 bg-red-500 text-white ml-auto mb-4 mr-3"
-			onclick="return confirm('Czy chcesz usunąć ten baner?')">Usuń</button>
-	</div>
-</form>
-@endif
 <form
 	action="@if(isset($slider)) {{ route('admin.sliders.edit', $slider->id) }} @else {{ route('admin.sliders.create') }} @endif"
 	method="POST" enctype="multipart/form-data">
@@ -21,7 +11,7 @@
 	{{ method_field('PUT') }}
 	@endif
 	<div class="flex">
-		<button type="submit" class="rounded px-4 py-2 bg-indigo-500 text-white mb-4">Zapisz</button>
+		<button type="submit" class="rounded px-4 py-2 bg-indigo-500 text-white mb-4 ml-auto">Zapisz</button>
 	</div>
 
 	<div class="flex rounded shadow-sm bg-white p-8 flex-wrap">
@@ -109,4 +99,19 @@
 		</div>
 	</div>
 </form>
+
+@if(isset($slider))
+<form action="{{ route('admin.sliders.delete', $slider->id) }}" method="POST"
+	class="flex rounded shadow-sm bg-white p-8 mt-8 w-full items-center justify-between">
+	@csrf
+	{{ method_field('DELETE') }}
+	<div class="flex-1">
+		<h3 class="text-lg text-gray-700 font-semibold">Uwaga!</h3>
+		<p class="text-sm text-gray-500">Klikając tę opcję usuniesz slider oraz wyczyścisz zdjęcia
+			przypisane do niego.</p>
+	</div>
+	<button type="submit" class="rounded px-4 py-2 bg-red-500 text-white ml-auto mb-4 mr-3"
+		onclick="return confirm('Czy chcesz usunąć ten slider?')">Usuń</button>
+</form>
+@endif
 @endsection

@@ -49,7 +49,7 @@ class AttributeController extends Controller
         $validated = $this->validator($request->all())->validate();
 
         if (isset($validated['image'])) {
-            $validated['image'] = ManageStorageService::store($request->file('image'), 'materials');
+            $validated['image'] = ManageStorageService::store($request->file('image'), 'attributes');
         }
 
         $attribute = Attribute::create($validated);

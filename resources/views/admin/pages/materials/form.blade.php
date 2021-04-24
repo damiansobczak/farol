@@ -19,8 +19,8 @@
             Główne informacje
         </div>
         <div class="flex-1 border-r border-gray-200 pr-6">
-            @isset($material->img)
-            <img src="{{ $material->img }}" class="object-cover w-full bg-gray-100 h-64 rounded" />
+            @isset($material->photo)
+            <img src="{{ $material->photo }}" class="object-cover w-full bg-gray-100 h-64 rounded" />
             @endisset
             <label for="image" class="text-sm text-gray-500 font-semibold block mt-4"">
 				<p class=" mb-2 text-gray-500">Obrazek:</p>
