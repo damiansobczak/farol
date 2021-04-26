@@ -61,7 +61,7 @@ class SliderController extends Controller
 			$sliderValidated['image'] = ManageStorageService::store($request->file('image'), 'sliders');
 		}
 
-		if (isset($validated['image'])) {
+		if (isset($validated['onlyImage'])) {
 			$sliderValidated['onlyImage'] = ManageStorageService::store($request->file('onlyImage'), 'sliders');
 		}
 

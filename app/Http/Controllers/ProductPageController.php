@@ -16,7 +16,7 @@ class ProductPageController extends Controller
 	 */
 	public function show(string $slug)
 	{
-		$product = Cache::remember('pages.product.'.$slug, 60 * 60 * 24, function() use($slug) {
+		$product = Cache::remember('pages.product.' . $slug, 60 * 60 * 24, function () use ($slug) {
 			return Product::where('slug', $slug)->with('collections', 'collections.materials', 'collections.materials.color')->firstOrFail();
 		});
 		return view('pages.product', compact('product'));
