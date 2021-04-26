@@ -36,7 +36,7 @@ class ProductController extends Controller
 	{
 		return Validator::make($data, [
 			"name" => "required|max:64",
-			"image" => "required|file|mimes:jpg,jpeg,png|max:512",
+			"image" => "file|mimes:jpg,jpeg,png|max:512",
 			"imageAlt" => "nullable|max:255",
 			"categoryId" => "required|exists:categories,id",
 			"featured" => "nullable|boolean",
@@ -68,8 +68,15 @@ class ProductController extends Controller
 	public function store(Request $req)
 	{
 		$validated = $this->validator($req->all())->validate();
-		$validated['image'] = ManageStorageService::store($req->file('image'), 'products');
-		$validated['gallery'] = GalleryService::store($req->file('gallery'), 'products');
+
+		if (isset($validated['image'])) {
+			$validated['image'] = ManageStorageService::store($req->file('image'), 'products');
+		}
+
+		if (isset($validated['gallery'])) {
+			$validated['gallery'] = GalleryService::store($req->file('gallery'), 'products');
+		}
+
 		$product = Product::create($validated);
 
 		if (isset($validated['collections'])) {
@@ -90,11 +97,16 @@ class ProductController extends Controller
 	public function update(Request $req, Int $productId)
 	{
 		$product = Product::findOrFail($productId);
-		$oldImage = $product->image;
-		$oldGallery = $product->gallery;
 		$validated = $this->validator($req->all())->validate();
-		$validated['image'] = ManageStorageService::update($req->file('image'), $oldImage, 'products');
-		$validated['gallery'] = GalleryService::update($req->file('gallery'), $oldGallery, 'products');
+
+		if (isset($validated['image'])) {
+			$validated['image'] = ManageStorageService::update($req->file('image'), $product->image, 'products');
+		}
+
+		if (isset($validated['gallery'])) {
+			$validated['gallery'] = GalleryService::update($req->file('gallery'), $product->gallery, 'products');
+		}
+
 		$product->update($validated);
 		$product->collections()->detach();
 		if (isset($validated['collections'])) {

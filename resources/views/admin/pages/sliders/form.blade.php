@@ -76,11 +76,9 @@
 		<div class="flex mt-2">
 			<div class="flex flex-col w-1/2 mr-5">
 				@if(isset($slider) && $slider->onlyPhoto)
-				<img src="{{ $slider->onlyPhoto }}" class="object-cover bg-gray-100 h-64 rounded">
-				@else
-				<div class="object-cover bg-gray-100 h-64 rounded"></div>
+				<img src="{{ $slider->onlyPhoto }}" class="object-cover bg-gray-100 h-64 rounded mb-5">
 				@endif
-				<label for="onlyImage" class="text-sm text-gray-500 font-semibold block mt-4">
+				<label for="onlyImage" class="text-sm text-gray-500 font-semibold block">
 					Obrazek
 					<input type="file" type="text" name="onlyImage" id="onlyImage"
 						class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">

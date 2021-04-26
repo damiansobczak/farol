@@ -95,11 +95,10 @@ class PostController extends Controller
 	public function update(Request $request, Int $id)
 	{
 		$post = Post::findOrFail($id);
-		$oldImage = $post->image;
 		$postValidated = $this->validator($request->all())->validate();
 
 		if (isset($postValidated['image'])) {
-			$postValidated['image'] = ManageStorageService::update($request->file('image'), $oldImage, 'posts');
+			$postValidated['image'] = ManageStorageService::update($request->file('image'), $post->image, 'posts');
 		}
 
 		$post->update($postValidated);

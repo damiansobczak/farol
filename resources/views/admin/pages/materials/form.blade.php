@@ -79,7 +79,8 @@
                     mt-2 w-full p-2 h-10 rounded border border-gray-200">
                     <option value="">Wybierz...</option>
                     @foreach ($collections as $collection)
-                    <option value="{{ $collection->id }}" @if (isset($material) && $material->collection->id ===
+                    <option value="{{ $collection->id }}" @if (isset($material) && isset($material->collection) &&
+                        $material->collection->id ===
                         $collection->id)
                         selected
                         @endif >
