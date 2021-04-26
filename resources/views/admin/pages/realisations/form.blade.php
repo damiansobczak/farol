@@ -39,7 +39,7 @@
 				@enderror
 			</label>
 			@if (isset($realisation) && $realisation->photo)
-			<img src="{{ $realisation->photo }}" width="320" height="240" alt="">
+			<img src="{{ $realisation->photo }}" alt="" class="rounded w-full object-cover h-72 my-4">
 			@endif
 			<label for="image" class="text-sm text-gray-500 font-semibold block mt-4">
 				Obrazek
@@ -63,11 +63,6 @@
 		</div>
 
 		<div class="w-1/2 pl-6">
-			@if (isset($realisation) && $realisation->movie)
-			<video width="320" height="240">
-				<source src="{{ $realisation->movie }}" type="video/mp4">
-			</video>
-			@endif
 			<label for="video" class="text-sm text-gray-500 font-semibold block">
 				Video
 				<input type="file" name="video" id="video"
@@ -78,10 +73,12 @@
 					format mp4</div>
 				@enderror
 			</label>
-			@if (isset($realisation) && $realisation->galleryPhotos)
-			@foreach ($realisation->galleryPhotos as $gallery)
-			<img src="{{ $gallery }}" alt="">
-			@endforeach
+			@if (isset($realisation) && $realisation->movie)
+			<div class="rounded p-5 border bg-gray-50 my-4">
+				<video width="320" height="240">
+					<source src="{{ $realisation->movie }}" type="video/mp4">
+				</video>
+			</div>
 			@endif
 			<label for="gallery" class="text-sm text-gray-500 font-semibold block mt-4">
 				Galeria
@@ -91,6 +88,13 @@
 				<div class="p-2 bg-red-200 text-red-700 rounded my-3">Zdjęcie nie powinno być większe niż 256kB</div>
 				@enderror
 			</label>
+			@if (isset($realisation) && $realisation->galleryPhotos)
+			<div class="space-x-4 flex flex-wrap my-4 p-4 bg-gray-50 border rounded">
+				@foreach ($realisation->galleryPhotos as $gallery)
+				<img src="{{ $gallery }}" alt="" class="w-16 h-16 rounded object-cover">
+				@endforeach
+			</div>
+			@endif
 		</div>
 	</div>
 

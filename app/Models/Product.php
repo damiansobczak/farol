@@ -33,7 +33,10 @@ class Product extends Model
 	 */
 	public function getImgAttribute()
 	{
-		return Str::startsWith($this->image, 'http') ? $this->image : Storage::url($this->image);
+		if ($this->image) {
+			return Str::startsWith($this->image, 'http') ? $this->image : Storage::url($this->image);
+		}
+		return null;
 	}
 
 	/**

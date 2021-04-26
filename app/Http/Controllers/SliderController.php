@@ -12,14 +12,14 @@ class SliderController extends Controller
 	/**
 	 * Request validation function
 	 */
-	protected function validator(Array $data)
+	protected function validator(array $data)
 	{
 		return Validator::make($data, [
 			'title' => 'nullable|string|max:255',
 			'description' => 'nullable|string|max:255',
 			'actionName' => 'nullable|string|max:255',
 			'actionLink' => 'nullable|string|max:255',
-			'image' => 'nullable|image|max:512',
+			'image' => 'nullable|file|mimes:jpg,jpeg,png|max:512',
 			'imageAlt' => 'nullable|string|max:255',
 			'onlyImage' => 'nullable|image|max:512',
 			'onlyImageLink' => 'nullable|string|max:255'
@@ -56,8 +56,15 @@ class SliderController extends Controller
 	public function store(Request $request)
 	{
 		$sliderValidated = $this->validator($request->all())->validate();
-		$sliderValidated['image'] = ManageStorageService::store($request->file('image'), 'sliders');
-		$sliderValidated['onlyImage'] = ManageStorageService::store($request->file('onlyImage'), 'sliders');
+
+		if (isset($validated['image'])) {
+			$sliderValidated['image'] = ManageStorageService::store($request->file('image'), 'sliders');
+		}
+
+		if (isset($validated['image'])) {
+			$sliderValidated['onlyImage'] = ManageStorageService::store($request->file('onlyImage'), 'sliders');
+		}
+
 		$slider = Slider::create($sliderValidated);
 		return redirect()->route('admin.sliders.edit', $slider->id)->with('success', 'Baner został pomyślnie utworzony!');
 	}
@@ -95,11 +102,16 @@ class SliderController extends Controller
 	public function update(Request $request, Int $id)
 	{
 		$slider = Slider::findOrFail($id);
-		$oldImage = $slider->image;
-		$oldOnlyImage = $slider->onlyImage;
 		$sliderValidated = $this->validator($request->all())->validate();
-		$sliderValidated['image'] = ManageStorageService::update($request->file('image'), $oldImage, 'sliders');
-		$sliderValidated['onlyImage'] = ManageStorageService::update($request->file('onlyImage'), $oldOnlyImage, 'sliders');
+
+		if (isset($validated['image'])) {
+			$sliderValidated['image'] = ManageStorageService::update($request->file('image'), $slider->image ?? null, 'sliders');
+		}
+
+		if (isset($validated['onlyImage'])) {
+			$sliderValidated['onlyImage'] = ManageStorageService::update($request->file('onlyImage'), $slider->onlyImage ?? null, 'sliders');
+		}
+
 		$slider->update($sliderValidated);
 		return back()->with('success', 'Baner został pomyślnie zaktualizowany!');
 	}
@@ -114,8 +126,8 @@ class SliderController extends Controller
 	{
 		$slider = Slider::findOrFail($id);
 		$slider->delete();
-		ManageStorageService::destroy($slider->image);
-		ManageStorageService::destroy($slider->onlyImage);
+		ManageStorageService::destroy($slider->image ?? null);
+		ManageStorageService::destroy($slider->onlyImage ?? null);
 		return redirect()->route('admin.sliders')->with('success', 'Baner został pomyślnie usunięty!');
 	}
 }

@@ -18,13 +18,11 @@
 		<div class="flex flex-col flex-1 border-gray-200 pr-6">
 			@if(isset($product) && $product->image)
 			<img src="{{ $product->img }}" class="object-cover bg-gray-100 h-64 rounded">
-			@else
-			<div class="object-cover bg-gray-100 h-64 rounded"></div>
 			@endif
 			<label for="image" class="text-sm text-gray-500 font-semibold block mt-4">
 				Obrazek
 				<input type="file" name="image" id="image"
-					value="@if($errors->any()){{ old('image') }}@else{{ $product->image ?? NULL }}@endif"
+					value="@if($errors->any()){{ old('image') }}@else {{ $product->img ?? null }}@endif"
 					class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
 				@error('image')
 				<div class="bg-red-50 text-red-500 p-2 rounded mt-2">

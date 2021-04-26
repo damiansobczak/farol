@@ -19,7 +19,10 @@
 		<button type="submit" class="rounded px-4 py-2 bg-indigo-500 text-white ml-auto">Zapisz</button>
 	</div>
 	<div class="flex rounded shadow-sm bg-white p-8 mt-4 flex-wrap">
-		<h2 class="uppercase text-gray-600 text-sm font-semibold border-b border-gray-100 pb-4 mb-4 w-full">Treść</h2>
+		<div
+			class="flex items-center w-full justify-between font-medium text-sm text-gray-600 border-b border-gray-200 pb-4 mb-4">
+			Główne informacje
+		</div>
 		<div class="flex flex-col flex-1 border-gray-200 pr-6">
 			@if(isset($category) && $category->image)
 			<img src="{{ $category->getImgAttribute() }}" class="object-cover bg-gray-100 h-64 rounded">

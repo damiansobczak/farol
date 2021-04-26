@@ -28,7 +28,10 @@ class Slider extends Model
 	 */
 	public function getPhotoAttribute()
 	{
-		return Str::startsWith($this->image, 'http') ? $this->image : Storage::url($this->image);
+		if ($this->image) {
+			return Str::startsWith($this->image, 'http') ? $this->image : Storage::url($this->image);
+		}
+		return null;
 	}
 
 	/**
@@ -38,6 +41,9 @@ class Slider extends Model
 	 */
 	public function getOnlyPhotoAttribute()
 	{
-		return Storage::url($this->onlyImage);
+		if ($this->onlyImage) {
+			return Str::startsWith($this->onlyImage, 'http') ? $this->onlyImage : Storage::url($this->onlyImage);
+		}
+		return null;
 	}
 }

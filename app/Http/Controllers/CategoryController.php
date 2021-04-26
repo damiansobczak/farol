@@ -41,7 +41,11 @@ class CategoryController extends Controller
 	public function store(Request $req)
 	{
 		$validated = $this->validator($req->all())->validate();
-		$validated['image'] = ManageStorageService::store($req->file('image'), 'categories');
+
+		if (isset($validated['image'])) {
+			$validated['image'] = ManageStorageService::store($req->file('image'), 'categories');
+		}
+
 		$category = Category::create($validated);
 		return redirect()->route('admin.categories')->with('success', 'Kategoria została pomyślnie utworzona!');
 	}
@@ -55,9 +59,13 @@ class CategoryController extends Controller
 	public function update(Request $req, Int $categoryId)
 	{
 		$category = Category::findOrFail($categoryId);
-		$oldImage = $category->image;
+
 		$validated = $this->validator($req->all())->validate();
-		$validated['image'] = ManageStorageService::update($req->file('image'), $oldImage, 'categories');
+
+		if (isset($validated['image'])) {
+			$validated['image'] = ManageStorageService::update($req->file('image'), $category->image ?? null, 'categories');
+		}
+
 		$category->update($validated);
 		return redirect()->route('admin.categories')->with('success', 'Kategoria została pomyślnie zaktualizowana!');
 	}
