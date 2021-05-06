@@ -32,7 +32,7 @@ module.exports = {
         },
         extend: {
             maxWidth: {
-                fluid: "1800px"
+                fluid: "1700px"
             },
             colors: {
                 green: {
@@ -57,5 +57,29 @@ module.exports = {
             borderWidth: ["last"]
         }
     },
-    plugins: []
+    corePlugins: {
+        container: false
+    },
+    plugins: [
+        function({ addComponents }) {
+            addComponents({
+                ".container": {
+                    maxWidth: "100%",
+                    width: "100%",
+                    "@screen sm": {
+                        maxWidth: "768px"
+                    },
+                    "@screen md": {
+                        maxWidth: "1024px"
+                    },
+                    "@screen lg": {
+                        maxWidth: "1280px"
+                    },
+                    "@screen xl": {
+                        maxWidth: "1400px"
+                    }
+                }
+            });
+        }
+    ]
 };

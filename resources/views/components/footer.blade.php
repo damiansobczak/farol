@@ -1,12 +1,18 @@
 <footer class="max-w-fluid px-3 mx-auto">
     <div class="px-10 py-24" style="background-color: #353535">
         <div class="container mx-auto flex w-full flex-wrap md:flex-nowrap">
-            <div class="w-full sm:w-1/2 md:w-1/4 text-sm">
+            <div class="w-full sm:w-1/2 md:w-1/4">
                 <p class="text-white font-semibold mb-2 font-display">Masz pytania?</p>
                 <p class="text-white opacity-50 leading-7 text-sm">Potrzebujesz dodatkowych informacji? <br />Skontaktuj
                     się
                     z nami!
                 </p>
+                <div class="flex items-center space-x-2 my-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="20" viewBox="0 0 11 20">
+                        <path d="M18,2H15a5,5,0,0,0-5,5v3H7v4h3v8h4V14h3l1-4H14V7a1,1,0,0,1,1-1h3Z"
+                            transform="translate(-7 -2)" fill="#fff" /></svg>
+                    <span class="text-white text-md underline font-semibold">Facebook</span>
+                </div>
                 <div class="flex items-center my-5">
                     <div class="rounded-full bg-green-500 w-12 h-12 flex items-center justify-center mr-3">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#fff"
@@ -20,66 +26,41 @@
                         <p class="text-sm text-green-500">sklep@farol.pl</p>
                     </div>
                 </div>
-                <img src="{{ asset('img/banks.png') }}" alt="" class="max-h-5">
             </div>
-            <div class="w-full sm:w-1/2 md:w-1/4">
-                <p class="text-white font-semibold mb-2 font-display text-sm">Masz pytania?</p>
-                <ul class="text-white opacity-50 text-sm leading-7">
-                    <li>
-                        <a class="hover:underline" href="#">Moje kontro</a>
-                    </li>
-                    <li>
-                        <a class="hover:underline" href="#">Zwroty i reklamacje</a>
-                    </li>
-                    <li>
-                        <a class="hover:underline" href="#">Regulamin</a>
-                    </li>
-                    <li>
-                        <a class="hover:underline" href="#">Polityka Prywatności</a>
-                    </li>
-                </ul>
-                <p class="text-white font-semibold mt-8 font-display text-sm">Odwiedź nas</p>
-                <ul class="text-white opacity-50 text-sm leading-7">
-                    <li>
-                        ul. Łaska 18
-                    </li>
-                    <li>
-                        95-200 Pabianice
-                    </li>
-                </ul>
-            </div>
-            <div class="w-full sm:w-1/2 md:w-1/4">
-                <p class="text-white font-semibold mb-2 font-display text-sm">Warto zobaczyć</p>
-                <ul class="text-white opacity-50 text-sm leading-7">
-                    <li>
-                        <a class="hover:underline" href="#">Nowości</a>
-                    </li>
-                    <li>
-                        <a class="hover:underline" href="#">Promocje</a>
-                    </li>
-                    <li>
-                        <a class="hover:underline" href="#">Bestsellery</a>
-                    </li>
-                    <li>
-                        <a class="hover:underline" href="#">Polityka Prywatności</a>
-                    </li>
-                </ul>
-                <p class="text-white font-semibold mt-8 font-display text-sm">Godziny pracy biura:</p>
-                <p class="text-white opacity-50 text-sm leading-7">Pn. - Pt. 8:00 - 16:00</p>
-            </div>
-            <div class="w-full sm:w-1/2 md:w-1/4">
-                <p class="text-white font-semibold mb-2 font-display text-sm">Informacje?</p>
-                <ul class="text-white opacity-50 text-sm leading-7">
-                    <li>
-                        <a class="hover:underline" href="#">O firmie</a>
-                    </li>
-                    <li>
-                        <a class="hover:underline" href="#">Realizacje</a>
-                    </li>
-                    <li>
-                        <a class="hover:underline" href="#">Kontakt</a>
-                    </li>
-                </ul>
+            <div class="w-full sm:w-1/2 md:w-3/4 flex flex-wrap">
+                <h6 class="text-2xl text-white font-bold w-full max-w-4xl">Specjalizujemy się w branży osłon okiennych.
+                    Naszą
+                    cechą
+                    charakterystyczną jest młody, zgrany zespół.</h6>
+                <div class="w-full sm:w-1/2 md:w-1/3">
+                    <p class="text-white font-semibold mb-2 font-display text-sm">Menu</p>
+                    <ul class="text-white opacity-50 text-sm leading-7">
+                        <li>
+                            <a class="hover:underline" href="{{ route('company') }}">O nas</a>
+                        </li>
+                        <li>
+                            <a class="hover:underline" href="{{ route('products') }}">Produkty</a>
+                        </li>
+                        <li>
+                            <a class="hover:underline" href="{{ route('realisations') }}">Realizacje</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-1/3">
+                    <p class="text-white font-semibold font-display text-sm">Godziny pracy biura:</p>
+                    <p class="text-white opacity-50 text-sm leading-7">Pn. - Pt. 8:00 - 16:00</p>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-1/3">
+                    <p class="text-white font-semibold font-display text-sm">Odwiedź nas</p>
+                    <ul class="text-white opacity-50 text-sm leading-7">
+                        <li>
+                            ul. Łaska 18
+                        </li>
+                        <li>
+                            95-200 Pabianice
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
