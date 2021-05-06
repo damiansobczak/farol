@@ -27,8 +27,10 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full sm:w-1/2 md:w-3/4 flex flex-wrap">
-                <h6 class="text-2xl text-white font-bold w-full max-w-4xl">Specjalizujemy się w branży osłon okiennych.
+            <div class="w-full sm:w-1/2 md:w-3/4 flex flex-wrap space-y-8">
+                <h6 class="text-2xl text-white font-bold w-full max-w-4xl mt-4 sm:mt-0">Specjalizujemy się w branży
+                    osłon
+                    okiennych.
                     Naszą
                     cechą
                     charakterystyczną jest młody, zgrany zespół.</h6>

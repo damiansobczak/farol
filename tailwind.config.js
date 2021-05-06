@@ -66,6 +66,8 @@ module.exports = {
                 ".container": {
                     maxWidth: "100%",
                     width: "100%",
+                    paddingRight: "1rem",
+                    paddingLeft: "1rem",
                     "@screen sm": {
                         maxWidth: "768px"
                     },
