@@ -6,8 +6,8 @@
         <div class="w-full md:w-1/2 lg:w-3/5 mt-12 md:pl-12">
             <div class="rounded w-52 h-1 bg-green-500 mb-6"></div>
             <p class="font-semibold text-green-400 font-display mb-3 text-sm">Idealne do mieszkań i apartamentów</p>
-            <h2 class="font-semibold text-3xl text-gray-800 font-display">{{ $product->name }}</h2>
-            <p class="text-gray-400 my-5 text-sm leading-6">Firma Farol powstała w 2014 roku. Specjalizujemy się w
+            <h2 class="font-semibold text-3xl text-primary font-display">{{ $product->name }}</h2>
+            <p class="text-secondary my-5 leading-7 font-light">Firma Farol powstała w 2014 roku. Specjalizujemy się w
                 branży
                 osłon
                 okiennych. Naszą cechą charakterystyczną jest młody, zgrany zespół gotowy do podjęcia się każdego
@@ -34,8 +34,8 @@
                         </g>
                     </svg>
                     <div>
-                        <p class="font-semibold text-gray-800 text-sm font-display leading-6">Montaż inwazyjny</p>
-                        <p class="uppercase text-xs text-gray-400">W trosce o najwyższą jakość</p>
+                        <p class="font-semibold text-primary text-sm font-display leading-6">Montaż inwazyjny</p>
+                        <p class="uppercase text-xs text-secondary">W trosce o najwyższą jakość</p>
                     </div>
                 </div>
                 <div class="w-full lg:w-auto flex items-center bg-gray-100 rounded-md p-6">
@@ -59,8 +59,8 @@
                         </g>
                     </svg>
                     <div>
-                        <p class="font-semibold text-gray-800 text-sm font-display leading-6">Montaż inwazyjny</p>
-                        <p class="uppercase text-xs text-gray-400">W trosce o najwyższą jakość</p>
+                        <p class="font-semibold text-primary text-sm font-display leading-6">Montaż inwazyjny</p>
+                        <p class="uppercase text-xs text-secondary">W trosce o najwyższą jakość</p>
                     </div>
                 </div>
             </div>
