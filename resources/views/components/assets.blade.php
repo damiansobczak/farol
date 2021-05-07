@@ -22,8 +22,8 @@
                 </svg>
             </div>
             <div class="flex-1 pl-3">
-                <p class="font-semibold text-sm text-gray-800 capitalize font-display">Najlepsze ceny</p>
-                <p class="text-sm text-gray-400">Gwarancja najlepszej ceny na nasz asortyment</p>
+                <p class="font-semibold text-primary capitalize font-display">Najlepsze ceny</p>
+                <p class="text-sm text-secondary">Gwarancja najlepszej ceny na nasz asortyment</p>
             </div>
         </div>
         <div class="flex items-center">
@@ -51,8 +51,8 @@
                 </svg>
             </div>
             <div class="flex-1 pl-3">
-                <p class="font-semibold text-sm text-gray-800 capitalize font-display">Płać Kartą</p>
-                <p class="text-sm text-gray-400">W naszym sklepie możesz zapłacić kartą</p>
+                <p class="font-semibold text-primarycapitalize font-display">Płać Kartą</p>
+                <p class="text-sm text-secondary">W naszym sklepie możesz zapłacić kartą</p>
             </div>
         </div>
         <div class="flex items-center">
@@ -76,8 +76,8 @@
                 </svg>
             </div>
             <div class="flex-1 pl-3">
-                <p class="font-semibold text-sm text-gray-800 capitalize font-display">Kup i Odbierz Osobiście</p>
-                <p class="text-sm text-gray-400">Zrób zakupy online i odbierz zamówienie osobiście</p>
+                <p class="font-semibold text-primary capitalize font-display">Gwarantowana jakość</p>
+                <p class="text-sm text-secondary">W przypadku awarii oferujemy wymianę</p>
             </div>
         </div>
         <div class="flex items-center">
@@ -104,8 +104,8 @@
                 </svg>
             </div>
             <div class="flex-1 pl-3">
-                <p class="font-semibold text-sm text-gray-800 capitalize font-display">Darmowy montaż</p>
-                <p class="text-sm text-gray-400">Najszybsza dostawa pod Twój adres</p>
+                <p class="font-semibold text-primary capitalize font-display">Darmowy montaż</p>
+                <p class="text-sm text-secondary">Najszybsza dostawa pod Twój adres</p>
             </div>
         </div>
     </div>

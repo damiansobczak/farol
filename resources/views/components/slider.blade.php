@@ -4,10 +4,12 @@
             <div class="flex-1 w-full lg:w-1/2" style="background-color: #353535"></div>
             <div class="absolute inset-0 w-full h-full flex items-center justify-center">
                 <div class="container mx-auto">
-                    <h1 class="text-white font-medium text-4xl max-w-lg font-display leading-10">Najciekawsze
-                        rozwiązania <span class="opacity-50 font-extralight">do mieszkań i domów</span>
+                    <h1 class="text-white font-medium text-4xl max-w-lg font-display leading-normal">Najciekawsze
+                        rozwiązania do mieszkań i domów
                     </h1>
-                    <p class="my-5 text-white leading-6 text-sm max-w-lg">Każdy z oferowanych przez nas produktów
+                    <p class="my-5 text-white leading-7 font-light text-opacity-70 max-w-lg">Każdy z
+                        oferowanych przez
+                        nas produktów
                         posiada swoiste właściwości, dzięki którym komponują się z ogólnym wystrojem wnętrz, a także w
                         delikatny sposób uzupełniają i dopełniają cały wygląd pomieszczenia.</p>
                     <button

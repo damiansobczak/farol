@@ -35,6 +35,8 @@ module.exports = {
                 fluid: "1700px"
             },
             colors: {
+                primary: "#171D26",
+                secondary: "#6B7280",
                 green: {
                     "100": "#d1eecc",
                     "200": "#8dd680",

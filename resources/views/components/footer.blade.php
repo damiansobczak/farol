@@ -68,9 +68,9 @@
     </div>
     <div class="container mx-auto">
         <div
-            class="h-16 my-4 md:my-0 md:h-24 text-gray-500 text-sm flex flex-wrap md:flex-nowrap justify-between items-center">
-            <p><span class="text-gray-800 font-medium">© Copyright 2020 FAROL.</span> Wszelkie prawa zastrzeżone.</p>
-            <p>Project zrealizowany przez agencję interaktywną <span class="text-gray-800 font-medium">uicloud.pl</span>
+            class="h-16 my-4 md:my-0 md:h-24 text-secondary text-sm flex flex-wrap md:flex-nowrap justify-between items-center">
+            <p><span class="text-primary font-medium">© Copyright 2020 FAROL.</span> Wszelkie prawa zastrzeżone.</p>
+            <p>Project zrealizowany przez agencję interaktywną <span class="text-primary font-medium">uicloud.pl</span>
             </p>
         </div>
     </div>

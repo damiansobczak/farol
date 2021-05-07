@@ -1,7 +1,8 @@
 <div class="container mx-auto my-16">
     <div class="md:w-8/12">
-        <h1 class="font-display text-3xl font-semibold mb-4 text-gray-800">Najnowsza realizacje naszej firmy.</h1>
-        <p class="text-gray-500 text-sm leading-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et
+        <h1 class="font-display text-3xl font-semibold mb-4 text-primary">Najnowsza realizacje naszej firmy.</h1>
+        <p class="text-secondary font-light text-sm leading-7">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Sed et
             facilisis
             tortor,
             eu tempor

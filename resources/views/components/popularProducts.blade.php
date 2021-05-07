@@ -3,8 +3,8 @@
 		<div class="flex items-end mb-4">
 			<div>
 				<div class="rounded w-52 h-1 bg-green-500 mb-6"></div>
-				<h3 class="font-semibold text-2xl text-gray-800 font-display">Popularne produkty</h3>
-				<p class="text-gray-400 my-2 text-sm">Quisque lorem tortor fringilla sed, vestibulum.</p>
+				<h3 class="font-semibold text-2xl text-primary font-display">Popularne produkty</h3>
+				<p class="text-secondary my-2 font-light">Quisque lorem tortor fringilla sed, vestibulum.</p>
 			</div>
 			<div class="flex items-center ml-auto">
 				<button class="rounded-full border border-gray-100 p-3 cursor-pointer hover:bg-gray-50"
@@ -40,7 +40,8 @@
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
 									d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
 							</svg>
-							<a href="{{ route('product', $product->slug) }}"><span class="text-white ml-2 text-sm font-semibold">Skonfiguruj i kup</span></a>
+							<a href="{{ route('product', $product->slug) }}"><span
+									class="text-white ml-2 text-sm font-semibold">Skonfiguruj i kup</span></a>
 						</div>
 					</div>
 				</div>
