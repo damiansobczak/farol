@@ -37,7 +37,7 @@ Route::get('/produkt/{slug}', [ProductPageController::class, 'show'])->name('pro
 Route::view('/realizacje', 'pages.realisations')->name('realisations');
 Route::view('/realizacja', 'pages.realisation')->name('realisation');
 Route::get('/produkty', [ProductsController::class, 'main'])->name('products');
-
+Route::view('/kontakt', 'pages.contact')->name('contact');
 /*
 * Admin routes
 */

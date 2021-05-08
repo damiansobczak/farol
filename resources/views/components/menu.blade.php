@@ -27,7 +27,7 @@
 			<a href="{{ route('realisations') }}" class="px-3 py-2 hover:text-green-600 font-medium">Realizacje</a>
 		</li>
 		<li>
-			<a href="#" class="px-3 py-2 hover:text-green-600 font-medium">Kontakt</a>
+			<a href="{{ route('contact') }}" class="px-3 py-2 hover:text-green-600 font-medium">Kontakt</a>
 		</li>
 	</ul>
 	<ul class="flex items-center">

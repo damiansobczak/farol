@@ -6,6 +6,7 @@
 @include('components.header')
 @include('components.locations')
 @include('components.about')
+@include('components.jumbo')
 @include('components.footer')
 @endsection
 
