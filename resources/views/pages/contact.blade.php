@@ -5,6 +5,7 @@
 @section('content')
 @include('components.header')
 @include('components.locations')
+@include('components.successContact')
 @include('components.contact')
 @include('components.footer')
 @endsection

@@ -95,6 +95,7 @@ return [
 	'not_regex' => 'Format :attribute jest nieprawidłowy.',
 	'numeric' => ':attribute musi być liczbą.',
 	'password' => 'Hasło jest błędne.',
+	'phone' => 'Format numeru jest nieprawidłowy',
 	'present' => 'Pole :attribute musi być obecne.',
 	'regex' => 'Format :attribute jest nieprawidłowy.',
 	'required' => 'Pole :attribute jest wymagane.',

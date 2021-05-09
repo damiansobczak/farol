@@ -12,6 +12,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProductPageController;
@@ -38,6 +39,8 @@ Route::view('/realizacje', 'pages.realisations')->name('realisations');
 Route::view('/realizacja', 'pages.realisation')->name('realisation');
 Route::get('/produkty', [ProductsController::class, 'main'])->name('products');
 Route::view('/kontakt', 'pages.contact')->name('contact');
+Route::post('/kontakt', [MailController::class, 'send'])->name('sendContactForm');
+
 /*
 * Admin routes
 */
