@@ -23,7 +23,7 @@
 				<div class="w-4/5 md:mt-5">
 					<h5 class="text-primary font-semibold text-lg font-display">{{ $post->title }}
 					</h5>
-					<p class="text-secondary leading-6 text-sm font-light mt-2">
+					<p class="text-secondary leading-6 text-sm mt-2">
 						{{ Str::limit($post->description, 160, '...') }}
 					</p>
 					<button class="flex items-center justify-center py-3 text-green-500 text-sm">Przeczytaj więcej

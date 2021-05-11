@@ -2,7 +2,7 @@
     <div class="flex items-center w-full sm:w-80 mt-3 md:mt-0">
         <input type="text" name="" placeholder="Wyszukaj..." wire:model="input" wire:keydown.debounce.500ms="search"
             id=""
-            class="outline-none appearance-none focus:ring-4 focus:ring-green-100 focus:border-green-600 p-3 rounded-full border border-solid text-gray-400 border-gray-100 w-full h-10 font-light text-sm hover:border-green-200">
+            class="outline-none appearance-none focus:ring-4 focus:ring-green-100 focus:border-green-600 p-3 rounded-full border border-solid text-gray-400 border-gray-100 w-full h-10 text-sm hover:border-green-200">
     </div>
 
     @if ($products)

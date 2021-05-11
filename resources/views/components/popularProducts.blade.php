@@ -4,7 +4,7 @@
 			<div>
 				<div class="rounded w-52 h-1 bg-green-500 mb-6"></div>
 				<h3 class="font-semibold text-2xl text-primary font-display">Popularne produkty</h3>
-				<p class="text-secondary my-2 font-light">Quisque lorem tortor fringilla sed, vestibulum.</p>
+				<p class="text-secondary my-2">Quisque lorem tortor fringilla sed, vestibulum.</p>
 			</div>
 			<div class="flex items-center ml-auto">
 				<button class="rounded-full border border-gray-100 p-3 cursor-pointer hover:bg-gray-50"
