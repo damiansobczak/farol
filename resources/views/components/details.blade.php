@@ -3,7 +3,7 @@
         <div class="bg-gray-50 p-6 rounded-md text-primary mr-4 font-display font-medium">Informacje
             techniczne
         </div>
-        <ul class="text-secondary text-sm p-5 mt-5 leading-9 rounded-md border border-gray-100 mr-4">
+        <ul class="text-secondary p-5 mt-5 leading-9 rounded-md border border-gray-100 mr-4">
             <li class="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                     class="w-5 h-5 mr-2">
@@ -49,7 +49,7 @@
     <div class="w-full lg:w-1/2 mt-12 lg:mt-0">
         <div class="bg-gray-50 p-6 rounded-md text-primary mr-4 font-display font-medium">Instrukcje pomiaru
         </div>
-        <div class="text-secondary font-light p-5 mt-5 leading-7 rounded-md border border-gray-100 mr-4">
+        <div class="text-secondary p-5 mt-5 leading-7 rounded-md border border-gray-100 mr-4">
             <p>Przy składaniu zamówienia należy podać szerokość mierzoną od załamania do
                 załamania listwy przyszybowej oraz 2 wysokości: wysokość szyby, oraz wysokość
                 od wrębu do wrębu ramy okna.</p>

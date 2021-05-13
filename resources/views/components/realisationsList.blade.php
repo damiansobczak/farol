@@ -15,7 +15,7 @@
                 <div class="w-4/5 md:mt-5">
                     <h3 class="text-primary font-semibold text-lg font-display">Najnowsza realizacja naszej firmy
                     </h3>
-                    <p class="text-secondary mt-2 font-light text-sm leading-7">Zamów osłony okienne za kwotę co
+                    <p class="text-secondary mt-2 text-sm leading-7">Zamów osłony okienne za kwotę co
                         najmniej 700zł
                         a my
                         dorzucimy
@@ -36,7 +36,7 @@
                 <div class="w-4/5 md:mt-5">
                     <h3 class="text-primary font-semibold text-lg font-display">Najnowsza realizacja naszej firmy
                     </h3>
-                    <p class="text-secondary mt-2 font-light text-sm leading-7">Zamów osłony okienne za kwotę co
+                    <p class="text-secondary mt-2 text-sm leading-7">Zamów osłony okienne za kwotę co
                         najmniej 700zł
                         a my
                         dorzucimy
@@ -57,7 +57,7 @@
                 <div class="w-4/5 md:mt-5">
                     <h3 class="text-primary font-semibold text-lg font-display">Najnowsza realizacja naszej firmy
                     </h3>
-                    <p class="text-secondary mt-2 font-light text-sm leading-7">Zamów osłony okienne za kwotę co
+                    <p class="text-secondary mt-2 text-sm leading-7">Zamów osłony okienne za kwotę co
                         najmniej 700zł
                         a my
                         dorzucimy

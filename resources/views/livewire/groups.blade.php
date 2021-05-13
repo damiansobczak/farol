@@ -32,7 +32,7 @@
                     <div class="font-semibold text-gray-700 mb-2">Nazwa kolekcji</div>
                     <input type="text" name="formCollectionName" id="formCollectionName" placeholder="Carina..."
                         wire:model="formCollectionName"
-                        class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
+                        class="outline-none appearance-none text-gray-400 hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
                     @error('formCollectionName')
                     <div class="bg-red-50 text-red-500 p-2 rounded mt-2">
                         {{ $message }}

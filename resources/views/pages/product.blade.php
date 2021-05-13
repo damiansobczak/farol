@@ -5,7 +5,6 @@
 @include('components.header')
 @include('components.locations')
 @include('components.aboutProduct')
-@include('components.details')
 @include('components.configurator')
 @include('components.footer')
 @endsection

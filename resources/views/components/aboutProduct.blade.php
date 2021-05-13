@@ -7,7 +7,7 @@
             <div class="rounded w-52 h-1 bg-green-500 mb-6"></div>
             <p class="font-semibold text-green-400 font-display mb-3 text-sm">Idealne do mieszkań i apartamentów</p>
             <h2 class="font-semibold text-3xl text-primary font-display">{{ $product->name }}</h2>
-            <p class="text-secondary my-5 leading-7 font-light">Firma Farol powstała w 2014 roku. Specjalizujemy się w
+            <p class="text-secondary my-5 leading-7">Firma Farol powstała w 2014 roku. Specjalizujemy się w
                 branży
                 osłon
                 okiennych. Naszą cechą charakterystyczną jest młody, zgrany zespół gotowy do podjęcia się każdego
@@ -64,14 +64,6 @@
                     </div>
                 </div>
             </div>
-            <button
-                class="flex items-center justify-center py-3 text-sm text-green-500 font-display hover:text-green-600 transition-colors">Konfiguruj
-                swój produkt
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                    class="ml-2 h-4">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg></button>
         </div>
     </div>
 </div>

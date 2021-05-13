@@ -5,7 +5,7 @@
                 <div class="rounded w-52 h-1 bg-green-500 mb-6"></div>
                 <h2 class="font-semibold text-3xl text-primary font-display leading-10">Specjalizujemy się w <span
                         class="block font-thin text-secondary">branży osłon okiennych</span></h2>
-                <p class="text-secondary my-5 font-light leading-8">Firma Farol powstała w 2014 roku. Specjalizujemy się
+                <p class="text-secondary my-5 leading-8">Firma Farol powstała w 2014 roku. Specjalizujemy się
                     w branży
                     osłon
                     okiennych. Naszą cechą charakterystyczną jest młody, zgrany zespół gotowy do podjęcia się każdego
@@ -24,19 +24,19 @@
                 <div>
                     <span class="font-medium text-3xl font-display">1990</span>
                     <p class="text-green-500 my-2 font-display">Produktów</p>
-                    <p class=" text-secondary text-sm font-light">Quisque lorem tortor fringilla sed, vestibulum lorem
+                    <p class=" text-secondary text-sm">Quisque lorem tortor fringilla sed, vestibulum lorem
                         ipsum</p>
                 </div>
                 <div class="px-5">
                     <span class="font-medium text-3xl font-display">+200</span>
                     <p class="text-green-500 my-2 font-display">Montaży</p>
-                    <p class=" text-secondary text-sm font-light">Quisque lorem tortor fringilla sed, vestibulum lorem
+                    <p class=" text-secondary text-sm">Quisque lorem tortor fringilla sed, vestibulum lorem
                         ipsum</p>
                 </div>
                 <div>
                     <span class="font-medium text-3xl font-display">+20</span>
                     <p class="text-green-500 my-2 font-display">Pracowników</p>
-                    <p class=" text-secondary text-sm font-light">Quisque lorem tortor fringilla sed, vestibulum lorem
+                    <p class=" text-secondary text-sm">Quisque lorem tortor fringilla sed, vestibulum lorem
                         ipsum</p>
                 </div>
             </div>
