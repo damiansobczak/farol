@@ -5,7 +5,7 @@
 				<div class="rounded w-52 h-1 bg-green-500 mb-6"></div>
 				<h3 class="font-semibold text-2xl text-primary font-display">Aktualności</h3>
 			</div>
-			<button
+			<a href="{{ route('posts') }}"
 				class="flex items-center justify-center py-3 text-green-500 font-display text-sm hover:text-green-600 transition-colors">Zobacz
 				więcej
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -13,7 +13,7 @@
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
 						d="M17 8l4 4m0 0l-4 4m4-4H3" />
 				</svg>
-			</button>
+			</a>
 		</div>
 		<div class="flex items-stretch flex-wrap md:flex-nowrap space-x-6">
 			@foreach($posts as $post)
@@ -26,13 +26,15 @@
 					<p class="text-secondary leading-6 text-sm mt-2">
 						{{ Str::limit($post->description, 160, '...') }}
 					</p>
-					<button class="flex items-center justify-center py-3 text-green-500 text-sm">Przeczytaj więcej
+					<a href="{{ route('post', $post->slug) }}"
+						class="inline-flex items-center justify-center py-3 text-green-500 text-sm">Przeczytaj
+						więcej
 						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
 							class="ml-2 h-4">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
 								d="M17 8l4 4m0 0l-4 4m4-4H3" />
 						</svg>
-					</button>
+					</a>
 				</div>
 			</div>
 			@endforeach

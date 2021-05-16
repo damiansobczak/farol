@@ -15,7 +15,7 @@ class MainPageController extends Controller
 			return Product::select('id', 'slug', 'image', 'imageAlt', 'name', 'categoryId')->with('category')->where('featured', true)->get();
 		});
 		$posts = Cache::remember('pages.main.posts', 60 * 60 * 24, function () {
-			return Post::select('id', 'title', 'description', 'image', 'imageAlt')->latest()->where('show', true)->limit(3)->get();
+			return Post::select('id', 'title', 'description', 'image', 'imageAlt', 'slug')->latest()->where('show', true)->limit(3)->get();
 		});
 
 		return view('pages.main', compact('featuredProducts', 'posts'));
