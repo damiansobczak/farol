@@ -11,24 +11,21 @@
             <div class="flex-1 w-full lg:w-1/2" style="background-color: #353535"></div>
             <div class="absolute inset-0 w-full h-full flex items-center justify-center">
                 <div class="container mx-auto">
-                    <h1 class="text-white font-medium text-4xl max-w-lg font-display leading-normal">Najciekawsze
-                        rozwiązania do mieszkań i domów
-                    </h1>
-                    <p class="my-5 text-white leading-7 text-opacity-70 max-w-lg">Każdy z
-                        oferowanych przez
-                        nas produktów
-                        posiada swoiste właściwości, dzięki którym komponują się z ogólnym wystrojem wnętrz, a także w
-                        delikatny sposób uzupełniają i dopełniają cały wygląd pomieszczenia.</p>
-                    <button
-                        class="rounded-full flex items-center justify-center px-6 py-3 bg-green-500 text-white text-sm hover:bg-green-600 transition-colors">Przeglądaj
-                        produkty <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" class="ml-2 h-4">
+                    <h1 class="text-white font-medium text-4xl max-w-lg font-display leading-normal">
+                        {{ $slider->title }}</h1>
+                    <p class="my-5 text-white leading-7 text-opacity-70 max-w-lg">
+                        {{ $slider->description }}</p>
+                    <a href="{{ $slider->actionLink }}"
+                        class="rounded-full inline-flex items-center justify-center px-6 py-3 bg-green-500 text-white text-sm hover:bg-green-600 transition-colors">
+                        {{ $slider->actionName }}
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            class="ml-2 h-4">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg></button>
+                        </svg></a>
                 </div>
             </div>
-            <img src="/img/slider-1.png" class="flex-1 w-full lg:w-1/2 object-cover" />
+            <img src="{{ $slider->photo }}" class="flex-1 w-full lg:w-1/2 object-cover" />
         </div>
         @endif
         @endforeach
