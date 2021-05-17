@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Slider;
 use Illuminate\Support\Facades\Cache;
 
 class MainPageController extends Controller
@@ -17,8 +18,11 @@ class MainPageController extends Controller
 		$posts = Cache::remember('pages.main.posts', 60 * 60 * 24, function () {
 			return Post::select('id', 'title', 'description', 'image', 'imageAlt', 'slug')->latest()->where('show', true)->limit(3)->get();
 		});
+		$sliders = Cache::remember('pages.main.sliders', 60 * 60 * 24, function () {
+			return Slider::select('id', 'title', 'description', 'actionLink', 'actionName', 'image', 'imageAlt', 'onlyImage', 'onlyImageLink')->get();
+		});
 
-		return view('pages.main', compact('featuredProducts', 'posts'));
+		return view('pages.main', compact('featuredProducts', 'posts', 'sliders'));
 	}
 	public static function categories()
 	{
