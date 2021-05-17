@@ -19,9 +19,9 @@ class SliderController extends Controller
 			'description' => 'nullable|string|max:255',
 			'actionName' => 'nullable|string|max:255',
 			'actionLink' => 'nullable|string|max:255',
-			'image' => 'nullable|file|mimes:jpg,jpeg,png|max:512',
+			'image' => 'nullable|string|file|mimes:jpg,jpeg,png|max:512',
 			'imageAlt' => 'nullable|string|max:255',
-			'onlyImage' => 'nullable|image|max:512',
+			'onlyImage' => 'nullable|string|file|mimes:jpg,jpeg,png|max:512',
 			'onlyImageLink' => 'nullable|string|max:255'
 		]);
 	}

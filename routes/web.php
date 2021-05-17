@@ -14,6 +14,7 @@ use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\PostsPagesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProductPageController;
 
@@ -37,6 +38,8 @@ Route::view('/o-firmie', 'pages.about')->name('company');
 Route::get('/produkt/{slug}', [ProductPageController::class, 'show'])->name('product');
 Route::view('/realizacje', 'pages.realisations')->name('realisations');
 Route::view('/realizacja', 'pages.realisation')->name('realisation');
+Route::get('/aktualnosci', [PostsPagesController::class, 'main'])->name('posts');
+Route::get('/aktualnosci/{slug}', [PostsPagesController::class, 'show'])->name('post');
 Route::get('/produkty', [ProductsController::class, 'main'])->name('products');
 Route::view('/kontakt', 'pages.contact')->name('contact');
 Route::post('/kontakt', [MailController::class, 'send'])->name('sendContactForm');
