@@ -17,14 +17,11 @@ class Product extends Model
 		'image',
 		'categoryId',
 		'featured',
+		'title',
 		'description',
 		'show',
 		'avaibility',
-		'gallery',
-		'seoTitle',
-		'seoDescription',
-		'ogTitle',
-		'ogDesc'
+		'gallery'
 	];
 	/**
 	 * Accessor for product image
@@ -34,7 +31,7 @@ class Product extends Model
 	public function getImgAttribute()
 	{
 		if ($this->image) {
-			return Str::startsWith($this->image, 'http') ? $this->image : Storage::url($this->image);
+			return Str::startsWith($this->image, 'http') || Str::startsWith($this->image, 'https') ? $this->image : Storage::url($this->image);
 		}
 		return null;
 	}

@@ -5,7 +5,9 @@
 @include('components.header')
 @include('components.locations')
 @include('components.aboutProduct')
+@if ($product->collections->count())
 @include('components.configurator')
+@endif
 @include('components.footer')
 @endsection
 

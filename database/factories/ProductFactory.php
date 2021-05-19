@@ -27,13 +27,10 @@ class ProductFactory extends Factory
 			"image" => $this->faker->imageUrl(),
 			"categoryId" => $this->faker->numberBetween(1, 3),
 			"featured" => $this->faker->numberBetween(0, 1),
+			"title" => $this->faker->sentence(10),
 			"description" => $this->faker->sentence(20),
 			"show" => $this->faker->numberBetween(0, 1),
-			"avaibility" => $this->faker->numberBetween(0, 1),
-			"seoTitle" => $this->faker->sentence(20),
-			"seoDescription" => $this->faker->sentence(20),
-			"ogTitle" => $this->faker->sentence(20),
-			"ogDesc" => $this->faker->sentence(20)
+			"avaibility" => $this->faker->numberBetween(0, 1)
 		];
 	}
 }

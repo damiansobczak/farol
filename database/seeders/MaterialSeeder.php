@@ -19,9 +19,6 @@ class MaterialSeeder extends Seeder
                 'name' => 'Błękitna laguna',
                 'code' => 'A602',
                 'image' => 'https://via.placeholder.com/640x480.png/002277?text=nulla',
-                'transmission' => '0%',
-                'absorption' => '0%',
-                'reflection' => '0%',
                 'color_id' => '1',
                 'collection_id' => '1',
             )

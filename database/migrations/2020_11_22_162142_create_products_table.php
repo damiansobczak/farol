@@ -21,14 +21,11 @@ class CreateProductsTable extends Migration
 			$table->string('imageAlt')->nullable();
 			$table->string('image')->nullable();
 			$table->string('featured')->nullable()->default(false);
+			$table->string('title');
 			$table->text('description');
 			$table->boolean('show')->nullable()->default(false);
 			$table->string('avaibility')->nullable()->default(false);
 			$table->string('gallery')->nullable();
-			$table->string('seoTitle')->nullable();
-			$table->string('seoDescription')->nullable();
-			$table->string('ogTitle')->nullable();
-			$table->string('ogDesc')->nullable();
 			$table->timestamps();
 		});
 	}

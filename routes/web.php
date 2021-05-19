@@ -17,6 +17,7 @@ use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\PostsPagesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProductPageController;
+use App\Http\Controllers\RealisationsPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +37,8 @@ use App\Http\Controllers\ProductPageController;
 Route::get('/', [MainPageController::class, 'main'])->name('main');
 Route::view('/o-firmie', 'pages.about')->name('company');
 Route::get('/produkt/{slug}', [ProductPageController::class, 'show'])->name('product');
-Route::view('/realizacje', 'pages.realisations')->name('realisations');
-Route::view('/realizacja', 'pages.realisation')->name('realisation');
+Route::get('/realizacje', [RealisationsPageController::class, 'main'])->name('realisations');
+Route::get('/realizacja/{slug}', [RealisationsPageController::class, 'show'])->name('realisation');
 Route::get('/aktualnosci', [PostsPagesController::class, 'main'])->name('posts');
 Route::get('/aktualnosci/{slug}', [PostsPagesController::class, 'show'])->name('post');
 Route::get('/produkty', [ProductsController::class, 'main'])->name('products');

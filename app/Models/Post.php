@@ -56,7 +56,7 @@ class Post extends Model
     public function getPhotoAttribute()
     {
         if ($this->image) {
-            return Str::startsWith($this->image, 'http') ? $this->image : Storage::url($this->image);
+            return Str::startsWith($this->image, 'http') || Str::startsWith($this->image, 'https') ? $this->image : Storage::url($this->image);
         }
         return null;
     }

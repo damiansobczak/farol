@@ -17,11 +17,18 @@ class Realisation extends Model
 		'video',
 		'imageAlt',
 		'gallery',
-		'seoTitle',
-		'seoDescription',
-		'ogTitle',
-		'ogDescription'
 	];
+
+	/**
+	 * Mutator for slug made of title column
+	 *
+	 * @return void
+	 */
+	public function setTitleAttribute($value)
+	{
+		$this->attributes['title'] = $value;
+		$this->attributes['slug'] = Str::slug($value);
+	}
 
 	/**
 	 * Accessor for storage onlyImages
@@ -30,7 +37,7 @@ class Realisation extends Model
 	 */
 	public function getPhotoAttribute()
 	{
-		return Str::startsWith($this->image, 'http') ? $this->image : Storage::url($this->image);
+		return Str::startsWith($this->image, 'http') || Str::startsWith($this->image, 'https') ? $this->image : Storage::url($this->image);
 	}
 
 	/**
@@ -57,5 +64,15 @@ class Realisation extends Model
 			}
 		}
 		return $gallery ?? null;
+	}
+
+	/**
+	 * Helper to load single post by it's slug
+	 *
+	 * @return void
+	 */
+	public function getRouteKeyName()
+	{
+		return 'slug';
 	}
 }

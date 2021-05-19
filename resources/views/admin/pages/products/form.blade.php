@@ -57,11 +57,22 @@
 		</div>
 		<div class="flex-1 flex-col pl-6">
 			<label for="name" class="text-sm text-gray-500 font-semibold block">
-				Nazwa
+				Nazwa Produktu
 				<input type="text" name="name"
 					value="@if($errors->any()){{ old('name') }}@else{{ $product->name ?? NULL }}@endif"
 					class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
 				@error('name')
+				<div class="bg-red-50 text-red-500 p-2 rounded mt-2">
+					{{ $message }}
+				</div>
+				@enderror
+			</label>
+			<label for="title" class="text-sm text-gray-500 font-semibold block mt-4">
+				Tytuł Wewnętrzny
+				<input type="text" name="title"
+					value="@if($errors->any()){{ old('title') }}@else{{ $product->title ?? NULL }}@endif"
+					class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
+				@error('title')
 				<div class="bg-red-50 text-red-500 p-2 rounded mt-2">
 					{{ $message }}
 				</div>
@@ -135,36 +146,6 @@
 					@endforeach
 					@endif
 				</select>
-			</label>
-		</div>
-	</div>
-
-	<div class="flex rounded shadow-sm bg-white p-8 mt-8 flex-wrap">
-		<h2 class="uppercase text-gray-600 text-sm font-semibold border-b border-gray-100 pb-4 mb-4 w-full">Seo</h2>
-		<div class="grid grid-cols-2 gap-4 w-full">
-			<label for="name" class="text-sm text-gray-500 font-semibold block">
-				seoTitle
-				<input type="text" name="seoTitle"
-					value="@if($errors->any()){{ old('seoTitle') }}@else{{ $product->seoTitle ?? NULL }}@endif"
-					class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
-			</label>
-			<label for="name" class="text-sm text-gray-500 font-semibold block">
-				seoDescription
-				<input type="text" name="seoDescription"
-					value="@if($errors->any()){{ old('seoDescription') }}@else{{ $product->seoDescription ?? NULL }}@endif"
-					class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
-			</label>
-			<label for="name" class="text-sm text-gray-500 font-semibold block">
-				ogTitle
-				<input type="text" name="ogTitle"
-					value="@if($errors->any()){{ old('ogTitle') }}@else{{ $product->ogTitle ?? NULL }}@endif"
-					class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
-			</label>
-			<label for="name" class="text-sm text-gray-500 font-semibold block">
-				ogDesc
-				<input type="text" name="ogDesc"
-					value="@if($errors->any()){{ old('ogDesc') }}@else{{ $product->ogDesc ?? NULL }}@endif"
-					class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
 			</label>
 		</div>
 	</div>
