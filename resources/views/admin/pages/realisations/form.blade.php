@@ -97,54 +97,6 @@
 			@endif
 		</div>
 	</div>
-
-	<div class="flex flex-wrap rounded shadow-sm p-8 bg-white mt-8">
-		<div
-			class="flex items-center w-full justify-between font-medium text-sm text-gray-600 border-b border-gray-200 pb-4 mb-4">
-			SEO
-		</div>
-		<div class="w-1/2">
-			<label for="seoTitle" class="text-sm text-gray-500 font-semibold block">
-				seoTitle
-				<input type="text" name="seoTitle" id="seoTitle"
-					value="@if($errors->any()){{ old('seoTitle') }}@else{{ $realisation->seoTitle ?? NULL }}@endif"
-					class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
-				@error('seoTitle')
-				<div class="p-2 bg-red-200 text-red-700 rounded my-3">Tekst nie powinien przekraczać 255 znaków.</div>
-				@enderror
-			</label>
-			<label for="seoDescription" class="text-sm text-gray-500 font-semibold block mt-4">
-				seoDescription
-				<input type="text" name="seoDescription" id="seoDescription"
-					value="@if($errors->any()){{ old('seoDescription') }}@else{{ $realisation->seoDescription ?? NULL }}@endif"
-					class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
-				@error('seoDescription')
-				<div class="p-2 bg-red-200 text-red-700 rounded my-3">Tekst nie powinien przekraczać 255 znaków.</div>
-				@enderror
-			</label>
-		</div>
-
-		<div class="w-1/2 pl-6">
-			<label for="ogTitle" class="text-sm text-gray-500 font-semibold block">
-				ogTitle
-				<input type="text" name="ogTitle" id="ogTitle"
-					value="@if($errors->any()){{ old('ogTitle') }}@else{{ $realisation->ogTitle ?? NULL }}@endif"
-					class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
-				@error('ogTitle')
-				<div class="p-2 bg-red-200 text-red-700 rounded my-3">Tekst nie powinien przekraczać 255 znaków.</div>
-				@enderror
-			</label>
-			<label for="ogDescription" class="text-sm text-gray-500 font-semibold mt-4 block">
-				ogDescription
-				<input type="text" name="ogDescription" id="ogDescription"
-					value="@if($errors->any()){{ old('ogDescription') }}@else{{ $realisation->ogDescription ?? NULL }}@endif"
-					class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
-				@error('ogDescription')
-				<div class="p-2 bg-red-200 text-red-700 rounded my-3">Tekst nie powinien przekraczać 255 znaków.</div>
-				@enderror
-			</label>
-		</div>
-	</div>
 </form>
 
 @if(isset($realisation))

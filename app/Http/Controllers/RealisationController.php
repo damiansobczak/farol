@@ -18,7 +18,7 @@ class RealisationController extends Controller
 		return Validator::make($data, [
 			'title' => 'required|string|max:255',
 			'description' => 'required|string|max:1000',
-			'image' => 'nullable|file|mimes:jpg,jpeg,png|max:256',
+			'image' => 'nullable|file|mimes:jpg,jpeg,png|max:512',
 			'video' => 'nullable|mimes:mp4|max:2048',
 			'imageAlt' => 'nullable|string|max:255',
 			'gallery.*' => 'nullable|mimes:jpeg,jpg,png|max:256',

@@ -41,7 +41,7 @@
                 <p class="mb-2 text-gray-500">Nazwa:</p>
                 <input required
                     class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200"
-                    type="text" name="name" id="name" placeholder="Tytuł strony"
+                    type="text" name="name" id="name" placeholder="Nazwa materiału"
                     value="@if($errors->any()){{ old('name') }}@else{{ $material->name ?? NULL }}@endif">
             </label>
             <label for="code" class="text-sm text-gray-500 font-semibold block mt-4"">
@@ -87,36 +87,6 @@
                         {{ $collection->name }}</option>
                     @endforeach
                 </select>
-            </label>
-        </div>
-    </div>
-
-    <div class="rounded shadow-sm bg-white p-8 flex flex-wrap my-8">
-        <div
-            class="flex items-center w-full justify-between font-medium text-sm text-gray-600 border-b border-gray-200 pb-4 mb-4">
-            Materiał
-        </div>
-        <div class="w-full flex space-x-4 border-gray-200">
-            <label for="transmission" class="text-sm text-gray-500 font-semibold w-1/3">
-                <p class=" mb-2 text-gray-500">Transmisja:</p>
-                <input
-                    class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200"
-                    type="text" name="transmission" id="transmission"
-                    value="@if($errors->any()){{ old('transmission') }}@endif">
-            </label>
-            <label for="absorption" class="text-sm text-gray-500 font-semibold w-1/3">
-                <p class=" mb-2 text-gray-500">Absorpcja:</p>
-                <input
-                    class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200"
-                    type="text" name="absorption" id="absorption"
-                    value="@if($errors->any()){{ old('absorption') }}@endif">
-            </label>
-            <label for="reflection" class="text-sm text-gray-500 font-semibold w-1/3">
-                <p class=" mb-2 text-gray-500">Refleksja:</p>
-                <input
-                    class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200"
-                    type="text" name="reflection" id="reflection"
-                    value="@if($errors->any()){{ old('reflection') }}@endif">
             </label>
         </div>
     </div>

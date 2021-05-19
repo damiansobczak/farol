@@ -17,9 +17,6 @@ class CreateMaterialsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('code')->nullable();
-            $table->string('transmission')->nullable();
-            $table->string('absorption')->nullable();
-            $table->string('reflection')->nullable();
             $table->string('image')->nullable();
             $table->string('imageAlt')->nullable();
             $table->foreignId('color_id')->nullable()->constrained('colors');

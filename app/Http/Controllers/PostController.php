@@ -14,7 +14,7 @@ class PostController extends Controller
 		return Validator::make($data, [
 			'title' => 'required|max:255',
 			'description' => 'required|max:2000',
-			'image' => 'nullable|file|mimes:jpg,jpeg,png|max:256',
+			'image' => 'nullable|file|mimes:jpg,jpeg,png|max:512',
 			'imageAlt' => 'nullable|string|max:255',
 			'show' => 'nullable|boolean',
 			'seoTitle' => 'nullable|max:255',
@@ -54,7 +54,7 @@ class PostController extends Controller
 	{
 		$postValidated = $this->validator($request->all())->validate();
 
-		if (isset($validated['image'])) {
+		if (isset($postValidated['image'])) {
 			$postValidated['image'] = ManageStorageService::store($request->file('image'), 'posts');
 		}
 

@@ -15,7 +15,7 @@ class RealisationSeeder extends Seeder
     public function run()
     {
         Realisation::factory()
-            ->times(5)
+            ->times(3)
             ->create();
     }
 }

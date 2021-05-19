@@ -1,17 +1,13 @@
 <div class="max-w-fluid mx-auto pt-12 pb-12 mb-12 border-b border-gray-100 lg:py-20">
     <div class="container mx-auto flex flex-wrap items-center">
         <div class="w-full md:w-1/2 lg:w-1/3 rounded-lg p-5 flex items-center justify-center border border-gray-100">
-            <img src="{{ asset('storage/'.$product->image) }}" alt="" class="h-96">
+            <img src="{{ $product->img }}" alt="" class="h-96 object-cover">
         </div>
         <div class="w-full md:w-1/2 lg:w-3/5 mt-12 md:pl-12">
             <div class="rounded w-52 h-1 bg-green-500 mb-6"></div>
-            <p class="font-semibold text-green-400 font-display mb-3 text-sm">Idealne do mieszkań i apartamentów</p>
+            <p class="font-semibold text-green-400 font-display mb-3 text-sm">{{ $product->title }}</p>
             <h2 class="font-semibold text-3xl text-primary font-display">{{ $product->name }}</h2>
-            <p class="text-secondary my-5 leading-7">Firma Farol powstała w 2014 roku. Specjalizujemy się w
-                branży
-                osłon
-                okiennych. Naszą cechą charakterystyczną jest młody, zgrany zespół gotowy do podjęcia się każdego
-                zadania w celu zadowolenia klienta.</p>
+            <p class="text-secondary my-5 leading-7">{{ $product->description }}</p>
             <div class="flex flex-wrap items-center mb-3">
                 <div class="w-full lg:w-auto flex items-center bg-gray-100 rounded-md p-6 mb-3 lg:mb-0 lg:mr-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="45.191" height="28.696" viewBox="0 0 45.191 28.696"

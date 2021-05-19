@@ -9,7 +9,7 @@ class PostsPagesController extends Controller
 {
     public function main()
     {
-        $posts = Post::all();
+        $posts = Post::latest()->get();
         return view('pages.posts', compact('posts'));
     }
 

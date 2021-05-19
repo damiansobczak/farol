@@ -20,15 +20,12 @@ class ProductController extends Controller
 			"imageAlt" => "Opis obrazka",
 			"categoryId" => "Kategoria",
 			"featured" => "Promowanie",
+			"title" => "Tytuł",
 			"description" => "Opis",
 			"show" => "Aktywny",
 			"avaibility" => "Dostępność",
 			"collections" => "Dostępne kolekcje",
-			"gallery" => "Galeria",
-			"seoTitle" => "Tytuł seo",
-			"seoDescription" => "Opis seo",
-			"ogTitle" => "Tytuł og",
-			"ogDesc" => "Opis og"
+			"gallery" => "Galeria"
 		];
 	}
 
@@ -41,14 +38,11 @@ class ProductController extends Controller
 			"categoryId" => "required|exists:categories,id",
 			"featured" => "nullable|boolean",
 			"description" => "required",
+			"description" => "required",
 			"show" => "nullable|boolean",
 			"collections.*" => "nullable|exists:collections,id",
 			"avaibility" => "nullable|boolean",
-			"gallery.*" => "nullable|file|mimes:jpeg,jpg,png|max:256",
-			"seoTitle" => "nullable|max:255",
-			"seoDescription" => "nullable|max:600",
-			"ogTitle" => "nullable|max:255",
-			"ogDesc" => "nullable|max:600"
+			"gallery.*" => "nullable|file|mimes:jpeg,jpg,png|max:256"
 		], [], $this->attributes());
 	}
 
