@@ -131,7 +131,7 @@ class MaterialController extends Controller
 
         $material->update($validated);
 
-        return back()->with('success', 'Materiał został pomyślnie zaktualizowany!');
+        return redirect()->route('admin.materials')->with('success', 'Materiał został pomyślnie zaktualizowany!');
     }
 
     /**

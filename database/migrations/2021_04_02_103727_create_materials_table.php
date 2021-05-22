@@ -21,16 +21,6 @@ class CreateMaterialsTable extends Migration
             $table->string('imageAlt')->nullable();
             $table->foreignId('color_id')->nullable()->constrained('colors');
             $table->foreignId('collection_id')->nullable()->constrained('collections');
-            $table->boolean('property_gummed')->nullable()->default(false);
-            $table->boolean('property_blackout')->nullable()->default(false);
-            $table->boolean('property_onecolor')->nullable()->default(false);
-            $table->boolean('property_patterned')->nullable()->default(false);
-            $table->boolean('property_washing')->nullable()->default(false);
-            $table->boolean('property_flame_retardant')->nullable()->default(false);
-            $table->boolean('property_teflon')->nullable()->default(false);
-            $table->boolean('property_pvc_free')->nullable()->default(false);
-            $table->boolean('property_office')->nullable()->default(false);
-            $table->boolean('property_rebound')->nullable()->default(false);
             $table->timestamps();
         });
     }

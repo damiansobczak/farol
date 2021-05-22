@@ -52,7 +52,7 @@ class Controls extends Component
 		$this->filtered = $this->filtered
 			->when($this->search, function ($query) {
 				return $query->filter(function ($value, $key) {
-					return Str::contains($value->name, $this->search);
+					return Str::contains(strtolower($value->name), strtolower($this->search));
 				});
 			});
 

@@ -97,7 +97,7 @@ class AttributeController extends Controller
 
         $attribute->update($validated);
 
-        return back()->with('success', 'Atrybut został pomyślnie zaktualizowany!');
+        return redirect()->route('admin.attributes')->with('success', 'Atrybut został pomyślnie zaktualizowany!');
     }
 
     /**

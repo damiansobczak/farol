@@ -59,7 +59,7 @@ class PostController extends Controller
 		}
 
 		$post = Post::create($postValidated);
-		return redirect()->route('admin.posts.edit', $post->id)->with('success', 'Post został pomyślnie utworzony!');
+		return redirect()->route('admin.posts')->with('success', 'Post został pomyślnie utworzony!');
 	}
 
 	/**
@@ -102,7 +102,7 @@ class PostController extends Controller
 		}
 
 		$post->update($postValidated);
-		return back()->with('success', 'Post został pomyślnie zaktualizowany!');
+		return redirect()->route('admin.posts')->with('success', 'Post został pomyślnie zaktualizowany!');
 	}
 
 	/**

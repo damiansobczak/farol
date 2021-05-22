@@ -1,7 +1,15 @@
 <div class="max-w-fluid mx-auto pt-12 pb-12 mb-12 border-b border-gray-100 lg:py-20">
     <div class="container mx-auto flex flex-wrap items-center">
-        <div class="w-full md:w-1/2 lg:w-1/3 rounded-lg p-5 flex items-center justify-center border border-gray-100">
-            <img src="{{ $product->img }}" alt="" class="h-96 object-cover">
+        <div
+            class="w-full md:w-1/2 lg:w-1/3 rounded-lg p-5 flex flex-wrap items-center justify-center border border-gray-100">
+            <img src="{{ $product->img }}" alt="" class="h-96 object-cover flex-1">
+            @if (isset($product->gallery))
+            <div class="grid grid-cols-4 gap-8 border border-gray-100 mt-4">
+                @foreach ($product->$galleryImg as $photo)
+                <img src="{{ $photo }}" class="h-16 w-16 rounded object-cover flex-1">
+                @endforeach
+            </div>
+            @endif
         </div>
         <div class="w-full md:w-1/2 lg:w-3/5 mt-12 md:pl-12">
             <div class="rounded w-52 h-1 bg-green-500 mb-6"></div>

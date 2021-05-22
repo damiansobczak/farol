@@ -18,8 +18,7 @@ class RealisationController extends Controller
 		return Validator::make($data, [
 			'title' => 'required|string|max:255',
 			'description' => 'required|string|max:1000',
-			'image' => 'nullable|file|mimes:jpg,jpeg,png|max:512',
-			'video' => 'nullable|mimes:mp4|max:2048',
+			'image' => 'required|file|mimes:jpg,jpeg,png|max:512',
 			'imageAlt' => 'nullable|string|max:255',
 			'gallery.*' => 'nullable|mimes:jpeg,jpg,png|max:256',
 			'seoTitle' => 'nullable|string|max:255',
@@ -63,15 +62,12 @@ class RealisationController extends Controller
 		if (isset($realisationValidated['image'])) {
 			$realisationValidated['image'] = ManageStorageService::store($request->file('image'), 'realisations');
 		}
-		if (isset($realisationValidated['video'])) {
-			$realisationValidated['video'] = ManageStorageService::store($request->file('video'), 'realisations');
-		}
 		if (isset($realisationValidated['gallery'])) {
 			$realisationValidated['gallery'] = GalleryService::store($request->file('gallery'), 'realisations');
 		}
 
 		$realisation = Realisation::create($realisationValidated);
-		return redirect()->route('admin.realisations.edit', $realisation->id)->with('success', 'Realizacja została pomyślnie utworzona!');
+		return redirect()->route('admin.realisations')->with('success', 'Realizacja została pomyślnie utworzona!');
 	}
 
 	/**
@@ -109,7 +105,6 @@ class RealisationController extends Controller
 		$realisation = Realisation::findOrFail($id);
 
 		$oldImage = $realisation->image;
-		$oldVideo = $realisation->video;
 		$oldGallery = $realisation->gallery;
 
 		$realisationValidated = $this->validator($request->all())->validate();
@@ -117,15 +112,12 @@ class RealisationController extends Controller
 		if (isset($realisationValidated['image'])) {
 			$realisationValidated['image'] = ManageStorageService::update($request->file('image'), $oldImage, 'realisations');
 		}
-		if (isset($realisationValidated['video'])) {
-			$realisationValidated['video'] = ManageStorageService::update($request->file('video'), $oldVideo, 'realisations');
-		}
 		if (isset($realisationValidated['gallery'])) {
 			$realisationValidated['gallery'] = GalleryService::update($request->file('gallery'), $oldGallery, 'realisations');
 		}
 
 		$realisation->update($realisationValidated);
-		return back()->with('success', 'Realizacja została pomyślnie zaktualizowana!');
+		return redirect()->route('admin.realisations')->with('success', 'Realizacja została pomyślnie zaktualizowana!');
 	}
 
 	/**
@@ -139,7 +131,6 @@ class RealisationController extends Controller
 		$realisation = Realisation::findOrFail($id);
 		$realisation->delete();
 		ManageStorageService::destroy($realisation->image);
-		ManageStorageService::destroy($realisation->video);
 		GalleryService::destroy($realisation->gallery);
 		return redirect()->route('admin.realisations')->with('success', 'Realizacja została pomyślnie usunięta!');
 	}
