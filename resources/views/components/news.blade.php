@@ -15,9 +15,9 @@
 				</svg>
 			</a>
 		</div>
-		<div class="flex items-stretch flex-wrap md:flex-nowrap space-x-6">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 			@foreach($posts as $post)
-			<div class="flex md:flex-col w-full md:w-1/3">
+			<div class="flex md:flex-col w-full">
 				<img src="{{ $post->image ? $post->photo : asset('img/slider-1.png') }}" alt="{{ $post->imageAlt }}"
 					class="h-24 mr-6 md:mr-0 md:h-80 object-cover rounded-tl-3xl rounded-br-3xl w-1/5 md:w-full" />
 				<div class="w-4/5 md:mt-5">
