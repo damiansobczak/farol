@@ -18,6 +18,9 @@ class MaterialController extends Controller
             "color_id" => "Kolor",
             "collection_id" => "Kolekcja",
             "image" => "Obrazek",
+            "name" => "Nazwa",
+            "code" => "Kod",
+            "imageAlt" => "Tekst alternatywny",
         ];
     }
 
@@ -25,10 +28,12 @@ class MaterialController extends Controller
     {
         return Validator::make($data, [
             "name" => "required|max:200",
+            "code" => "required",
             "color_id" => "required|exists:colors,id",
             "collection_id" => "required|exists:collections,id",
             "attributes.*" => "nullable|exists:attributes,id",
             "image" => "file|mimes:jpg,jpeg,png|max:256",
+            "imageAlt" => "nullable"
         ], [], $this->attributes());
     }
     /**
@@ -75,7 +80,7 @@ class MaterialController extends Controller
             $material->attributes()->attach(Attribute::findOrFail($validated['attributes']));
         }
 
-        return redirect()->route('admin.materials.edit', $material->id)->with('success', 'Materiał został pomyślnie utworzony!');
+        return redirect()->route('admin.materials')->with('success', 'Materiał został pomyślnie utworzony!');
     }
 
     /**
@@ -131,7 +136,7 @@ class MaterialController extends Controller
 
         $material->update($validated);
 
-        return back()->with('success', 'Materiał został pomyślnie zaktualizowany!');
+        return redirect()->route('admin.materials')->with('success', 'Materiał został pomyślnie zaktualizowany!');
     }
 
     /**

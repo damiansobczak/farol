@@ -29,8 +29,7 @@ class ProductFactory extends Factory
 			"featured" => $this->faker->numberBetween(0, 1),
 			"title" => $this->faker->sentence(10),
 			"description" => $this->faker->sentence(20),
-			"show" => $this->faker->numberBetween(0, 1),
-			"avaibility" => $this->faker->numberBetween(0, 1)
+			"show" => 1
 		];
 	}
 }

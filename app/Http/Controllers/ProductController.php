@@ -23,7 +23,6 @@ class ProductController extends Controller
 			"title" => "Tytuł",
 			"description" => "Opis",
 			"show" => "Aktywny",
-			"avaibility" => "Dostępność",
 			"collections" => "Dostępne kolekcje",
 			"gallery" => "Galeria"
 		];
@@ -38,7 +37,7 @@ class ProductController extends Controller
 			"categoryId" => "required|exists:categories,id",
 			"featured" => "nullable|boolean",
 			"description" => "required",
-			"description" => "required",
+			"title" => "required",
 			"show" => "nullable|boolean",
 			"collections.*" => "nullable|exists:collections,id",
 			"avaibility" => "nullable|boolean",

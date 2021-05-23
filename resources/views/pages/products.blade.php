@@ -1,6 +1,9 @@
 @extends('layouts.main')
 
-@section('title', 'Nasze produkty')
+@section('seo')
+<x-seo title="Aktualności - Rolety, rolety okienne, Farol Łódź Pabianice i okolice"
+    description="Producent rolet Farol Łódź. Zapraszamy do zapoznania się z ofertą firmy FAROL działającej na terenie Łodzi i okolic." />
+@endsection
 
 @section('content')
 @include('components.header')

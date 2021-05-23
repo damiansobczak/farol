@@ -17,11 +17,15 @@ class ColorSeeder extends Seeder
         Color::insert(array(
             array(
                 'name' => 'Niebieski',
-                'color' => '#000000',
+                'color' => '#4287f5',
             ),
             array(
                 'name' => 'Czerwony',
-                'color' => '#000000',
+                'color' => '#f55442',
+            ),
+            array(
+                'name' => 'Zielony',
+                'color' => '#28bf17',
             ),
         ));
     }

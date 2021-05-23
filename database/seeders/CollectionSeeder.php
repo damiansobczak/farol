@@ -17,7 +17,13 @@ class CollectionSeeder extends Seeder
         Collection::insert(array(
             array(
                 'name' => 'Carina',
-            )
+            ),
+            array(
+                'name' => 'Melania',
+            ),
+            array(
+                'name' => 'Blue Laguna',
+            ),
         ));
     }
 }

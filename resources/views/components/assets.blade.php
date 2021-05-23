@@ -1,6 +1,6 @@
 <div class="max-w-fluid px-3 mx-auto">
-    <div class="container mx-auto grid grid-cols-2 gap-y-5 gap-x-3 lg:grid-cols-4 justify-center my-20">
-        <div class="flex items-center">
+    <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-3 lg:grid-cols-4 justify-center my-20">
+        <div class="flex flex-wrap md:flex-nowrap items-center">
             <div
                 class="w-20 h-20 flex items-center justify-center rounded-full bg-green-100 bg-opacity-50 text-green-600">
                 <svg xmlns="http://www.w3.org/2000/svg" width="39.544" height="33.76" viewBox="0 0 39.544 33.76"
@@ -21,12 +21,12 @@
                     </g>
                 </svg>
             </div>
-            <div class="flex-1 pl-3">
+            <div class="pl-3 flex-1">
                 <p class="font-semibold text-primary capitalize font-display">Najlepsze ceny</p>
                 <p class="text-sm text-secondary">Gwarancja najlepszej ceny na nasz asortyment</p>
             </div>
         </div>
-        <div class="flex items-center">
+        <div class="flex flex-wrap md:flex-nowrap items-center">
             <div
                 class="w-20 h-20 flex items-center justify-center rounded-full bg-green-100 bg-opacity-50 text-green-600">
                 <svg xmlns="http://www.w3.org/2000/svg" width="38.058" height="31.069" viewBox="0 0 38.058 31.069"
@@ -50,12 +50,12 @@
                     </g>
                 </svg>
             </div>
-            <div class="flex-1 pl-3">
-                <p class="font-semibold text-primarycapitalize font-display">Płać Kartą</p>
+            <div class="pl-3 flex-1">
+                <p class="font-semibold text-primary capitalize font-display">Płać Kartą</p>
                 <p class="text-sm text-secondary">W naszym sklepie możesz zapłacić kartą</p>
             </div>
         </div>
-        <div class="flex items-center">
+        <div class="flex flex-wrap md:flex-nowrap items-center">
             <div
                 class="w-20 h-20 flex items-center justify-center rounded-full bg-green-100 bg-opacity-50 text-green-600">
                 <svg xmlns="http://www.w3.org/2000/svg" width="37.294" height="36.589" viewBox="0 0 37.294 36.589"
@@ -75,12 +75,12 @@
                     </g>
                 </svg>
             </div>
-            <div class="flex-1 pl-3">
-                <p class="font-semibold text-primary capitalize font-display">Gwarantowana jakość</p>
+            <div class="pl-3 flex-1">
+                <p class="font-semibold text-primary capitalize font-display">Gwarantowana Jakość</p>
                 <p class="text-sm text-secondary">W przypadku awarii oferujemy wymianę</p>
             </div>
         </div>
-        <div class="flex items-center">
+        <div class="flex flex-wrap md:flex-nowrap items-center">
             <div
                 class="w-20 h-20 flex items-center justify-center rounded-full bg-green-100 bg-opacity-50 text-green-600">
                 <svg xmlns="http://www.w3.org/2000/svg" width="45.191" height="28.696" viewBox="0 0 45.191 28.696"
@@ -103,8 +103,8 @@
                     </g>
                 </svg>
             </div>
-            <div class="flex-1 pl-3">
-                <p class="font-semibold text-primary capitalize font-display">Darmowy montaż</p>
+            <div class="pl-3 flex-1">
+                <p class="font-semibold text-primary capitalize font-display">Darmowy Montaż</p>
                 <p class="text-sm text-secondary">Najszybsza dostawa pod Twój adres</p>
             </div>
         </div>

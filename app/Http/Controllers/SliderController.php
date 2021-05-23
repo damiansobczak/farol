@@ -66,7 +66,7 @@ class SliderController extends Controller
 		}
 
 		$slider = Slider::create($sliderValidated);
-		return redirect()->route('admin.sliders.edit', $slider->id)->with('success', 'Baner został pomyślnie utworzony!');
+		return redirect()->route('admin.sliders')->with('success', 'Baner został pomyślnie utworzony!');
 	}
 
 	/**
@@ -113,7 +113,7 @@ class SliderController extends Controller
 		}
 
 		$slider->update($sliderValidated);
-		return back()->with('success', 'Baner został pomyślnie zaktualizowany!');
+		return redirect()->route('admin.sliders')->with('success', 'Baner został pomyślnie zaktualizowany!');
 	}
 
 	/**

@@ -17,9 +17,9 @@
 		<h2 class="uppercase text-gray-600 text-sm font-semibold border-b border-gray-100 pb-4 mb-4 w-full">Treść</h2>
 		<div class="flex flex-col flex-1 border-gray-200 pr-6">
 			@if(isset($product) && $product->image)
-			<img src="{{ $product->img }}" class="object-cover bg-gray-100 h-64 rounded">
+			<img src="{{ $product->img }}" class="object-cover bg-gray-100 h-64 rounded mb-4">
 			@endif
-			<label for="image" class="text-sm text-gray-500 font-semibold block mt-4">
+			<label for="image" class="text-sm text-gray-500 font-semibold block">
 				Obrazek
 				<input type="file" name="image" id="image"
 					value="@if($errors->any()){{ old('image') }}@else {{ $product->img ?? null }}@endif"
@@ -37,14 +37,9 @@
 					class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
 			</label>
 			<div class="flex flex-col flex-1 border-gray-200 pr-6">
-				@if (isset($product) && $product->galleryImg)
-				@foreach ($product->galleryImg as $gallery)
-				<img src="{{ $gallery }}" alt="">
-				@endforeach
-				@endif
 				<label for="gallery" class="text-sm text-gray-500 font-semibold block mt-4">
 					Galeria
-					<input type="file" name="gallery[]" id="gallery"
+					<input type="file" name="gallery[]" id="gallery" multiple="multiple"
 						value="@if($errors->any()){{ old('image') }}@else{{ $product->image ?? NULL }}@endif"
 						class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200">
 					@error('gallery')
@@ -53,6 +48,13 @@
 					</div>
 					@enderror
 				</label>
+				@if (isset($product) && $product->galleryImg)
+				<div class="space-x-4 flex flex-wrap my-4 p-4 bg-gray-50 border rounded">
+					@foreach ($product->galleryImg as $gallery)
+					<img src="{{ $gallery }}" class="w-16 h-16 rounded object-cover" alt="">
+					@endforeach
+				</div>
+				@endif
 			</div>
 		</div>
 		<div class="flex-1 flex-col pl-6">
@@ -113,14 +115,6 @@
 					@if(isset($product) && $product->show) {{ 'checked' }} @endif value="1">
 				<p class="text-sm text-gray-500 ml-2 font-light">Aktywny</p>
 			</label>
-			<input type="hidden" name="avaibility" class="hidden" @if(isset($product) && !$product->avaibility)
-			{{ 'checked' }} @endif value="0">
-			<label for="avaibility" class="flex items-center cursor-pointer mt-4">
-				<input type="checkbox" id="avaibility" name="avaibility"
-					class="h-6 w-6 border border-gray-300 rounded-md checked:bg-indigo-600 checked:border-transparent focus:outline-none"
-					@if(isset($product) && $product->avaibility) {{ 'checked' }} @endif value="1">
-				<p class="text-sm text-gray-500 ml-2 font-light">Dostępność</p>
-			</label>
 			<input type="hidden" name="featured" class="hidden" @if(isset($product) && !$product->featured)
 			{{ 'checked' }} @endif value="0">
 			<label for="featured" class="flex items-center cursor-pointer mt-4">
@@ -131,6 +125,7 @@
 			</label>
 			<label for="collections" class="text-sm text-gray-500 font-semibold block mt-4">
 				Dostępne kolekcje
+				<span class="text-sm text-gray-400 font-light italic">(Zaznacz wiele)</span>
 				<select name="collections[]" id="collections"
 					class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 rounded border border-gray-200"
 					multiple>

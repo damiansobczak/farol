@@ -24,7 +24,6 @@ class CreateProductsTable extends Migration
 			$table->string('title');
 			$table->text('description');
 			$table->boolean('show')->nullable()->default(false);
-			$table->string('avaibility')->nullable()->default(false);
 			$table->string('gallery')->nullable();
 			$table->timestamps();
 		});
