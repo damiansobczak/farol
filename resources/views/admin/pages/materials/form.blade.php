@@ -20,9 +20,9 @@
         </div>
         <div class="flex-1 border-r border-gray-200 pr-6">
             @isset($material->photo)
-            <img src="{{ $material->photo }}" class="object-cover w-full bg-gray-100 h-64 rounded" />
+            <img src="{{ $material->photo }}" class="object-cover w-full bg-gray-100 h-64 rounded mb-4" />
             @endisset
-            <label for="image" class="text-sm text-gray-500 font-semibold block mt-4"">
+            <label for="image" class="text-sm text-gray-500 font-semibold block"">
 				<p class=" mb-2 text-gray-500">Obrazek:</p>
                 <input
                     class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200"
@@ -48,7 +48,8 @@
 				<p class=" mb-2 text-gray-500">Kod:</p>
                 <input
                     class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200"
-                    type="text" name="code" id="code" value="@if($errors->any()){{ old('code') }}@endif">
+                    type="text" name="code" id="code"
+                    value="@if($errors->any()){{ old('code') }}@else{{ $material->code ?? NULL }}@endif">
             </label>
         </div>
     </div>

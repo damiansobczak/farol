@@ -16,8 +16,8 @@ class CreateMaterialsTable extends Migration
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('code')->nullable();
-            $table->string('image')->nullable();
+            $table->string('code');
+            $table->string('image');
             $table->string('imageAlt')->nullable();
             $table->foreignId('color_id')->nullable()->constrained('colors');
             $table->foreignId('collection_id')->nullable()->constrained('collections');
