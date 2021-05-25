@@ -3,11 +3,14 @@
         <div
             class="w-full md:w-1/2 lg:w-1/3 rounded-lg p-5 flex flex-wrap items-center justify-center border border-gray-100">
             <img src="{{ $product->img }}" alt="" class="h-96 object-cover flex-1">
-            @if (isset($product->gallery))
-            <div class="grid grid-cols-4 gap-8 border border-gray-100 mt-4">
-                @foreach ($product->$galleryImg as $photo)
-                <img src="{{ $photo }}" class="h-16 w-16 rounded object-cover flex-1">
-                @endforeach
+            @if (isset($product->galleryPhotos))
+            <div class="grid grid-cols-6 gap-2 mt-4 w-full">
+                @forelse ($product->galleryPhotos as $photo)
+                <a class="splide__slide glightbox3" data-gallery="gallery1" href="{{ $photo }}"><img src="{{ $photo }}"
+                        alt="" class="h-16 w-16 rounded object-cover"></a>
+                @empty
+
+                @endforelse
             </div>
             @endif
         </div>

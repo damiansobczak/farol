@@ -25,12 +25,11 @@
 		</div>
 		<div class="overflow-hidden">
 			<div class="flex items stretch flex-nowrap w-full min-w-full transition-all" id="popular-products">
-				@if(isset($featuredProducts))
-				@foreach($featuredProducts as $product)
+				@forelse($featuredProducts as $product)
 				<div class="flex-shrink-0 w-1/2 md:w-1/3 lg:w-1/5 px-2 -ml-2" id="popular-product">
 					<div class="border px-3 py-6 text-center rounded-md relative group">
 						<img src="{{ $product->image ? $product->img : asset('img/product.png') }}"
-							alt="{{ $product->imageAlt }}" class="w-auto max-h-52 mx-auto" />
+							alt="{{ $product->imageAlt }}" class="w-auto h-52 mx-auto object-cover" />
 						<span class="uppercase text-xs text-gray-400">{{ $product->category->name }}</span>
 						<p class="text-gray-800 font-semibold">{{ $product->name }}</p>
 						<div
@@ -45,8 +44,8 @@
 						</div>
 					</div>
 				</div>
-				@endforeach
-				@endif
+				@empty
+				@endforelse
 			</div>
 		</div>
 	</div>

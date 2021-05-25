@@ -7,7 +7,7 @@
 
 @section('content')
 @include('components.header')
-@include('components.locations')
+@include('components.locations', ['crumb' => 'Kontakt'])
 @include('components.successContact')
 @include('components.contact')
 @include('components.footer')

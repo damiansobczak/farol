@@ -104,11 +104,11 @@ class SliderController extends Controller
 		$slider = Slider::findOrFail($id);
 		$sliderValidated = $this->validator($request->all())->validate();
 
-		if (isset($validated['image'])) {
+		if (isset($sliderValidated['image'])) {
 			$sliderValidated['image'] = ManageStorageService::update($request->file('image'), $slider->image ?? null, 'sliders');
 		}
 
-		if (isset($validated['onlyImage'])) {
+		if (isset($sliderValidated['onlyImage'])) {
 			$sliderValidated['onlyImage'] = ManageStorageService::update($request->file('onlyImage'), $slider->onlyImage ?? null, 'sliders');
 		}
 

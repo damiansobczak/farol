@@ -7,7 +7,7 @@
 
 @section('content')
 @include('components.header')
-@include('components.locations')
+@include('components.locations', ['crumb' => 'Aktualności'])
 <section class="max-w-fluid px-3 mx-auto my-24">
     <div class="container mx-auto">
         <div class="flex items-end justify-between mb-5">

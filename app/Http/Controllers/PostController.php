@@ -17,10 +17,6 @@ class PostController extends Controller
 			'image' => 'nullable|file|mimes:jpg,jpeg,png|max:512',
 			'imageAlt' => 'nullable|string|max:255',
 			'show' => 'nullable|boolean',
-			'seoTitle' => 'nullable|max:255',
-			'seoDescription' => 'nullable|max:600',
-			'ogTitle' => 'nullable|string|max:255',
-			'ogDescription' => 'nullable|string|max:600'
 		]);
 	}
 	/**

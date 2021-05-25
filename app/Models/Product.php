@@ -41,7 +41,7 @@ class Product extends Model
 	 *
 	 * @return array
 	 */
-	public function getGalleryImgAttribute()
+	public function getGalleryPhotosAttribute()
 	{
 		$gallery = json_decode($this->gallery);
 		if ($gallery) {

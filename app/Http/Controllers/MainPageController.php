@@ -12,7 +12,7 @@ class MainPageController extends Controller
 {
 	public function main()
 	{
-		$featuredProducts = Product::select('id', 'slug', 'image', 'imageAlt', 'name', 'categoryId')->with('category')->where('featured', true)->get();
+		$featuredProducts = Product::select('id', 'slug', 'image', 'imageAlt', 'name', 'categoryId', 'show')->with('category')->where('featured', true)->where('show', true)->latest()->get();
 		$posts = Post::select('id', 'title', 'description', 'image', 'imageAlt', 'slug')->latest()->where('show', true)->limit(3)->get();
 		$sliders = Slider::select('id', 'title', 'description', 'actionLink', 'actionName', 'image', 'imageAlt', 'onlyImage', 'onlyImageLink')->latest()->get();
 		return view('pages.main', compact('featuredProducts', 'posts', 'sliders'));
