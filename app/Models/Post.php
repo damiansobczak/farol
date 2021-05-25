@@ -22,10 +22,6 @@ class Post extends Model
         'image',
         'imageAlt',
         'show',
-        'seoTitle',
-        'seoDescription',
-        'ogTitle',
-        'ogDescription'
     ];
 
     /**

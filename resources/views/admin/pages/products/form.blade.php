@@ -48,9 +48,9 @@
 					</div>
 					@enderror
 				</label>
-				@if (isset($product) && $product->galleryImg)
+				@if (isset($product) && $product->galleryPhotos)
 				<div class="space-x-4 flex flex-wrap my-4 p-4 bg-gray-50 border rounded">
-					@foreach ($product->galleryImg as $gallery)
+					@foreach ($product->galleryPhotos as $gallery)
 					<img src="{{ $gallery }}" class="w-16 h-16 rounded object-cover" alt="">
 					@endforeach
 				</div>

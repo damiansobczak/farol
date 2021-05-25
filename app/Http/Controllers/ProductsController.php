@@ -9,7 +9,9 @@ class ProductsController extends Controller
 {
     public function main()
     {
-        $categories = Category::with('products')->get();
+        $categories = Category::with(['products' => function ($q) {
+            $q->where('show', true);
+        }])->get();
         return view('pages.products', compact('categories'));
     }
 }

@@ -7,7 +7,7 @@
 
 @section('content')
 @include('components.header')
-@include('components.locations')
+@include('components.locations', ['crumb' => $post->title])
 <div class="container mx-auto mb-16">
     <div class="flex flex-col items-center">
         <img src="{{ $post->photo }}" alt="" class="object-cover h-120 my-12 w-full max-w-6xl">

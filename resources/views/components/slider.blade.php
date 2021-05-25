@@ -5,7 +5,7 @@
         @if ($slider->onlyImage)
         <a href="{{ $slider->onlyImageLink }}"
             class="flex items-stretch flex-1 min-w-full relative bg-center bg-cover bg-no-repeat"
-            style="background-image: url('{{ $slider->onlyImage }}')"></a>
+            style="background-image: url('{{ $slider->onlyPhoto }}')"></a>
         @else
         <div class="flex items-stretch flex-1 min-w-full relative">
             <div class="flex-1 w-full lg:w-1/2" style="background-color: #353535"></div>
@@ -32,7 +32,8 @@
     </div>
 
     {{-- Slider Navigations --}}
-    <div class="flex items-center justify-between absolute inset-y-2/4 w-full px-4">
+    <div
+        class="flex items-center xl:justify-between space-x-4 absolute bottom-4 lg:bottom-8 xl:inset-y-2/4 w-full px-4">
         <button id="slider-control-left"
             class="rounded-full px-6 py-2 text-white bg-white bg-opacity-20 hover:bg-opacity-10 transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"

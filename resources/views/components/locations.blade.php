@@ -7,8 +7,8 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
         </a>
-        <div href="#" class="flex items-center text-gray-500 text-sm">
-            O firmie
-        </div>
+        <a href={{ $link ?? '#'}} class="flex items-center text-gray-500 text-sm">
+            {{ $crumb ?? ''}}
+        </a>
     </div>
 </div>

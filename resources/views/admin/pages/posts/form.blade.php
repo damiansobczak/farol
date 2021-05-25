@@ -61,46 +61,6 @@
 			</label>
 		</div>
 	</div>
-	<div class="rounded shadow-sm bg-white px-8 pb-8 pt-2 mt-3 flex flex-col">
-		<div
-			class="flex items-center justify-between font-medium text-sm text-gray-600 border-b border-gray-200 py-4 mb-4">
-			SEO
-		</div>
-		<div class="flex">
-			<div class="flex-1 pr-6">
-				<label for="seoTitle" class="text-sm text-gray-500 font-semibold block">
-					<p class="mb-2 text-gray-500">Tytuł:</p>
-					<input
-						class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200"
-						type="text" name="seoTitle" id="seoTitle"
-						value="@if($errors->any()){{ old('seoTitle') }}@else{{ $post->seoTitle ?? NULL }}@endif">
-				</label>
-				<label for="seoDescription" class="text-sm text-gray-500 font-semibold block mt-4"">
-					<p class=" mb-2 text-gray-500">Opis:</p>
-					<input
-						class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200"
-						type="text" name="seoDescription" id="seoDescription"
-						value="@if($errors->any()){{ old('seoDescription') }}@else{{ $post->seoDescription ?? NULL }}@endif">
-				</label>
-			</div>
-			<div class="flex-1 pl-6">
-				<label for="ogTitle" class="text-sm text-gray-500 font-semibold block">
-					<p class="mb-2 text-gray-500">Og Title:</p>
-					<input
-						class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200"
-						type="text" name="ogTitle" id="ogTitle"
-						value="@if($errors->any()){{ old('ogTitle') }}@else{{ $post->ogTitle ?? NULL }}@endif">
-				</label>
-				<label for="ogDescription" class="text-sm text-gray-500 font-semibold block mt-4">
-					<p class="mb-2 text-gray-500">Og Description:</p>
-					<input
-						class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200"
-						type="text" name="ogDescription" id="ogDescription"
-						value="@if($errors->any()){{ old('ogDescription') }}@else{{ $post->ogDescription ?? NULL }}@endif">
-				</label>
-			</div>
-		</div>
-	</div>
 </form>
 
 @if(isset($post))

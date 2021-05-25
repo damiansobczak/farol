@@ -7,7 +7,7 @@
 
 @section('content')
 @include('components.header')
-@include('components.locations')
+@include('components.locations', ['crumb' => 'O firmie'])
 @include('components.about')
 @include('components.jumbo')
 @include('components.footer')
