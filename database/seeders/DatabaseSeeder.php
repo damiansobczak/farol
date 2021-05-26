@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             CollectionSeeder::class,
             MaterialSeeder::class,
             AttributeSeeder::class,
+            CollectionProductSeeder::class,
         ]);
     }
 }

@@ -16,7 +16,9 @@ class ProductPageController extends Controller
 	 */
 	public function show(string $slug)
 	{
-		$product = Product::where('slug', $slug)->with('collections', 'collections.materials', 'collections.materials.color')->firstOrFail();
+		$product = Product::where('slug', $slug)->with(['collections' => function ($q) {
+			$q->where('show', true);
+		}], 'collections.materials', 'collections.materials.color')->firstOrFail();
 		return view('pages.product', compact('product'));
 	}
 }
