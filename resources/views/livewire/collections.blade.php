@@ -6,6 +6,9 @@
                     class="px-3 py-3 bg-gray-50 text-left text-xs font-medium rounded text-gray-500 uppercase tracking-wider">
                     Nazwa</th>
                 <th
+                    class="px-3 py-3 bg-gray-50 text-left text-xs font-medium rounded text-gray-500 uppercase tracking-wider">
+                    Status</th>
+                <th
                     class="py-3 bg-gray-50 text-left text-xs font-medium rounded text-gray-500 uppercase tracking-wider">
                     Akcje</th>
             </tr>
@@ -14,6 +17,12 @@
                 @foreach ($collections as $collection)
                 <tr>
                     <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-500">{{ $collection->name }}</td>
+                    <td class="px-3 py-4 whitespace-nowrap">
+                        <span
+                            class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full {{ $collection->show ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700' }}">
+                            {{ $collection->show ? 'Aktywny' : 'Nieaktywny' }}
+                        </span>
+                    </td>
                     <td class="space-x-4 text-sm">
                         <button class="text-red-500"
                             onclick="confirm('Czy na pewno chcesz usunąć?') || event.stopImmediatePropagation()"
@@ -68,6 +77,14 @@
                     class="outline-none appearance-none text-gray-400 font-light hover:border-indigo-200 placeholder-gray-300 focus:text-gray-700 focus:border-indigo-600 focus:ring-indigo-100 focus:ring-4 mt-2 w-full p-2 h-10 rounded border border-gray-200"
                     wire:model="editFormCollectionName" type="text" name="editFormCollectionName"
                     id="editFormCollectionName" />
+            </label>
+            <input type="hidden" name="editFormCollectionShow" class="hidden" @if(!$editFormCollectionShow)
+                {{ 'checked' }} @endif value="0" wire.model="editFormCollectionShow">
+            <label for="editFormCollectionShow" class="flex items-center cursor-pointer mt-4">
+                <input type="checkbox" id="editFormCollectionShow" name="editFormCollectionShow"
+                    class="h-6 w-6 border border-gray-300 rounded-md checked:bg-indigo-600 checked:border-transparent focus:outline-none"
+                    @if($editFormCollectionShow) {{ 'checked' }} @endif value="1" wire:model="editFormCollectionShow">
+                <p class="text-sm text-gray-500 ml-2 font-light">Aktywny</p>
             </label>
             <div class="w-full flex">
                 <button class="rounded bg-indigo-500 text-white px-3 py-2 mt-4 ml-auto"

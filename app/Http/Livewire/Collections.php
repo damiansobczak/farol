@@ -16,6 +16,7 @@ class Collections extends Component
 
     // Modal data
     public $editFormCollectionName;
+    public $editFormCollectionShow;
     public $editFormId;
 
     protected $messages = [
@@ -62,6 +63,7 @@ class Collections extends Component
 
         $this->editFormId = $collection->id;
         $this->editFormCollectionName = $collection->name;
+        $this->editFormCollectionShow = $collection->show;
     }
 
     public function closeEditModal()
@@ -78,6 +80,7 @@ class Collections extends Component
 
         $collection->update([
             "name" => $this->editFormCollectionName,
+            "show" => $this->editFormCollectionShow,
         ]);
 
         $this->closeEditModal();
