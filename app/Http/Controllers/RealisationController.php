@@ -18,8 +18,9 @@ class RealisationController extends Controller
 		return Validator::make($data, [
 			'title' => 'required|string|max:255',
 			'description' => 'required|string|max:1000',
-			'image' => 'required|file|mimes:jpg,jpeg,png|max:512',
+			'image' => 'nullable|file|mimes:jpg,jpeg,png|max:512',
 			'imageAlt' => 'nullable|string|max:255',
+			'video' => 'nullable|mimes:mp4|max:2048',
 			'gallery.*' => 'nullable|mimes:jpeg,jpg,png|max:256',
 			'seoTitle' => 'nullable|string|max:255',
 			'seoDescription' => 'nullable|string|max:255',
@@ -65,6 +66,9 @@ class RealisationController extends Controller
 		if (isset($realisationValidated['gallery'])) {
 			$realisationValidated['gallery'] = GalleryService::store($request->file('gallery'), 'realisations');
 		}
+		if (isset($realisationValidated['video'])) {
+			$realisationValidated['video'] = ManageStorageService::store($request->file('video'), 'realisations');
+		}
 
 		$realisation = Realisation::create($realisationValidated);
 		return redirect()->route('admin.realisations')->with('success', 'Realizacja została pomyślnie utworzona!');
@@ -106,6 +110,7 @@ class RealisationController extends Controller
 
 		$oldImage = $realisation->image;
 		$oldGallery = $realisation->gallery;
+		$oldVideo = $realisation->video;
 
 		$realisationValidated = $this->validator($request->all())->validate();
 
@@ -114,6 +119,9 @@ class RealisationController extends Controller
 		}
 		if (isset($realisationValidated['gallery'])) {
 			$realisationValidated['gallery'] = GalleryService::update($request->file('gallery'), $oldGallery, 'realisations');
+		}
+		if (isset($realisationValidated['video'])) {
+			$realisationValidated['video'] = ManageStorageService::update($request->file('video'), $oldVideo, 'realisations');
 		}
 
 		$realisation->update($realisationValidated);
@@ -131,6 +139,7 @@ class RealisationController extends Controller
 		$realisation = Realisation::findOrFail($id);
 		$realisation->delete();
 		ManageStorageService::destroy($realisation->image);
+		ManageStorageService::destroy($realisation->video);
 		GalleryService::destroy($realisation->gallery);
 		return redirect()->route('admin.realisations')->with('success', 'Realizacja została pomyślnie usunięta!');
 	}

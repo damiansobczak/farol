@@ -47,7 +47,7 @@ class Realisation extends Model
 	 */
 	public function getMovieAttribute()
 	{
-		return $this->video ? Storage::url($this->video) : null;
+		return Str::startsWith($this->video, 'http') || Str::startsWith($this->video, 'https') ? $this->video : Storage::url($this->video);
 	}
 
 	/**
