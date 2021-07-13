@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
 			$table->string('image')->nullable();
 			$table->string('imageAlt')->nullable();
 			$table->boolean('show')->nullable()->default(true);
+			$table->string('gallery')->nullable();
 			$table->timestamps();
 		});
 	}

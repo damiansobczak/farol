@@ -22,6 +22,7 @@ class Post extends Model
         'image',
         'imageAlt',
         'show',
+        'gallery'
     ];
 
     /**
@@ -56,6 +57,22 @@ class Post extends Model
         }
         return null;
     }
+
+    /**
+	 * Accessor for gallery images
+	 *
+	 * @return array
+	 */
+	public function getGalleryPhotosAttribute()
+	{
+		$gallery = json_decode($this->gallery);
+		if ($gallery) {
+			foreach ($gallery as $key => $image) {
+				$gallery[$key] = Storage::url($image);
+			}
+		}
+		return $gallery ?? null;
+	}
 
     /**
      * Helper to load single post by it's slug

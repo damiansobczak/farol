@@ -12,9 +12,9 @@
 </head>
 
 <body>
-    <div class="bg-gray-100 mx-auto w-screen h-screen flex">
+    <div class="flex w-screen h-screen mx-auto bg-gray-100">
         @include('admin/partials/sidebar')
-        <div class="flex flex-1 h-full flex-col overflow-y-auto">
+        <div class="flex flex-col flex-1 h-full overflow-y-auto">
             @include('admin/partials/topbar')
             <div class="px-10 py-7">
                 @include('admin.partials.alerts')
@@ -23,7 +23,7 @@
         </div>
     </div>
     @livewireScripts
-
+    @yield('scripts')
 </body>
 
 </html>
