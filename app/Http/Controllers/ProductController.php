@@ -41,7 +41,7 @@ class ProductController extends Controller
 			"show" => "nullable|boolean",
 			"collections.*" => "nullable|exists:collections,id",
 			"avaibility" => "nullable|boolean",
-			"gallery.*" => "nullable|file|mimes:jpeg,jpg,png|max:256"
+			"gallery.*" => "nullable|file|mimes:jpeg,jpg,png|max:512"
 		], [], $this->attributes());
 	}
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Services\GalleryService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Services\ManageStorageService;
@@ -17,6 +18,7 @@ class PostController extends Controller
 			'image' => 'nullable|file|mimes:jpg,jpeg,png|max:512',
 			'imageAlt' => 'nullable|string|max:255',
 			'show' => 'nullable|boolean',
+			"gallery.*" => "nullable|file|mimes:jpeg,jpg,png|max:512"
 		]);
 	}
 	/**
@@ -52,6 +54,10 @@ class PostController extends Controller
 
 		if (isset($postValidated['image'])) {
 			$postValidated['image'] = ManageStorageService::store($request->file('image'), 'posts');
+		}
+
+		if (isset($postValidated['gallery'])) {
+			$postValidated['gallery'] = GalleryService::store($request->file('gallery'), 'posts');
 		}
 
 		$post = Post::create($postValidated);
@@ -97,6 +103,10 @@ class PostController extends Controller
 			$postValidated['image'] = ManageStorageService::update($request->file('image'), $post->image, 'posts');
 		}
 
+		if (isset($postValidated['gallery'])) {
+			$postValidated['gallery'] = GalleryService::update($request->file('gallery'), $post->gallery, 'posts');
+		}
+
 		$post->update($postValidated);
 		return redirect()->route('admin.posts')->with('success', 'Post został pomyślnie zaktualizowany!');
 	}
@@ -112,6 +122,7 @@ class PostController extends Controller
 		$post = Post::findOrFail($id);
 		$post->delete();
 		ManageStorageService::destroy($post->image);
+		GalleryService::destroy($post->gallery);
 		return redirect()->route('admin.posts')->with('success', 'Post został pomyślnie usunięty!');
 	}
 }
