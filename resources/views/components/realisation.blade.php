@@ -20,11 +20,11 @@
             <p class="text-sm leading-7 text-secondary">{{ $realisation->description }}</p>
         </div>
     </div>
+    @if (isset($realisation->galleryPhotos))
     <div class="flex flex-col mb-8">
         <div class="h-1 mb-6 bg-green-500 rounded w-52"></div>
         <h3 class="text-2xl font-semibold text-primary font-display">Galeria realizacji</h3>
     </div>
-    @if (isset($realisation->galleryPhotos))
     <div class="splide" id="#splide">
         <div class="splide__track">
             <ul class="splide__list">
@@ -34,11 +34,6 @@
                 @endforeach
             </ul>
         </div>
-    </div>
-    @else
-    <div class="container p-12 mx-auto text-center bg-gray-100 rounded">
-        <h3 class="text-lg font-semibold text-primary">Ups...</h3>
-        <p class="text-secondary">Aktualnie nie posiadamy galerii z tej realizacji</p>
     </div>
     @endif
 </div>
