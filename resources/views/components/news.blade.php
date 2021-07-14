@@ -25,9 +25,9 @@
 				<div class="w-4/5 md:mt-5">
 					<h5 class="text-lg font-semibold text-primary font-display">{{ $post->title }}
 					</h5>
-					<p class="mt-2 text-sm leading-6 text-secondary">
-						{{ Str::limit($post->description, 160, '...') }}
-					</p>
+					<div class="mt-2 text-sm leading-6 text-secondary">
+						{!! Str::limit($post->description, 160, '...') !!}
+					</div>
 					<a href="{{ route('post', $post->slug) }}"
 						class="inline-flex items-center justify-center py-3 text-sm text-green-500">Przeczytaj
 						więcej
